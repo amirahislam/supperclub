@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar.jsx';
-import BootstrapTemplate from '../components/BootstrapTemplate.jsx';
+import Navbar from '../../components/Navbar';
+import BootstrapTemplate from '../../components/BootstrapTemplate';
 
 class Home extends Component {
     render() {
