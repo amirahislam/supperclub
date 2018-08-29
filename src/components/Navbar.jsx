@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-import './Creative.css';
+// import './Creative.css';
 // import './Creative.min.css';
 
 class Navbar extends Component {
