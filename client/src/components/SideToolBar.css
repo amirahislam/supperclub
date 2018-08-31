@@ -533,3 +533,7 @@ body {
 .mCSB_inside>.mCSB_container {
     margin-right: 0px;
 }
+
+.page-wrapper {
+    max-width: 260px;
+}

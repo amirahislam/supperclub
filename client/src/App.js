@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import axios from "axios";
-// import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 
 

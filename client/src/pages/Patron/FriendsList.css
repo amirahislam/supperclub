@@ -1,0 +1,16 @@
+.communityTitle {
+    text-align: center;
+}
+
+.friendCard {
+    align-content: center;
+    color: orange;
+    width: 100%;
+    height: 100%;
+    margin: 15px;
+}
+
+.communityDiv {
+    height: 400px;
+    overflow: scroll;
+}

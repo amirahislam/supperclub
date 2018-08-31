@@ -1,0 +1,20 @@
+.UpcomingEvents {
+    max-height: 400px;
+    width: 800px;
+    margin-top: 100px;
+}
+
+.eventTitle {
+    text-align: center;
+}
+
+.slide {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.eventsImg {
+    max-height: 400px;
+    width: 800px;
+}
+

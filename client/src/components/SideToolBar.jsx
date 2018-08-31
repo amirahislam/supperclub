@@ -7,6 +7,23 @@ import { Link } from 'react-router-dom';
 
 class SideToolBar extends Component {
 
+    ProfilePic = props => (
+  
+        <div className='col-md-4'>
+          <div className="row">
+            <div className="card profileCard">
+              <img className="card-img-top" src={props.userPP} alt={props.userName} />
+                <div className="card-body">
+                  <h5 className="card-title">{props.userName}</h5>
+                  <p className="card-text">Add your bio here</p>
+                  <a href="#" className="btn btn-primary">Find suppers!!!</a>
+                </div>
+            </div>
+          </div>
+        </div>
+    
+)
+
     render() {
         return (
             <div className="page-wrapper cool-theme sidebar-bg bg1 toggled">
@@ -23,11 +40,11 @@ class SideToolBar extends Component {
                     </div>
                     <div className="sidebar-header">
                         <div className="user-pic">
-                            {/* <img className="img-responsive img-rounded" src="assets/img/user.jpg" alt="User picture"> */}
+                            <img className="img-responsive img-rounded" src={this.props.userPP} alt={this.props.userName} />
                         </div>
                         <div className="user-info">
-                            <span className="user-name">Amirah
-                                <strong>Islam</strong>
+                            <span className="user-name">{this.props.firstName} 
+                                <strong> {this.props.lastName}</strong>
                             </span>
                             <span className="user-role">Boss Chef</span>
                             <span className="user-status">
@@ -83,7 +100,7 @@ class SideToolBar extends Component {
                                         <a href="#">Orders</a>
                                     </li>
                                     <li>
-                                        <a href="#">Credit cart</a>
+                                        <a href="#">Credit card</a>
                                     </li>
                                 </ul>
                             </div>
@@ -116,7 +133,7 @@ class SideToolBar extends Component {
                         <li className="sidebar-dropdown">
                             <a href="#">
                                 <i className="fa fa-chart-line"></i>
-                                <span>Revenu</span>
+                                <span>Revenue</span>
                             </a>
                             <div className="sidebar-submenu">
                                 <ul>
