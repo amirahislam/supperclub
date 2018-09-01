@@ -34,6 +34,12 @@ app.post("/api/buzz", (req, res) => {
     });
 })
 
+app.post("/api/patrons", (req, res) => {
+  console.log(req.body);
+  db.Patron.create(req.body)
+    .then(dbPatron => res.json(dbPatron));
+})
+
 app.get("/api/test", (req, res) => {
   res.send("Testing.")
   // db.Patron.find({})
