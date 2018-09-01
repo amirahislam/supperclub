@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const routes = require("./routes/API");
+const routes = require("./routes/API/patronAPI");
 const app = express();
 const path = require("path");
 const db = require("./models");
@@ -19,6 +19,14 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
+
+// app.post("/api/buzz", (req, res) => {
+//   console.log(res.body)
+//   // db.Patron.create({ username: "testUsername1", img: "testImg1", firstName: "testFirst1", lastName: "testLast1" })
+//   //   .then(function(dbPatron) {
+//   //     res.json(dbPatron)
+//   //   });
+// })
 
 app.get("/api/test", (req, res) => {
   res.send("Testing.")
