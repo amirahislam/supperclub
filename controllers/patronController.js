@@ -8,19 +8,25 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
+  createPatron: function(req, res) {
     db.Patron
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
+  createBuzz: function(req, res) {
+    db.Buzz
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updatePatron: function(req, res) {
     db.Patron
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function(req, res) {
+  removePatron: function(req, res) {
     db.Patron
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())

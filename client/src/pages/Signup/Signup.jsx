@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
+import SignInModals from '../../components/SignInModals'
 
 class Signup extends Component {
     render() {
@@ -7,6 +8,7 @@ class Signup extends Component {
             <div>
                 <Navbar />
                 <h1>Signup Page</h1>
+                <SignInModals />
             </div>
         )
     }

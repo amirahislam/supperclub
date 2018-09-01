@@ -12,5 +12,8 @@ export default {
   // Saves a book to the database
   savePatron: function(patronData) {
     return axios.post("/api/patrons", patronData);
+  },
+  postBuzz: function(buzz) {
+    return axios.post("/api/buzz", buzz)
   }
 };

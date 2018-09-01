@@ -17,6 +17,7 @@ class Patron extends Component {
         lastName: 'Trimble',
         badges: '',
         buzzVal: '',
+        newBuzz: '',
         placeholder: '',
         img1: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
         img2: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINIEB01_NAsc6vlMZB2jMOXQzWeOAX-ykhRTfezZFqXVPtOtuVg',
@@ -31,29 +32,29 @@ class Patron extends Component {
         // Destructure the name and value properties off of event.target
         // Update the appropriate state
         const { name, value } = event.target;
-        console.log(event.target);
         this.setState({
           [name]: value
         });
-        console.log(this.state.buzzVal)
       };
 
     handleFormSubmit = event => {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
         event.preventDefault();
-        // API.getPatron()
-        //   .then(res => this.setState({ patron: res.data }))
-        //   .catch(err => console.log(err));
+        API.postBuzz(this.state.buzzVal)
+          .then(res => this.setState({ newBuzz: res.data }))
+          .catch(err => console.log(err));
         console.log(this.state.buzzVal)
         if (this.state.buzzVal) {
             console.log('success')
+            console.log('new buzz created:')
+            console.log(this.state.newBuzz)
         } else {
             console.log('failure')
         }
         // console.log(this.state.placeholder)
         // const buzzVal = this.state.buzzVal
         
-        console.log('Buzz submitted: ', this.state.buzzVal)
+        // console.log('Buzz submitted: ', this.state.buzzVal)
     
     };
 
