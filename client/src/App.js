@@ -15,7 +15,8 @@ import Signup from './pages/Signup/Signup.jsx'
 
 class App extends Component {
   componentDidMount() {
-    axios.get("/api/test").then(res => console.log(res.data));
+    // axios.get("/api/test").then(res => console.log(res.data));
+    // axios.get("/api/patrons").then(res => console.log(res.data));
   }
   render() {
     return (
