@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const patronController = require("../../controllers/patronController");
+const patronController = require("../../../controllers/patronController");
 
 router
   .route("/:id")

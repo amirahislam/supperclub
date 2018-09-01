@@ -12,5 +12,11 @@ export default {
   // Saves a book to the database
   savePatron: function(patronData) {
     return axios.post("/api/patrons", patronData);
+  },
+  createBuzz: function(buzz) {
+    return axios.post("/api/buzz", buzz)
+  },
+  getBuzz: function() {
+    return axios.get("/api/buzz")
   }
 };
