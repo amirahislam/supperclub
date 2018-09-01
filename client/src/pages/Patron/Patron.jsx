@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
 import SideToolBar from '../../components/SideToolBar';
 import PatronPP from '../../components/PatronPP';
-import './FriendsList.css'
+import SubmitButton from '../../components/SubmitButton';
+import BuzzInput from '../../components/BuzzInput';
+import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
 
 class Patron extends Component {
 
     state = {
-        // patron
         username: 'jtrimble6',
         profpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
         firstName: 'Joshua',
@@ -30,9 +31,11 @@ class Patron extends Component {
         // Destructure the name and value properties off of event.target
         // Update the appropriate state
         const { name, value } = event.target;
+        console.log(event.target);
         this.setState({
           [name]: value
         });
+        console.log(this.state.buzzVal)
       };
 
     handleFormSubmit = event => {
@@ -41,9 +44,16 @@ class Patron extends Component {
         // API.getPatron()
         //   .then(res => this.setState({ patron: res.data }))
         //   .catch(err => console.log(err));
-        const buzzVal = this.state.buzzVal
-        console.log('buzz submitted');
-        console.log(buzzVal)
+        console.log(this.state.buzzVal)
+        if (this.state.buzzVal) {
+            console.log('success')
+        } else {
+            console.log('failure')
+        }
+        // console.log(this.state.placeholder)
+        // const buzzVal = this.state.buzzVal
+        
+        console.log('Buzz submitted: ', this.state.buzzVal)
     
     };
 
@@ -54,24 +64,25 @@ class Patron extends Component {
                 <Navbar />
                 <div className='wrapper profilePage'>
                     <PatronPP 
-                    key={this.state.username}
-                    user={this.state.username}
-                    name='buzzVal'
-                    value={this.state.buzzVal}
-                    placeholder='Create some buzz...'
-                    onChange={this.handleInputChange}
-                    onClick={this.handleFormSubmit}
-                    img1={this.state.img1}
-                    img2={this.state.img2}
-                    img3={this.state.img3}
+                        key={this.state.username}
+                        user={this.state.username}
+                        img1={this.state.img1}
+                        img2={this.state.img2}
+                        img3={this.state.img3}
+                        onClick={this.handleFormSubmit}
+                        name='buzzVal'
+                        value={this.state.buzzVal}
+                        placeholder='Create some buzz...'
+                        onChange={this.handleInputChange}
                     />
                 </div>
+                
                 <SideToolBar 
-                userPP={this.state.profpic}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                badges={this.state.badges}
-                userFullName={this.state.firstName + '' + this.state.lastName}
+                    userPP={this.state.profpic}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    badges={this.state.badges}
+                    userFullName={this.state.firstName + '' + this.state.lastName}
                 />
             </div>
         )

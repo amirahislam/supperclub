@@ -1,8 +1,10 @@
 import React from 'react'
+import SubmitButton from './SubmitButton'
+import BuzzInput from './BuzzInput'
+import $ from 'jquery'
 import '../pages/Patron/Timeline.css'
 
 const Timeline = props => (
-  <div className="col-md-6">
     <div className="container timelineContainer">
         <div className="row timelineDiv">
             <div>
@@ -56,16 +58,11 @@ const Timeline = props => (
                 </ul>
             </div>
         </div> <br/>
-        <div className='form-group'>
-            <textarea className="buzz" rows="3" placeholder={props.placeholder} value={props.onChange} />
-        </div>
-        <button type="button" class="btn btn-outline-success subButton" onClick={props.onClick}>Submit</button>
+        
     </div>
-  </div>
+
         
     )
-
-
 
 export default Timeline;
 
