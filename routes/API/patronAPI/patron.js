@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const patronController = require("../../../controllers/patronController");
 
+router.route("/")
+  .post(patronController.create)
+
 router
   .route("/:id")
   .get(patronController.findById)
