@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './SideToolBar.css';
 import './SideToolBar-themes.css';
+import Favicon from 'react-favicon';
+
 
 
 import { Link } from 'react-router-dom';
@@ -194,7 +196,7 @@ class SideToolBar extends Component {
                 {/* <!-- sidebar-menu  --> */}
             </div>
             {/* <!-- sidebar-content  --> */}
-            <div className="sidebar-footer">
+            {/* <div className="sidebar-footer">
                 <div className="dropdown">
 
                     <a href="#" className="" id="dropdownMenuNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a>
@@ -264,7 +266,7 @@ class SideToolBar extends Component {
                         <a className="dropdown-item" href="#">
                             <div className="message-content">
                                 <div className="pic">
-                                    {/* <img src="assets/img/user.jpg" alt=""> */}
+                                    <img src="assets/img/user.jpg" alt=""/>
                                 </div>
                                 <div className="content">
                                     <div className="message-title">
@@ -278,7 +280,7 @@ class SideToolBar extends Component {
                         <a className="dropdown-item" href="#">
                             <div className="message-content">
                                 <div className="pic">
-                                    {/* <img src="assets/img/user.jpg" alt=""> */}
+                                    <img src="assets/img/user.jpg" alt=""/>
                                 </div>
                                 <div className="content">
                                     <div className="message-title">
@@ -292,7 +294,7 @@ class SideToolBar extends Component {
                         <a className="dropdown-item" href="#">
                             <div className="message-content">
                                 <div className="pic">
-                                    {/* <img src="assets/img/user.jpg" alt=""> */}
+                                    <img src="assets/img/user.jpg" alt=""/>
                                 </div>
                                 <div className="content">
                                     <div className="message-title">
@@ -326,7 +328,7 @@ class SideToolBar extends Component {
             </div>
         
             
-        </div>
+        </div> */}
             <div>
                 </div>
             

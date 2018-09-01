@@ -8,7 +8,7 @@ class Home extends Component {
             <div>
                 <Navbar />
                 <BootstrapTemplate />
-                <h1>Welcome</h1>
+                
             </div>
         )
     }
