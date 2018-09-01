@@ -1,6 +1,6 @@
-// const router = require("express").Router();
-// const buzzRoutes = require("./buzz");
+const buzzRouter = require("express").Router();
+const buzzRoutes = require("./buzz");
 
-// router.use("/", buzzRoutes);
+buzzRouter.use("/buzz", buzzRoutes);
 
-// module.exports = router;
+module.exports = buzzRouter;

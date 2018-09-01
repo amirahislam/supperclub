@@ -1,10 +1,18 @@
-// const db = require("../models");
+const db = require("../models");
 
-// module.exports = {
-//     createBuzz: function(req, res) {
-//         db.Buzz
-//           .create(req.body)
-//           .then(dbModel => res.json(dbModel))
-//           .catch(err => res.status(422).json(err));
-//       }
-//   };
+module.exports = {
+    findAll: function(req, res) {
+        db.Buzz
+          .findAll({})
+          .sort({ date: -1 })
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+    create: function(req, res) {
+        db.Buzz
+          .create(req.body)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      }
+    
+  };

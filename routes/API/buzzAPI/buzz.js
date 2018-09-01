@@ -1,8 +1,9 @@
-// const buzzRouter = require("express").Router();
-// const buzzController = require("../../controllers/buzzController");
+const buzzRouter = require("express").Router();
+const buzzController = require("../../../controllers/buzzController");
 
-// buzzRouter
-//   .route("/")
-//   .post(buzzController.createBuzz)
+buzzRouter
+  .route("/")
+  .get(buzzController.findAll)
+  .post(buzzController.create)
 
-// module.exports = buzzRouter;
+module.exports = buzzRouter;

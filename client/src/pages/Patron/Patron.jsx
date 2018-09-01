@@ -17,6 +17,7 @@ class Patron extends Component {
         lastName: 'Trimble',
         badges: '',
         buzzVal: '',
+        currentBuzz: [],
         newBuzz: '',
         placeholder: '',
         img1: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
@@ -27,6 +28,16 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
     }
+
+    // getBuzz = () => {
+    //     API.getBuzz()
+    //       .then(res => {
+    //         this.setState({ currentBuzz: res.data });
+    //         console.log('we got the buzz')
+    //         }
+    //     )
+    //       .catch(err => console.log(err))
+    // }
 
     handleInputChange = event => {
         // Destructure the name and value properties off of event.target
@@ -40,11 +51,11 @@ class Patron extends Component {
     handleFormSubmit = event => {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
         event.preventDefault();
-        API.postBuzz(this.state.buzzVal)
+        API.createBuzz(this.state.buzzVal)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
         console.log(this.state.buzzVal)
-        if (this.state.buzzVal) {
+        if (this.state.newBuzz) {
             console.log('success')
             console.log('new buzz created:')
             console.log(this.state.newBuzz)
@@ -55,7 +66,7 @@ class Patron extends Component {
         // const buzzVal = this.state.buzzVal
         
         // console.log('Buzz submitted: ', this.state.buzzVal)
-    
+        
     };
 
 

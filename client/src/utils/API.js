@@ -13,7 +13,10 @@ export default {
   savePatron: function(patronData) {
     return axios.post("/api/patrons", patronData);
   },
-  postBuzz: function(buzz) {
+  createBuzz: function(buzz) {
     return axios.post("/api/buzz", buzz)
+  },
+  getBuzz: function() {
+    return axios.get("/api/buzz")
   }
 };
