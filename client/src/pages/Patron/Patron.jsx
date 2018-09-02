@@ -27,17 +27,19 @@ class Patron extends Component {
 
     componentDidMount() {
         console.log('mounted');
+        this.getBuzz()
     }
 
-    // getBuzz = () => {
-    //     API.getBuzz()
-    //       .then(res => {
-    //         this.setState({ currentBuzz: res.data });
-    //         console.log('we got the buzz')
-    //         }
-    //     )
-    //       .catch(err => console.log(err))
-    // }
+    getBuzz = () => {
+        API.getBuzz()
+          .then(res => {
+            this.setState({ currentBuzz: res.data });
+            console.log('we got the buzz')
+            console.log(res.data)
+            }
+        )
+          .catch(err => console.log(err))
+    }
 
     handleInputChange = event => {
         // Destructure the name and value properties off of event.target
@@ -59,17 +61,10 @@ class Patron extends Component {
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
         console.log(this.state.buzzVal)
-        if (this.state.buzzVal) {
-            console.log('success')
-            console.log('new buzz created:')
-            console.log(this.state.buzzVal)
-        } else {
-            console.log('failure')
-        }
-        // console.log(this.state.placeholder)
-        // const buzzVal = this.state.buzzVal
-        
-        // console.log('Buzz submitted: ', this.state.buzzVal)
+        this.getBuzz()
+        this.setState({
+            buzzVal: ''
+        })
         
     };
 
@@ -90,6 +85,7 @@ class Patron extends Component {
                         value={this.state.buzzVal}
                         placeholder='Create some buzz...'
                         onChange={this.handleInputChange}
+                        currentBuzz={this.state.currentBuzz}
                     />
                 </div>
                 

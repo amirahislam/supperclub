@@ -8,6 +8,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
-    "mongoose": "^5.2.12"
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.12",
+    "react-moment": "^0.7.9"
   }
 }

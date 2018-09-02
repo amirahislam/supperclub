@@ -16,6 +16,7 @@ const PatronPP = props => (
           <div className='col-md-2'></div>
           <div className='col-md-6'>
             <Timeline 
+            currentBuzz={props.currentBuzz}
             />
               <div className='row'>
                 <BuzzInput
