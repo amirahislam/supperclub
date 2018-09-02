@@ -22,19 +22,6 @@ app.use(routes, buzzRoutes);
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
 
-// app.get("/api/buzz", (req, res) => {
-//   db.Buzz.findAll({})
-//     .then(dbBuzz => res.json(dbBuzz))
-// })
-
-// app.post("/api/buzz", (req, res) => {
-//   db.Buzz.create({ username: "testUsername6", buzz: "here is some buzz" })
-//     .then(function(dbBuzz) {
-//       console.log(dbBuzz)
-//       res.json(dbBuzz)
-//     });
-// })
-
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
