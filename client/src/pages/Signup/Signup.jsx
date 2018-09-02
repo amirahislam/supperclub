@@ -15,7 +15,8 @@ class Signup extends Component {
         email: "",
         username: "",
         userType: "",
-        img: ""
+        password: "",
+        img: "",
     }
 
     handleInputChange = event => {
@@ -42,7 +43,8 @@ class Signup extends Component {
             email: this.state.email,
             username: this.state.username,
             userType: this.state.userType,
-            img: this.state.img            
+            password: this.state.password,
+            img: this.state.img
         };
         console.log(patronData);
         API.savePatron(patronData)
@@ -85,6 +87,13 @@ class Signup extends Component {
                     value={this.state.img}
                     name="img"
                     placeholder="Image URL (optional)"
+                    onChange={this.handleInputChange}
+                />
+
+                <BuzzInput
+                    value={this.state.password}
+                    name="password"
+                    placeholder="Password"
                     onChange={this.handleInputChange}
                 />
 
