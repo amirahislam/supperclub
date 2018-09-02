@@ -3,9 +3,9 @@ const patronController = require("../../../controllers/patronController");
 
 router.route("/")
   .post(patronController.create)
+  .get(patronController.findAll)
 
-router
-  .route("/:id")
+router.route("/:id")
   .get(patronController.findById)
   .put(patronController.update)
   .delete(patronController.remove);

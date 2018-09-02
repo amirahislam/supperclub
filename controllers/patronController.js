@@ -1,6 +1,11 @@
 const db = require("../models");
 
 module.exports = {
+  findAll: function(req, res) {
+    db.Patron
+      .find({})
+      .then(dbModel => res.json(dbModel))
+  },
   findById: function(req, res) {
     db.Patron
       .findById(req.params.id)
@@ -8,7 +13,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log("create");
     db.Patron
       .create(req.body)
       .then(dbModel => res.json(dbModel))

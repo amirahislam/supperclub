@@ -51,14 +51,18 @@ class Patron extends Component {
     handleFormSubmit = event => {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
         event.preventDefault();
-        API.createBuzz(this.state.buzzVal)
+        let buzzData = {
+            username: this.state.username,
+            buzz: this.state.buzzVal
+        }
+        API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
         console.log(this.state.buzzVal)
-        if (this.state.newBuzz) {
+        if (this.state.buzzVal) {
             console.log('success')
             console.log('new buzz created:')
-            console.log(this.state.newBuzz)
+            console.log(this.state.buzzVal)
         } else {
             console.log('failure')
         }
