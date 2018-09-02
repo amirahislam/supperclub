@@ -27,6 +27,7 @@ app.get("/api/buzz", (req, res) => {
 })
 
 app.post("/api/buzz", (req, res) => {
+  console.log(req.body)
   db.Buzz.create({ username: "testUsername6", buzz: "here is some buzz" })
     .then(function(dbBuzz) {
       console.log(dbBuzz)

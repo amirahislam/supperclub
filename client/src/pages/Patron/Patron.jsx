@@ -29,15 +29,16 @@ class Patron extends Component {
         console.log('mounted');
     }
 
-    // getBuzz = () => {
-    //     API.getBuzz()
-    //       .then(res => {
-    //         this.setState({ currentBuzz: res.data });
-    //         console.log('we got the buzz')
-    //         }
-    //     )
-    //       .catch(err => console.log(err))
-    // }
+    getBuzz = () => {
+        API.getBuzz()
+          .then(res => {
+            this.setState({ currentBuzz: res.data });
+            console.log('we got the buzz')
+            console.log(this.state.currentBuzz)
+            }
+        )
+          .catch(err => console.log(err))
+    }
 
     handleInputChange = event => {
         // Destructure the name and value properties off of event.target
