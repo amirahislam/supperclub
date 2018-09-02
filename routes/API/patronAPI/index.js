@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const patronRoutes = require("./patron");
 
-router.use("/patron", patronRoutes);
+router.use("/api/patrons", patronRoutes);
 
 module.exports = router;

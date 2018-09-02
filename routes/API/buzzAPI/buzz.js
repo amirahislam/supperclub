@@ -1,8 +1,7 @@
 const buzzRouter = require("express").Router();
 const buzzController = require("../../../controllers/buzzController");
 
-buzzRouter
-  .route("/")
+buzzRouter.route("/")
   .get(buzzController.findAll)
   .post(buzzController.create)
 

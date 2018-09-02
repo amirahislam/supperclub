@@ -1,6 +1,11 @@
 const db = require("../models");
 
 module.exports = {
+  findAll: function(req, res) {
+    db.Patron
+      .find({})
+      .then(dbModel => res.json(dbModel))
+  },
   findById: function(req, res) {
     db.Patron
       .findById(req.params.id)

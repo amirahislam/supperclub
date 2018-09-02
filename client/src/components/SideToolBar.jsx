@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './SideToolBar.css';
 import './SideToolBar-themes.css';
+<<<<<<< HEAD
 // import Favicon from 'react-favicon';
 
 
 
+=======
+>>>>>>> 5ae9badb6e2e588043715681f19df09cbb42a820
 import { Link } from 'react-router-dom';
 
 class SideToolBar extends Component {
