@@ -2,11 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes/API/patronAPI");
-// const routes = require("./routes")
 const buzzRoutes = require("./routes/API/buzzAPI");
 const app = express();
 const path = require("path");
-const db = require("./models");
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
