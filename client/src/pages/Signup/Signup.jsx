@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // import PatronPP from '../../components/PatronPP';
 import BuzzInput from '../../components/BuzzInput';
 import SubmitButton from '../../components/SubmitButton';
+import DropDown from '../../components/DropDown';
 import API from "../../utils/API";
 
 class Signup extends Component {
@@ -11,7 +12,11 @@ class Signup extends Component {
     state = {
         firstName: "",
         lastName: "",
+        email: "",
         username: "",
+        userType: "",
+        password: "",
+        img: "",
     }
 
     handleInputChange = event => {
@@ -22,13 +27,26 @@ class Signup extends Component {
         console.log(event.target.value);
     };
 
+    handleDropDown = event => {
+        const userType = event.target.value;
+        this.setState({
+            userType: userType
+        });
+        console.log(event.target.value);
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         let patronData = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            username: this.state.username
+            email: this.state.email,
+            username: this.state.username,
+            userType: this.state.userType,
+            password: this.state.password,
+            img: this.state.img
         };
+        console.log(patronData);
         API.savePatron(patronData)
     }
 
@@ -52,10 +70,37 @@ class Signup extends Component {
                 />
 
                 <BuzzInput
+                    value={this.state.email}
+                    name="email"
+                    placeholder="Email address"
+                    onChange={this.handleInputChange}
+                />
+
+                <BuzzInput
                     value={this.state.username}
                     name="username"
                     placeholder="Username"
                     onChange={this.handleInputChange}
+                />
+
+                <BuzzInput
+                    value={this.state.img}
+                    name="img"
+                    placeholder="Image URL (optional)"
+                    onChange={this.handleInputChange}
+                />
+
+                <BuzzInput
+                    value={this.state.password}
+                    name="password"
+                    placeholder="Password"
+                    onChange={this.handleInputChange}
+                />
+
+                <DropDown
+                    value={this.state.userType}
+                    name="userType"
+                    onChange={this.handleDropDown}
                 />
 
                 <SubmitButton
