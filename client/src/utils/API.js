@@ -21,5 +21,9 @@ export default {
   },
   saveEvent: function(eventData) {
     return axios.post("/api/events", eventData)
+  },
+  getEvents: function() {
+    return axios.get("/api/events")
   }
+
 };
