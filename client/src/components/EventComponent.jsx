@@ -3,7 +3,7 @@ import Moment from 'react-moment'
 import '../pages/Patron/Timeline.css'
 
 
-const BuzzComponent = props => (
+const EventComponent = props => (
     
     <div>
         <li>
@@ -13,12 +13,12 @@ const BuzzComponent = props => (
                     {props.date}
                 </Moment>
             </a>
-            <p>{props.buzz}</p>
+            <p>{props.description}</p>
         </li>
         <hr />
     </div>
         
     )
 
-export default BuzzComponent;
+export default EventComponent;
 

@@ -7,6 +7,7 @@ import ActivitiesPanel from '../../components/ActivitiesPanel';
 import Notifications from '../../components/Notifications';
 import SideBar from '../../components/SideBar';
 // import ToDoList from '.../../components/ToDoList';
+import './Chef.css'
 
 class Chef extends Component {
 
@@ -17,12 +18,14 @@ class Chef extends Component {
             <div>
                 <NavbarPages />
                 <SideBar />
-                <Notifications />
-                {/* <SideToolBar /> */}
-                {/* <UpcomingEventsTest /> */}
-                <SocialMedia />
-                <ActivitiesPanel />
-                {/* <ToDoList /> */}
+                <div className='wrapper chefPage'>
+                    <Notifications />
+                    {/* <SideToolBar /> */}
+                    {/* <UpcomingEventsTest /> */}
+                    <SocialMedia />
+                    <ActivitiesPanel />
+                    {/* <ToDoList /> */}
+                </div>
 
                 
             </div>
