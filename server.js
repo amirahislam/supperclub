@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes/API/patronAPI");
 const buzzRoutes = require("./routes/API/buzzAPI");
+const eventRoutes = require("./routes/API/eventAPI")
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client", "build")));
 }
 // Add routes, both API and view
-app.use(routes, buzzRoutes);
+app.use(routes, buzzRoutes, eventRoutes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
