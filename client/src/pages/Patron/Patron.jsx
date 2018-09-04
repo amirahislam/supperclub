@@ -80,21 +80,20 @@ class Patron extends Component {
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                 />
-                <div className='wrapper profilePage'>
-                    <PatronPP 
-                        key={this.state.username}
-                        user={this.state.username}
-                        img1={this.state.img1}
-                        img2={this.state.img2}
-                        img3={this.state.img3}
-                        onClick={this.handleFormSubmit}
-                        name='buzzVal'
-                        value={this.state.buzzVal}
-                        placeholder='Create some buzz...'
-                        onChange={this.handleInputChange}
-                        currentBuzz={this.state.currentBuzz}
-                    />
-                </div>
+                <PatronPP 
+                    key={this.state.username}
+                    user={this.state.username}
+                    img1={this.state.img1}
+                    img2={this.state.img2}
+                    img3={this.state.img3}
+                    onClick={this.handleFormSubmit}
+                    name='buzzVal'
+                    value={this.state.buzzVal}
+                    placeholder='Create some buzz...'
+                    onChange={this.handleInputChange}
+                    currentBuzz={this.state.currentBuzz}
+                />
+                
                 
             </div>
         )

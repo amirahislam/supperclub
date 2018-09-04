@@ -29,7 +29,7 @@ class Chef extends Component {
         return (
             <div>
                 <NavbarPages />
-                <SideBar 
+                <SideBar
                     
                 />
                 <div className='wrapper chefPage'>

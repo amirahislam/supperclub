@@ -9,26 +9,22 @@ import '../pages/Patron/Timeline.css'
 
 const BuzzComponent = props => (
     
-    <div>
-        <li>
-            <div  className="desc">
-                <div  className="thumb">
-                    <span  className="badge bg-theme"><i  className="fa fa-clock-o"></i></span>
-                </div>
-                <div  className="details buzz">
-                    <p>
-                        <muted> 
-                            <Moment format="LLL" className="float-right"> 
-                                {props.date}
-                            </Moment>
-                        </muted><br/>
-                        <a target="_blank" href="#">{props.username}</a><br />{props.buzz}<br/>
-                    </p>
-                </div>
+    <div className="timelineObj">
+        <div  className="desc">
+            <div  className="thumb">
+                <span  className="badge bg-theme"><i  className="fa fa-clock-o"></i></span>
             </div>
-            
-        </li>
-        <br />
+            <div  className="details">
+                <p>
+                    <muted> 
+                        <Moment format="LLL" className="float-right"> 
+                            {props.date}
+                        </Moment>
+                    </muted><br/>
+                    <a target="_blank" href="#">{props.username}</a><br />{props.buzz}<br/>
+                </p>
+            </div>
+        </div>
     </div>
         
     )
