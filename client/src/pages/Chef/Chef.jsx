@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NavbarPages from '../../components/NavbarPages';
-import SideToolBar from '../../components/SideToolBar';
 import UpcomingEventsTest from '../../components/UpcomingEventsTest';
 import SocialMedia from '../../components/SocialMedia';
 import ActivitiesPanel from '../../components/ActivitiesPanel';
@@ -11,13 +10,17 @@ import './Chef.css'
 
 class Chef extends Component {
 
-    
+    componentDidMount() {
+        console.log('mounted');
+    }
 
     render() {
         return (
             <div>
                 <NavbarPages />
-                <SideBar />
+                <SideBar 
+                    
+                />
                 <div className='wrapper chefPage'>
                     <Notifications />
                     {/* <SideToolBar /> */}

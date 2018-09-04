@@ -20,7 +20,7 @@ class SideToolBar extends Component {
           </div>
         </div>
     
-)
+    )
 
     render() {
         return (

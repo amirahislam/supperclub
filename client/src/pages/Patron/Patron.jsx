@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Navbar from '../../components/Navbar';
-import SideToolBar from '../../components/SideToolBar';
+import NavbarPages from '../../components/NavbarPages';
 import PatronPP from '../../components/PatronPP';
 import SubmitButton from '../../components/SubmitButton';
 import BuzzInput from '../../components/BuzzInput';
+import PatronSideBar from '../../components/PatronSideBar';
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
@@ -72,7 +72,14 @@ class Patron extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <NavbarPages />
+                <PatronSideBar 
+                    userPP={this.state.profpic}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    badges={this.state.badges}
+                    userFullName={this.state.firstName + ' ' + this.state.lastName}
+                />
                 <div className='wrapper profilePage'>
                     <PatronPP 
                         key={this.state.username}
@@ -89,13 +96,6 @@ class Patron extends Component {
                     />
                 </div>
                 
-                <SideToolBar 
-                    userPP={this.state.profpic}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                    badges={this.state.badges}
-                    userFullName={this.state.firstName + '' + this.state.lastName}
-                />
             </div>
         )
     }

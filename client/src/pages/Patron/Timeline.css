@@ -39,5 +39,7 @@ ul.timeline > li:before {
 }
 
 .buzz {
-    width: 100%;
+    float: right;
+    
+    
 }
