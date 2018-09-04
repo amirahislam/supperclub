@@ -1,4 +1,6 @@
 const db = require("../models");
+const Patron = require("../models/patron")
+const passport = require("../server/passport")
 
 module.exports = {
   findAll: function(req, res) {
@@ -11,6 +13,9 @@ module.exports = {
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findByUsernamePassword: function(req, res, next) {
+    // Insert function from patron.js here if there is time
   },
   create: function(req, res) {
     db.Patron

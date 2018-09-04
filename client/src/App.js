@@ -10,14 +10,31 @@ import Patron from './pages/Patron/Patron.jsx';
 import Reservation from './pages/Reservations/Reservations.jsx';
 import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup/Signup.jsx'
+import Login from './pages/Login/Login';
+import Navbar from './components/Navbar';
 
 
 
 class App extends Component {
-  componentDidMount() {
-    // axios.get("/api/test").then(res => console.log(res.data));
-    // axios.get("/api/patrons").then(res => console.log(res.data));
+
+  state = {
+    loggedIn: false,
+    username: null
   }
+
+  updateUser = (userObject) => {
+    console.log("Update user");
+    this.setState(
+        userObject
+    )
+    console.log(this.state.loggedIn);
+    console.log(this.state.username);
+  };
+
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <Router>
@@ -28,6 +45,13 @@ class App extends Component {
           <Route exact path='/Reservations' component={Reservation}/>
           <Route exact path='/Events' component={Events}/>
           <Route exact path='/Signup' component={Signup}/>
+          <Route
+            exact path='/Login'
+            render={() =>
+              <Login
+                updateUser={this.updateUser}
+              />}
+          />
         </div>
       </Router>
     );

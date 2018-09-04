@@ -28,6 +28,8 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
+        // console.log(props.this.state.loggedIn);
+        // console.log(props.this.state.username);
     }
 
     getBuzz = () => {
