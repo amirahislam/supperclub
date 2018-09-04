@@ -10,8 +10,8 @@ class ActivitiesPanel extends Component {
 
     render() {
         return (
-            <section align="right">
-            <div  className="col-lg-3 ds">
+            <div className="container">
+            <div  className="col-lg-4 ds">
                     {/* <!--COMPLETED ACTIONS DONUTS CHART--> */}
 						<h3>TIMELINE</h3>
                                         
@@ -147,7 +147,7 @@ class ActivitiesPanel extends Component {
                         {/* <!-- / calendar --> */}
                       
                   </div>
-                  </section>
+                  </div>
           
       
         )

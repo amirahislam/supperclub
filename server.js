@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const session = require('express-session')
 const routes = require("./routes/API/patronAPI");
 const buzzRoutes = require("./routes/API/buzzAPI");
+const eventRoutes = require("./routes/API/eventAPI")
 const passport = require('./server/passport');
 const app = express();
 const path = require("path");
@@ -24,7 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes, both API and view
-app.use(routes, buzzRoutes);
+app.use(routes, buzzRoutes, eventRoutes);
 
 app.use(
   session({

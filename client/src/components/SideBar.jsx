@@ -4,9 +4,10 @@ import './Dashboard Styles/DashboardStyle-responsive.css';
 import './Dashboard Styles/DashboardBootstrap.css';
 
 import { Link } from 'react-router-dom';
+import AddEventModal from './AddEventModal';
 
 class SideBar extends Component {
-
+    
     render() {
         return (
             <aside>
@@ -47,17 +48,9 @@ class SideBar extends Component {
                           <li><a  href="todo_list.html">Todo List</a></li>
                       </ul>
                   </li>
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-book"></i>
-                          <span>Creat Event</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="blank.html">Blank Page</a></li>
-                          <li><a  href="login.html">Login</a></li>
-                          <li><a  href="lock_screen.html">Lock Screen</a></li>
-                      </ul>
-                  </li>
+                    <AddEventModal 
+                    
+                    />
                   <li  className="sub-menu">
                       <a href="javascript:;" >
                           <i  className="fa fa-tasks"></i>

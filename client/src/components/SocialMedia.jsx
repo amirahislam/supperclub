@@ -20,6 +20,7 @@ class SocialMedia extends Component {
 							</div>
                         </div>
                         // <!-- /col-md-4 -->
+                        
         )
     }
 }
