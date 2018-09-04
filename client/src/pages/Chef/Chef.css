@@ -1,3 +1,7 @@
 /* .chefPage {
     margin-top: 200px;
 } */
+
+.box-3 {
+    justify-content: flex-end;
+}

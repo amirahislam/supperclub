@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
     render() {
         return (
             <div  className="row mt">
-                  <div  className="col-md-12">
+                  <div  className="col-md-3">
                       <section  className="task-panel tasks-widget">
 	                	<div  className="panel-heading">
 	                        <div  className="pull-left"><h5><i  className="fa fa-tasks"></i> Todo List - Complex Style</h5></div>
