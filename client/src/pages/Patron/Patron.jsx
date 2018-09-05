@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from '../../components/Navbar';
-import SideToolBar from '../../components/SideToolBar';
-import PatronPP from '../../components/PatronPP';
-import SubmitButton from '../../components/SubmitButton';
-import BuzzInput from '../../components/BuzzInput';
+import NavbarPages from '../../components/navigation/NavbarPages';
+import PatronPP from '../../components/containers/PatronPageContainer';
+import PatronSideBar from '../../components/navigation/PatronSideBar';
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
@@ -74,30 +72,29 @@ class Patron extends Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <div className='wrapper profilePage'>
-                    <PatronPP 
-                        key={this.state.username}
-                        user={this.state.username}
-                        img1={this.state.img1}
-                        img2={this.state.img2}
-                        img3={this.state.img3}
-                        onClick={this.handleFormSubmit}
-                        name='buzzVal'
-                        value={this.state.buzzVal}
-                        placeholder='Create some buzz...'
-                        onChange={this.handleInputChange}
-                        currentBuzz={this.state.currentBuzz}
-                    />
-                </div>
-                
-                <SideToolBar 
+                <NavbarPages />
+                <PatronSideBar 
                     userPP={this.state.profpic}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
                     badges={this.state.badges}
-                    userFullName={this.state.firstName + '' + this.state.lastName}
+                    userFullName={this.state.firstName + ' ' + this.state.lastName}
                 />
+                <PatronPP 
+                    key={this.state.username}
+                    user={this.state.username}
+                    img1={this.state.img1}
+                    img2={this.state.img2}
+                    img3={this.state.img3}
+                    onClick={this.handleFormSubmit}
+                    name='buzzVal'
+                    value={this.state.buzzVal}
+                    placeholder='Create some buzz...'
+                    onChange={this.handleInputChange}
+                    currentBuzz={this.state.currentBuzz}
+                />
+                
+                
             </div>
         )
     }

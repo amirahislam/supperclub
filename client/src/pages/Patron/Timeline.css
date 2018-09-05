@@ -30,7 +30,7 @@ ul.timeline > li:before {
 }
 
 .timelineDiv {
-    height: 400px;
+    height: 700px;
     overflow: scroll;
 }
 
@@ -39,5 +39,9 @@ ul.timeline > li:before {
 }
 
 .buzz {
+    float: right;
+}
+
+.detailes {
     width: 100%;
 }

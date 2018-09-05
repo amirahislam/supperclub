@@ -2,9 +2,9 @@ import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './AddEvent.css';
+import '../../css/Dashboard Styles/AddEvent.css';
 import moment from 'moment';
-import API from "../utils/API";
+import API from "../../utils/API";
 
 
 class AddEventModal extends React.Component {
@@ -109,8 +109,11 @@ class AddEventModal extends React.Component {
                     animation={true} 
                     bsSize="small">
 
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                         <Modal.Title>Create An Event</Modal.Title>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" onClick={this.close}>&times;</span>
+                        </button>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -147,12 +150,13 @@ class AddEventModal extends React.Component {
                                 <FormGroup>
                                     <ControlLabel htmlFor="textarea">Event Photo</ControlLabel>
                                         <FormControl 
-                                            type="file" 
-                                            className="form-control form-control-file" 
-                                            id="exampleFormControlFile1"
-                                            // value={this.state.menu}
+                                            type="text" 
+                                            className="form-control" 
+                                            id="formPhoto"
+                                            placeholder="Enter the photo URL"
+                                            value={this.state.eventImg}
                                             name="eventImg"
-                                            onChange={this.handleChange}
+                                            onChange={this.handleSelection}
                                         >
                                         
                                         </FormControl>
