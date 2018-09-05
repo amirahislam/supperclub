@@ -13,11 +13,12 @@ const passport = require('./server/passport');
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-// const env = require("dotenv").config()
+
+require("dotenv").config()
 
 // Define middleware here
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Serve up static assets (usually on heroku)
@@ -56,7 +57,12 @@ app.use( (req, res, next) => {
 });
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017/supperclub", { useMongoClient: true }, (err) => {
+    if (err) console.error(err);
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
