@@ -129,25 +129,10 @@ class ActivitiesPanel extends Component {
                       	</div>
                       </div>
 
-                        {/* <!-- CALENDAR--> */}
-                        <div id="calendar"  className="mb">
-                            <div  className="panel green-panel no-margin">
-                                <div  className="panel-body">
-                                    <div id="date-popover"  className="popover top"> 
-                                    {/* style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;"> */}
-                                        <div  className="arrow"></div>
-                                        <h3  className="popover-title"></h3> 
-                                        {/* style="disadding: none;" */}
-                                        <div id="date-popover-content"  className="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- / calendar --> */}
                       
                   </div>
                   </div>
+				  
           
       
         )

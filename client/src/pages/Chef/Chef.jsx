@@ -7,10 +7,13 @@ import Badges from '../../components/Badges';
 import ActivitiesPanel from '../../components/ActivitiesPanel';
 import Notifications from '../../components/Notifications';
 import SideBar from '../../components/SideBar';
+import FriendCard from '../../components/FriendCard';
+import ToDoPanel from '../../components/ToDoPanel';
 // import Revenue from '../../components/Revenue';
-// import ToDoList from '.../../components/ToDoList';
+
 import './Chef.css'
 import  Flexbox from 'flexbox-react';
+
 
 
 class Chef extends Component {
@@ -30,20 +33,20 @@ class Chef extends Component {
                 <NavbarPages />
                 <SideBar />
                 <div className='wrapper chefPage'>
-                
-                    
                     {/* <SideToolBar /> */}
                     {/* <UpcomingEventsTest /> */}
                     {/* <Revenue /> */}
                     <Badges />
                     <SocialMedia />
                     <ActivitiesPanel />
-                    
+                    <ToDoPanel />
                     {/* <Notifications /> */}
                 
-                    {/* <ToDoList /> */}
+                   
                 </div>
-
+                
+                    
+                    {/* <FriendCard /> */}
                 {/* <DashboardComponents /> */}
             </div>
         )
