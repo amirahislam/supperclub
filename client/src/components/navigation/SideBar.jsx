@@ -26,7 +26,7 @@ class SideBar extends Component {
 
                   <li  className="sub-menu">
                       <a href="javascript:;" >
-                          <i  className="fa fa-desktop"></i>
+                          <i  className="fa fa-star"></i>
                           <span>Reviews</span>
                       </a>
                       <ul  className="sub">
@@ -38,7 +38,7 @@ class SideBar extends Component {
 
                   <li  className="sub-menu">
                       <a href="javascript:;" >
-                          <i  className="fa fa-cogs"></i>
+                          <i  className="fa fa-calendar-o"></i>
                           <span>Calender</span>
                       </a>
                       <ul  className="sub">
@@ -52,7 +52,7 @@ class SideBar extends Component {
                     />
                   <li  className="sub-menu">
                       <a href="javascript:;" >
-                          <i  className="fa fa-tasks"></i>
+                          <i  className="fa fa-list-ul"></i>
                           <span>Guests</span>
                       </a>
                       <ul  className="sub">
@@ -61,7 +61,7 @@ class SideBar extends Component {
                   </li>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
-                          <i  className="fa fa-th"></i>
+                          <i  className="fa fa-globe"></i>
                           <span>Location</span>
                       </a>
                       <ul  className="sub">
@@ -71,7 +71,7 @@ class SideBar extends Component {
                   </li>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
-                          <i  className=" fa fa-bar-chart-o"></i>
+                          <i  className=" fa fa-line-chart"></i>
                           <span>Revenue</span>
                       </a>
                       <ul  className="sub">

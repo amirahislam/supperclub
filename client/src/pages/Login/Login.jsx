@@ -20,7 +20,7 @@ class Login extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to='/patron' />
+          return <Redirect to='/' />
         }
     };
 
@@ -37,15 +37,27 @@ class Login extends Component {
         let patronData = {
             username: this.state.username,
             password: this.state.password,
+            
         };
         API.loginPatron(patronData)
         .then(response => {
             if (response.status === 200) {
                 console.log("Authenticated!")
+                console.log(response);
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
                     username: response.data.username
+                })
+                let sessionData = {
+                    sessionID: response.data.username
+                }
+                API.createSession(sessionData)
+                .then(response => {
+                    console.log(response);
+                }).catch(error => {
+                    console.log('Login error: ')
+                    console.log(error);  
                 })
                 this.setRedirect();
             }

@@ -109,8 +109,11 @@ class AddEventModal extends React.Component {
                     animation={true} 
                     bsSize="small">
 
-                    <Modal.Header closeButton>
+                    <Modal.Header>
                         <Modal.Title>Create An Event</Modal.Title>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" onClick={this.close}>&times;</span>
+                        </button>
                     </Modal.Header>
 
                     <Modal.Body>

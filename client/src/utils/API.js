@@ -17,6 +17,10 @@ export default {
   loginPatron: function(patronData) {
     return axios.post("/api/patrons/login", patronData);
   },
+  createSession: function(sessionData) {
+    console.log(sessionData);
+    return axios.post("/api/sessions", sessionData);
+  },
   createBuzz: function(buzz) {
     return axios.post("/api/buzz", buzz)
   },

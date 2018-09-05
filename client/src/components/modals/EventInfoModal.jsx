@@ -125,7 +125,7 @@ class EventInfoModal extends React.Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button onClick={this.close}>Close</Button>
+                        {/* <Button onClick={this.close}>Close</Button> */}
                         <Button bsStyle="primary" onClick={this.handleSaveEvent}>Save To Upcoming Events</Button>
                     </Modal.Footer>         
                     </Modal> 
