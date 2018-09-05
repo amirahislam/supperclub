@@ -13,7 +13,7 @@ const passport = require('./server/passport');
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-const env = require("dotenv").config()
+// const env = require("dotenv").config()
 
 // Define middleware here
 app.use(morgan('dev'))
@@ -21,11 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "client", "build")));
-// }
-
-app.use(express.static(path.join(__dirname, "client", "build")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+}
 
 app.use(passport.initialize());
 app.use(passport.session());
