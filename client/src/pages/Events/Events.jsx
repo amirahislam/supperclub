@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from '../../components/Navbar';
-import SideToolBar from '../../components/SideToolBar';
-import EventsContainer from '../../components/EventsContainer';
+import NavbarPages from '../../components/navigation/NavbarPages';
+import PatronSideBar from '../../components/navigation/PatronSideBar';
+import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
 
@@ -35,21 +35,17 @@ class Events extends Component {
     render() {
         return (
             <div>
-                <Navbar />
-                <h1>Events Page</h1>
-                <div className='wrapper eventsPage'>
-                    <EventsContainer 
-                    currentEvents={this.state.currentEvents}
-                    />
-                </div>
-                <SideToolBar 
+                <NavbarPages />
+                <PatronSideBar 
                     userPP={this.state.profpic}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
                     badges={this.state.badges}
-                    userFullName={this.state.firstName + '' + this.state.lastName}
+                    userFullName={this.state.firstName + ' ' + this.state.lastName}
                 />
-                
+                <EventsContainer 
+                currentEvents={this.state.currentEvents}
+                /> 
             </div>
         )
     }

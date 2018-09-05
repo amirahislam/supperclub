@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import NavbarPages from '../../components/NavbarPages';
+import NavbarPages from '../../components/navigation/NavbarPages';
 import UpcomingEventsTest from '../../components/UpcomingEventsTest';
 import SocialMedia from '../../components/SocialMedia';
-import Badges from '../../components/Badges';
-import ActivitiesPanel from '../../components/ActivitiesPanel';
+import Badges from '../../components/BadgesComponent';
+import ActivitiesPanel from '../../components/containers/ActivitiesPanel';
 import Notifications from '../../components/Notifications';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/navigation/SideBar';
 // import Revenue from '../../components/Revenue';
 // import ToDoList from '.../../components/ToDoList';
 import './Chef.css'
@@ -35,7 +35,7 @@ class Chef extends Component {
                 <div className='wrapper chefPage'>
                 
                     
-                    {/* <SideToolBar /> */}
+                    
                     {/* <UpcomingEventsTest /> */}
                     {/* <Revenue /> */}
                     <Badges />

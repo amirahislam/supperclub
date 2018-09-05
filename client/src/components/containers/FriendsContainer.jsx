@@ -1,6 +1,6 @@
 import React from 'react'
-import FriendComponent from './FriendComponent'
-import '../pages/Patron/Timeline.css'
+import FriendComponent from '../FriendComponent'
+import '../../pages/Patron/Timeline.css'
 
 const Friends = props => (
     <section align="right">

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import NavbarPages from '../../components/NavbarPages';
-import PatronPP from '../../components/PatronPP';
-import SubmitButton from '../../components/SubmitButton';
-import BuzzInput from '../../components/BuzzInput';
-import PatronSideBar from '../../components/PatronSideBar';
+import NavbarPages from '../../components/navigation/NavbarPages';
+import PatronPP from '../../components/containers/PatronPageContainer';
+import PatronSideBar from '../../components/navigation/PatronSideBar';
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";

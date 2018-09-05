@@ -1,15 +1,10 @@
 import React from 'react'
-import '../pages/Patron/Patron.css'
-import '../pages/Patron/FriendsList.css'
-import SocialMedia from './SocialMedia';
-import Badges from './Badges';
-import ActivitiesPanel from './ActivitiesPanel';
-import Timeline from './Timeline'
-import BuzzInput from './BuzzInput'
-import SubmitButton from './SubmitButton'
-import FriendsList from './FriendsList'
-import UpcomingEvents from './UpcomingEvents'
-import friends from '../friends.json'
+import '../../pages/Patron/Patron.css'
+import '../../pages/Patron/FriendsList.css'
+import SocialMedia from '../SocialMedia';
+import Badges from '../BadgesComponent';
+import Timeline from './TimelineContainer'
+import UpcomingEvents from '../UpcomingEvents'
 
 const PatronPP = props => (
 

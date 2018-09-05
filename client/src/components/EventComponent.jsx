@@ -1,29 +1,27 @@
 import React from 'react'
-import Moment from 'react-moment'
-import '../pages/Patron/Timeline.css'
+import EventInfoModal from './modals/EventInfoModal'
+import '../pages/Events/Events.css'
 
 
 const EventComponent = props => (
-    
-
-    //     <li>
-    //         <a target="_blank" href="#">{props.username}</a>
-    //         <a href="#" className="float-right">
-    //             <Moment format="LLL"> 
-    //                 {props.date}
-    //             </Moment>
-    //         </a>
-    //         <p>{props.description}</p>
-    //     </li>
-    //     <hr />
-    
-    <div>
+<section id="portfolio">
+    <div className="row posts-container">
         <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
             <div className="posts-wrap" post-id={props.id}>
                 <figure>
-                    <img src={props.eventImg} className="img-fluid" alt="Oop" />
-                    <a href={props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="ion ion-eye"></i></a>
-                    <a href="#" className="link-details" title="More Details" data-toggle="modal" data-target={"#modal + {props.id}"}><i className="ion ion-android-open"></i></a>
+                    <img src={props.eventImg} className="img" alt="Oops" />
+                    <a href={props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="fas fa-camera-retro"></i></a>
+                    <EventInfoModal
+                    id={props._id}
+                    username={props.username}
+                    eventName={props.eventName}
+                    eventImg={props.eventImg}
+                    guests={props.guests}
+                    price={props.price}
+                    date={props.date}
+                    description={props.description}
+                    rules={props.rules}
+                    />
                 </figure>
 
                 <div className="portfolio-info" >
@@ -33,7 +31,7 @@ const EventComponent = props => (
             </div>
 
             
-            <div className="modal fade" id={"#modal + {props.id}"} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id={"modal + {props.id}"} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -116,6 +114,7 @@ const EventComponent = props => (
             </div>
         </div>
     </div>
+</section>
     )
 
 export default EventComponent;

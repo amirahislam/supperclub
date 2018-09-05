@@ -1,29 +1,11 @@
 import React, { Component } from 'react';
-import './Dashboard Styles/DashboardStyle.css';
-import './Dashboard Styles/DashboardStyle-responsive.css';
-import './Dashboard Styles/DashboardBootstrap.css';
+import '../../css/Dashboard Styles/DashboardStyle.css';
+import '../../css/Dashboard Styles/DashboardStyle-responsive.css';
+import '../../css/Dashboard Styles/DashboardBootstrap.css';
+import '../../css/Dashboard Styles/Dashboard-custom.css';
+import AddEventModal from '../modals/AddEventModal';
 
-import { Link } from 'react-router-dom';
-import AddEventModal from './AddEventModal';
-
-class PatronSideBar extends Component {
-
-    ProfilePic = props => (
-  
-        <div className='col-md-4'>
-          <div className="row">
-            <div className="card profileCard">
-              <img className="card-img-top" src={this.props.userPP} alt={this.props.userName} />
-                <div className="card-body">
-                  <h5 className="card-title">{this.props.userFullName}</h5>
-                  <p className="card-text">Add your bio here</p>
-                  <a href="#" className="btn btn-primary">Find suppers!!!</a>
-                </div>
-            </div>
-          </div>
-        </div>
-    
-    )
+class SideBar extends Component {
     
     render() {
         return (
@@ -32,8 +14,8 @@ class PatronSideBar extends Component {
               {/* <!-- sidebar menu start--> */}
               <ul  className="sidebar-menu" id="nav-accordion">
               
-              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userName} className="img-circle" width="60"/></a></p>
-              	  <h5  className="centered">{this.props.userFullName}</h5>
+              	  <p  className="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg"  className="img-circle" width="60"/></a></p>
+              	  <h5  className="centered">Amirah Islam</h5>
               	  	
                   <li  className="mt">
                       <a  className="active" href="index.html">
@@ -107,4 +89,4 @@ class PatronSideBar extends Component {
 
 }
 
-export default PatronSideBar;
+export default SideBar;
