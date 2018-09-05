@@ -57,12 +57,12 @@ app.use( (req, res, next) => {
 });
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/supperclub", { useMongoClient: true }, (err) => {
-    if (err) console.error(err);
-});
+// mongoose.connect("mongodb://localhost:27017/supperclub", { useMongoClient: true }, (err) => {
+//     if (err) console.error(err);
+// });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
