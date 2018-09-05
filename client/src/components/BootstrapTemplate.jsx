@@ -86,7 +86,7 @@ class BootstrapTemplate extends Component {
 
 <section   className="p-0" id="portfolio">
 <div   className="container-fluid p-0">
-  <div   className="row no-gutters popup-gallery">
+  {/* <div   className="row no-gutters popup-gallery">
     <div   className="col-lg-4 col-sm-6">
       <a   className="portfolio-box" href={'https://previews.dropbox.com/p/thumb/AAJd7IKmDTJrKJsZP2teb8BFUxZwPkRk5K-SfuXayaUJoANYCqr_MCEq5oLeZQP-BzAUomUZ6rkvfFCpxYzSXbClrxOnfm4mR9BpCzeNR0kq8S_w3J7vdOkzbNxV7rCnO6UTTFbi-PvTZhmIwr5ju6KBRAUSxeBPRVdXs-d2JWoftw/p.jpeg?size=2048x1536&size_mode=3'}>
         <img   className="img-fluid" src={'https://previews.dropbox.com/p/thumb/AAJd7IKmDTJrKJsZP2teb8BFUxZwPkRk5K-SfuXayaUJoANYCqr_MCEq5oLeZQP-BzAUomUZ6rkvfFCpxYzSXbClrxOnfm4mR9BpCzeNR0kq8S_w3J7vdOkzbNxV7rCnO6UTTFbi-PvTZhmIwr5ju6KBRAUSxeBPRVdXs-d2JWoftw/p.jpeg?size=2048x1536&size_mode=3'}/>
@@ -102,7 +102,7 @@ class BootstrapTemplate extends Component {
         </div>
       </a>
       </div>
-      </div>
+      </div> */}
     </div>
     {/* </div> */}
     <div   className="col-lg-4 col-sm-6">
@@ -181,12 +181,29 @@ class BootstrapTemplate extends Component {
               </div>
             </a>
           </div>
+          <div   className="col-lg-4 col-sm-6">
+            <a   className="portfolio-box" href={'https://previews.dropbox.com/p/thumb/AALOl6azVXHKvWjyWlD_7iwL0WcYlwAUItxNfqzz3JDyp-Ke6eWCqKjclN92PiO9zUrtU_ZeShJ_Lc9PMxGkbUSmmzq8aUfxPmw-M2UjQDOTF4bsFJ6Ot-gXLoM9lRyVu9HbWA80LQ7btWK_ssrgBnegOH-st434DwuiubDa46-GbA/p.jpeg?size=2048x1536&size_mode=3'}>
+              <img   className="img-fluid" src={'https://previews.dropbox.com/p/thumb/AALOl6azVXHKvWjyWlD_7iwL0WcYlwAUItxNfqzz3JDyp-Ke6eWCqKjclN92PiO9zUrtU_ZeShJ_Lc9PMxGkbUSmmzq8aUfxPmw-M2UjQDOTF4bsFJ6Ot-gXLoM9lRyVu9HbWA80LQ7btWK_ssrgBnegOH-st434DwuiubDa46-GbA/p.jpeg?size=2048x1536&size_mode=3'}/>
+              <div   className="portfolio-box-caption">
+                <div   className="portfolio-box-caption-content">
+                  <div   className="project-category text-faded">
+                    Category
+                  </div>
+                  <div   className="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <br/>
         {/* </div> */}
           </section>
         <section   className="bg-dark text-white">
         <div   className="container text-center">
-          <h2   className="mb-4">Free Download at Start Bootstrap!</h2>
-          <a   className="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
+          <h2   className="mb-4"></h2>
+          <hr/>
+          <a   className="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">View Gallery</a>
         </div>
       </section>
       <section id="contact">
