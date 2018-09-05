@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub").th
     },
     err => {
          /** handle initial connection error */ 
-         console.log('error connecting to Mongo: ')
+         console.log('we have an error connecting to Mongo: ')
          console.log(err);
          
         }
