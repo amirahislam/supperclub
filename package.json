@@ -1,4 +1,6 @@
 {
+  
+
   "name": "supperclub",
   "version": "1.0.0",
   "main": "index.js",
@@ -20,5 +22,14 @@
     "react-bootstrap": "^0.32.3",
     "react-datepicker": "^1.6.0",
     "react-moment": "^0.7.9"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "engines": {
+    "node": "9.8.0"
   }
 }
+
+
