@@ -13,6 +13,7 @@ const passport = require('./server/passport');
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+const env = require("dotenv").config()
 
 // Define middleware here
 app.use(morgan('dev'))
