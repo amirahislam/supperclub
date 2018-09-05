@@ -2,10 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require('morgan')
-const session = require('express-session')
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session)
 const routes = require("./routes/API/patronAPI");
 const buzzRoutes = require("./routes/API/buzzAPI");
 const eventRoutes = require("./routes/API/eventAPI")
+const sessionRoutes = require("./routes/API/sessionAPI");
+const dbConnection = require("./server/database");
 const passport = require('./server/passport');
 const app = express();
 const path = require("path");
@@ -25,11 +28,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes, both API and view
-app.use(routes, buzzRoutes, eventRoutes);
+app.use(routes, buzzRoutes, eventRoutes, sessionRoutes);
 
 app.use(
   session({
     secret: 'fraggle-rock',
+    store: new MongoStore({ mongooseConnection: dbConnection }),
     resave: false,
     saveUninitialized: false
   })
