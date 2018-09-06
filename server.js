@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 //   app.use(express.static(path.join(__dirname, "client", "build")));
 // }
 
-app.use('/supperclub/', express.static(path.join(__dirname, "build")));
+app.use('/supperclub/', express.static(path.join(__dirname, "client", "build")));
 
 app.use(passport.initialize());
 app.use(passport.session());
