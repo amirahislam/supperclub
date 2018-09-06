@@ -12,11 +12,11 @@ class ToDoPanel extends Component {
             <div class="col-lg-4 col-md-4 col-sm-4 mb">
 							<div class="steps pn">
 							    <input id='op1' name='op1' type='checkbox' checked/>
-							    <label for='op1'>Update Profile</label>
+							    <label for='op1'>Check Guestlist</label>
 							    <input id='op2' name='op2' type='checkbox'/>
-							    <label for='op2'>Contact Paul</label>
+							    <label for='op2'>Send out location</label>
 							    <input id='op3' name='op3' type='checkbox'/>
-							    <label for='op3'>Enjoy Life</label>
+							    <label for='op3'>Contact local suppliers</label>
 							    <input type='submit' value='All Done!' id='submit'/>
 							</div>
 						</div>

@@ -20,7 +20,7 @@ class ActivitiesPanel extends Component {
                       	</div>
                       	<div  className="details">
                       		<p><muted>2 Minutes Ago</muted><br/>
-                      		   <a href="#">James Brown</a> subscribed to your newsletter.<br/>
+                      		   <a href="#">James Brown</a> just requested to join "Desi Treats" club.<br/>
                       		</p>
                       	</div>
                       </div>
@@ -31,7 +31,7 @@ class ActivitiesPanel extends Component {
                       	</div>
                       	<div  className="details">
                       		<p><muted>3 Hours Ago</muted><br/>
-                      		   <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
+                      		   <a href="#">Diana Kennedy</a> just added a review.<br/>
                       		</p>
                       	</div>
                       </div>
@@ -42,7 +42,7 @@ class ActivitiesPanel extends Component {
                       	</div>
                       	<div  className="details">
                       		<p><muted>7 Hours Ago</muted><br/>
-                      		   <a href="#">Brandon Page</a> purchased a year subscription.<br/>
+                      		   <a href="#">Brandon Page</a> commented on your post.<br/>
                       		</p>
                       	</div>
                       </div>
@@ -53,7 +53,7 @@ class ActivitiesPanel extends Component {
                       	</div>
                       	<div  className="details">
                       		<p><muted>11 Hours Ago</muted><br/>
-                      		   <a href="#">Mark Twain</a> commented your post.<br/>
+                      		   <a href="#">Mark Twain</a> commented on your post.<br/>
                       		</p>
                       	</div>
                       </div>
@@ -64,7 +64,7 @@ class ActivitiesPanel extends Component {
                       	</div>
                       	<div  className="details">
                       		<p><muted>18 Hours Ago</muted><br/>
-                      		   <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
+                      		   <a href="#">Daniel Pratt</a> just sent payment.<br/>
                       		</p>
                       	</div>
                       </div>
@@ -74,10 +74,10 @@ class ActivitiesPanel extends Component {
                       {/* <!-- First Member --> */}
                       <div  className="desc">
                       	<div  className="thumb">
-                      		<img  className="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align=""/>
+                      		<img  className="img-circle" src="https://media.licdn.com/dms/image/C4E03AQFcUomweFEvBg/profile-displayphoto-shrink_800_800/0?e=1541635200&v=beta&t=wFuAeWeeTCJx9MFuFtIB32nRZm3QfdLK_LP82a3egWA" width="35px" height="35px" align=""/>
                       	</div>
                       	<div  className="details">
-                      		<p><a href="#">DIVYA MANIAN</a><br/>
+                      		<p><a href="#">Christine Ronk</a><br/>
                       		   <muted>Available</muted>
                       		</p>
                       	</div>
@@ -85,10 +85,10 @@ class ActivitiesPanel extends Component {
                       {/* <!-- Second Member --> */}
                       <div  className="desc">
                       	<div  className="thumb">
-                      		<img  className="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align=""/>
+                      		<img  className="img-circle" src="https://media.licdn.com/dms/image/C5103AQEEmIzp8GY9Ig/profile-displayphoto-shrink_800_800/0?e=1541635200&v=beta&t=YgoG4VLZVEH3jbzwDEiItHZrogidsQJxAdWXQM987UU" width="35px" height="35px" align=""/>
                       	</div>
                       	<div  className="details">
-                      		<p><a href="#">DJ SHERMAN</a><br/>
+                      		<p><a href="#">Elvira Barrientos</a><br/>
                       		   <muted>I am Busy</muted>
                       		</p>
                       	</div>
@@ -96,10 +96,10 @@ class ActivitiesPanel extends Component {
                       {/* <!-- Third Member --> */}
                       <div  className="desc">
                       	<div  className="thumb">
-                      		<img  className="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align=""/>
+                      		<img  className="img-circle" src="https://media.licdn.com/dms/image/C5603AQGpARzM1uPCFA/profile-displayphoto-shrink_800_800/0?e=1541635200&v=beta&t=IumLv1HEFdtwbggtrGHmbFyOHvuEDYeubjUow-RR138" width="35px" height="35px" align=""/>
                       	</div>
                       	<div  className="details">
-                      		<p><a href="#">DAN ROGERS</a><br/>
+                      		<p><a href="#">Tyler Whitson</a><br/>
                       		   <muted>Available</muted>
                       		</p>
                       	</div>
@@ -107,10 +107,10 @@ class ActivitiesPanel extends Component {
                       {/* <!-- Fourth Member --> */}
                       <div  className="desc">
                       	<div  className="thumb">
-                      		<img  className="img-circle" src="assets/img/ui-zac.jpg" width="35px" height="35px" align=""/>
+                      		<img  className="img-circle" src="https://media.licdn.com/dms/image/C4E03AQEe8NEo9daVCQ/profile-displayphoto-shrink_800_800/0?e=1541635200&v=beta&t=RkPAlhqRFMhqdXMqAtbWRo5kM13CMtRhgx9LDQDKk3s" width="35px" height="35px" align=""/>
                       	</div>
                       	<div  className="details">
-                      		<p><a href="#">Zac Sniders</a><br/>
+                      		<p><a href="#">Sepehr Olfatmanesh</a><br/>
                       		   <muted>Available</muted>
                       		</p>
                       	</div>
@@ -118,10 +118,10 @@ class ActivitiesPanel extends Component {
                       {/* <!-- Fifth Member --> */}
                       <div  className="desc">
                       	<div  className="thumb">
-                      		<img  className="img-circle" src="assets/img/ui-sam.jpg" width="35px" height="35px" align=""/>
+                      		<img  className="img-circle" src="http://www3.pictures.zimbio.com/gi/Josh+Trimble+Virginia+Tech+v+Alabama+1Cwus2kGwl5l.jpg" width="35px" height="35px" align=""/>
                       	</div>
                       	<div  className="details">
-                      		<p><a href="#">Marcel Newman</a><br/>
+                      		<p><a href="#">Josh Trimble</a><br/>
                       		   <muted>Available</muted>
                       		</p>
                       	</div>
