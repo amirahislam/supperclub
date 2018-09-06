@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-// import '../../css/Dashboard Styles/EventImages.css';
+// import '../../css/DashboardStyles/EventImages.css';
 
 
 class EventImagesModal extends React.Component {
