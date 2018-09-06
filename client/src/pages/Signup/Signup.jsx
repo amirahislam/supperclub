@@ -78,7 +78,7 @@ class Signup extends Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <h1>Signup Page</h1>
+                <h2>Signup Page</h2>
                 <BuzzInput
                     value={this.state.firstName}
                     name="firstName"
