@@ -203,29 +203,29 @@ class BootstrapTemplate extends Component {
           </section>
         <section   className="bg-dark text-white">
         <div   className="container text-center">
-          <h2   className="mb-4"></h2>
+          <h2   className="mb-4">Want to take a look at our past events? Check out our gallery!</h2>
           <hr/>
-          <a   className="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">View Gallery</a>
+          <a   className="btn btn-light btn-xl sr-button" href="">View Gallery</a>
         </div>
       </section>
       <section id="contact">
       <div   className="container">
         <div   className="row">
           <div   className="col-lg-8 mx-auto text-center">
-            <h2   className="section-heading">Let's Get In Touch!</h2>
+            <h2   className="section-heading">Questions? Get In Touch With Us!</h2>
             <hr   className="my-4"></hr>
-            <p   className="mb-5">Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+            <p   className="mb-5">Not sure how it works or where to start? Send us a message and we'll get back to you!</p>
           </div>
         </div>
         <div   className="row">
           <div   className="col-lg-4 ml-auto text-center">
-            <i   className="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>123-456-6789</p>
+            <i   className="fa fa-facebook-official fa-3x mb-3 sr-contact"></i>
+            <p></p>
           </div>
           <div   className="col-lg-4 mr-auto text-center">
             <i   className="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+              <a href="mailto:your-email@your-domain.com">projectsupperclub@gmail.com</a>
             </p>
           </div>
         </div>
