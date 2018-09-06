@@ -40,6 +40,7 @@ app.use(
   })
 );
 
+//DUPLICATE CODE AS ABOVE W/ ONE ADDITIONAL LINE OF CODE
 // app.use(
 //   session({
 //     secret: 'fraggle-rock',
