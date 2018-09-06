@@ -33,9 +33,9 @@ app.use(routes, buzzRoutes, eventRoutes, sessionRoutes);
 app.use(
   session({
     secret: 'fraggle-rock',
-    store: new MongoStore({ mongooseConnection: dbConnection }),
-    // resave: false,
-    // saveUninitialized: false
+    // store: new MongoStore({ mongooseConnection: dbConnection }),
+    resave: false,
+    saveUninitialized: false
   })
 );
 
