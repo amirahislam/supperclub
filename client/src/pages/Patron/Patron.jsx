@@ -75,6 +75,7 @@ class Patron extends Component {
                 <NavbarPages />
                 <PatronSideBar 
                     userPP={this.state.profpic}
+                    patronId={this.state.username}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
                     badges={this.state.badges}

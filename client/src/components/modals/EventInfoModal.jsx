@@ -21,6 +21,16 @@ class EventInfoModal extends React.Component {
       handleSaveEvent = (event) => {
         event.preventDefault()
 
+        let patronData = {
+            patronId: this.props.patronId,
+            username: this.props.username,
+            eventName: this.props.eventName,
+            eventDate: this.props.eventDate
+        }
+
+        console.log(patronData)
+        this.close()
+
       }
       
       open() {

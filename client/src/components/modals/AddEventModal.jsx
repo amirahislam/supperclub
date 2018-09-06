@@ -14,10 +14,11 @@ class AddEventModal extends React.Component {
       
         this.state = {
           showModal: false,
+          patronId: '',
           newEvent: {},
-          username: 'testUser1',
+          username: '',
           eventName: '',
-          menu: 'no menu today',
+          menu: '',
           guests: '',
           price: '25',
           eventDate: moment(),
@@ -64,7 +65,7 @@ class AddEventModal extends React.Component {
 
         console.log(eventData)
 
-        API.saveEvent(eventData)
+        API.createEvent(eventData)
           .then(res => this.setState({ newEvent: res.data }))
           .catch(err => console.log(err));
         console.log('new event added:')
@@ -73,7 +74,7 @@ class AddEventModal extends React.Component {
         this.setState({
           eventName: '',
           eventImg: '',
-          menu: 'no menu today',
+          menu: '',
           guests: '',
           price: '25',
           eventDate: moment(),
@@ -193,18 +194,12 @@ class AddEventModal extends React.Component {
                                 <FormGroup>
                                     <ControlLabel htmlFor="selectbasic">Set Price</ControlLabel>
                                         <select id="selectbasic" name="price" value={this.state.price} className="form-control" onChange={this.handleSelection}>
+                                            <option value="15">$15</option>
+                                            <option value="20">$20</option>
                                             <option value="25">$25</option>
                                             <option value="30">$30</option>
-                                            <option value="40">$40</option>
-                                            <option value="45">$45</option>
-                                            <option value="50">$50</option>
-                                            <option value="60">$60</option>
-                                            <option value="70">$75</option>
-                                            <option value="85">$85</option>
-                                            <option value="100">$100</option>
-                                            <option value="150">$150</option>
-                                            <option value="175">$175</option>
-                                            <option value="200">$200</option>
+                                            <option value="40">$50</option>
+                                            <option value="50">$60</option>
                                         </select>
                                 </FormGroup>
 
@@ -235,7 +230,7 @@ class AddEventModal extends React.Component {
 
                     <Modal.Footer>
                         <Button onClick={this.close}>Close</Button>
-                        <Button bsStyle="primary" onClick={this.handleSaveEvent}>Save event</Button>
+                        <Button bsStyle="primary" onClick={this.handleSaveEvent}>Create event</Button>
                     </Modal.Footer>         
                     </Modal> 
                 </div>

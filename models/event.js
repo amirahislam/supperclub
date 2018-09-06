@@ -10,7 +10,8 @@ const eventSchema = new Schema({
   guests: { type: Number, required: true },
   price: { type: String, required: true },
   rules: { type: String, required: false },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  guestsReserved: { type: Array, required: false }
 });
 
 const Event = mongoose.model("Event", eventSchema);

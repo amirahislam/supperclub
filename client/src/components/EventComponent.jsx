@@ -12,13 +12,14 @@ const EventComponent = props => (
                     <img src={props.eventImg} className="img" alt="Oops" />
                     <a href={props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="fas fa-camera-retro"></i></a>
                     <EventInfoModal
+                    patronId={props.patronId}
                     id={props._id}
                     username={props.username}
                     eventName={props.eventName}
                     eventImg={props.eventImg}
                     guests={props.guests}
                     price={props.price}
-                    date={props.date}
+                    eventDate={props.eventDate}
                     description={props.description}
                     rules={props.rules}
                     />

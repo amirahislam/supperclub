@@ -8,6 +8,7 @@ import './Events.css';
 class Events extends Component {
 
     state = {
+        id: 'jtrimble6',
         username: 'jtrimble6',
         profpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
         firstName: 'Joshua',
@@ -44,6 +45,7 @@ class Events extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                 />
                 <EventsContainer 
+                patronId={this.state.id}
                 currentEvents={this.state.currentEvents}
                 /> 
             </div>

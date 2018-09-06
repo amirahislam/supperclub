@@ -8,22 +8,22 @@ import AddEventModal from '../modals/AddEventModal';
 
 class PatronSideBar extends Component {
 
-    ProfilePic = props => (
+    // ProfilePic = props => (
   
-        <div className='col-md-4'>
-          <div className="row">
-            <div className="card profileCard">
-              <img className="card-img-top" src={this.props.userPP} alt={this.props.userName} />
-                <div className="card-body">
-                  <h5 className="card-title">{this.props.userFullName}</h5>
-                  <p className="card-text">Add your bio here</p>
-                  <a href="#" className="btn btn-primary">Find suppers!!!</a>
-                </div>
-            </div>
-          </div>
-        </div>
+    //     <div className='col-md-4'>
+    //       <div className="row">
+    //         <div className="card profileCard">
+    //           <img className="card-img-top" src={this.props.userPP} alt={this.props.userName} />
+    //             <div className="card-body">
+    //               <h5 className="card-title">{this.props.userFullName}</h5>
+    //               <p className="card-text">Add your bio here</p>
+    //               <a href="#" className="btn btn-primary">Find suppers!!!</a>
+    //             </div>
+    //         </div>
+    //       </div>
+    //     </div>
     
-    )
+    // )
     
     render() {
         return (
@@ -66,7 +66,7 @@ class PatronSideBar extends Component {
                       </ul>
                   </li>
                     <AddEventModal 
-                    
+                    patronId={this.props.username}
                     />
                   <li  className="sub-menu">
                       <a href="javascript:;" >
