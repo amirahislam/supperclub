@@ -12,6 +12,12 @@ class Login extends Component {
         redirect: false
     };
 
+    componentDidMount() {
+        this.props.updateUser({
+            onLogin: true
+        })
+    };
+
     setRedirect = () => {
         this.setState({
           redirect: true
@@ -20,7 +26,7 @@ class Login extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to='/' />
+          return <Redirect to='/patron' />
         }
     };
 
@@ -43,18 +49,21 @@ class Login extends Component {
         .then(response => {
             if (response.status === 200) {
                 console.log("Authenticated!")
-                console.log(response);
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
                     username: response.data.username
                 })
                 let sessionData = {
-                    sessionID: response.data.username
+                    sessionUserID: response.data.username
                 }
                 API.createSession(sessionData)
                 .then(response => {
+                    console.log("Session response: ")
                     console.log(response);
+                    this.props.updateUser({
+                        sessionID: response.data._id
+                    })
                 }).catch(error => {
                     console.log('Login error: ')
                     console.log(error);  
@@ -87,6 +96,7 @@ class Login extends Component {
                 <SubmitButton
                     onClick={this.handleFormSubmit}
                 />
+                <h3>Don't have a login? <a href="/signup">Sign up here!</a></h3>
             </div>
         )
     };

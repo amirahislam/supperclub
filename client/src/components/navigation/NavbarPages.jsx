@@ -6,6 +6,13 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
 
 
  class NavbarPages extends Component {
+
+    logout = () => {
+        console.log("log out");
+        localStorage.removeItem("user");
+        localStorage.removeItem("sessionID");
+        // window.location.reload();
+    }
     
     render() {
         return (
@@ -162,7 +169,12 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
             </div>
             <div  className="top-menu">
             	<ul  className="nav pull-right top-menu">
-                    <li><a  className="logout" href="login.html">Logout</a></li>
+                    <li>
+                        <a  className="logout"
+                            href="/login"
+                            onClick={this.logout}
+                        >Logout</a>
+                    </li>
             	</ul>
             </div>
         </header>

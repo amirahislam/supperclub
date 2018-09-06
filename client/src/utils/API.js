@@ -21,6 +21,9 @@ export default {
     console.log(sessionData);
     return axios.post("/api/sessions", sessionData);
   },
+  checkSession: function(sessionData) {
+    return axios.post("/api/sessions/checksession", sessionData);
+  },
   createBuzz: function(buzz) {
     return axios.post("/api/buzz", buzz)
   },

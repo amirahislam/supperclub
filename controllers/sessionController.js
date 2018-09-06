@@ -6,19 +6,24 @@ module.exports = {
   //     .find({})
   //     .then(dbModel => res.json(dbModel))
   // },
-  // findById: function(req, res) {
-  //   db.Patron
-  //     .findById(req.params.id)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  checkSession: function(req, res) {
+    console.log("Checking session")
+    console.log(req.body);
+    db.Session
+      .findById(req.body.sessionID)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
     console.log("create session");
     db.Session
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  // },
+  },
+  logout: function(req, res) {
+    console.log("logout");
+  }
   // update: function(req, res) {
   //   db.Patron
   //     .findOneAndUpdate({ _id: req.params.id }, req.body)
@@ -31,5 +36,5 @@ module.exports = {
   //     .then(dbModel => dbModel.remove())
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
-  }
+  // }
 };
