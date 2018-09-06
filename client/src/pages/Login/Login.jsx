@@ -80,7 +80,7 @@ class Login extends Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <h1>Login Page</h1>
+                <h2>Login Page</h2>
                 <BuzzInput
                     value={this.state.username}
                     name="username"

@@ -76,7 +76,7 @@ class App extends Component {
       console.log(this)
       console.log(this.state.onLogin);
       if (this.state.onLogin === false) {
-        this.setRedirect();
+        // this.setRedirect();
       } else {
         console.log("already on login page");
       }
