@@ -60,10 +60,10 @@ app.use( (req, res, next) => {
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true }, (err) => {
   if (err) console.error(err);
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 // mongoose.connect("mongodb://localhost:27017/supperclub", { useMongoClient: true }, (err) => {
 //     if (err) console.error(err);
-// });
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
