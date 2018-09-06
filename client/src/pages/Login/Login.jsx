@@ -12,6 +12,12 @@ class Login extends Component {
         redirect: false
     };
 
+    componentDidMount() {
+        this.props.updateUser({
+            onLogin: true
+        })
+    };
+
     setRedirect = () => {
         this.setState({
           redirect: true

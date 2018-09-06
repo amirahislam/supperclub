@@ -23,7 +23,8 @@ class App extends Component {
     loggedIn: false,
     username: null,
     sessionID: null,
-    redirect: false
+    redirect: false,
+    onLogin: false
   }
 
   componentDidMount() {
@@ -73,7 +74,12 @@ class App extends Component {
       console.log('Login error: ')
       console.log(error);
       console.log(this)
-      this.setRedirect();
+      console.log(this.state.onLogin);
+      if (this.state.onLogin === false) {
+        this.setRedirect();
+      } else {
+        console.log("already on login page");
+      }
   })
   }
 
