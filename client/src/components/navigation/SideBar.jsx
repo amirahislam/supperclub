@@ -16,6 +16,7 @@ class SideBar extends Component {
               
               	  <p  className="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg"  className="img-circle" width="60"/></a></p>
               	  <h5  className="centered">Amirah Islam</h5>
+                    <h6 className="centered">Boss Chef</h6>
               	  	
                   <li  className="mt">
                       <a  className="active" href="index.html">
