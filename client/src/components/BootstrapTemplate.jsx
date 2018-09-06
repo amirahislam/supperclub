@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-import '../css/Dashboard Styles/Creative.css';
+import '../css/DashboardStyles/Creative.css';
 // import './Creative.min.css';
 
 

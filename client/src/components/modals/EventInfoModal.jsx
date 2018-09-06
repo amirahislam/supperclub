@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../../css/Dashboard Styles/EventInfo.css';
+import '../../css/DashboardStyles/EventInfo.css';
 
 
 class EventInfoModal extends React.Component {

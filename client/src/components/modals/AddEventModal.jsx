@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../../css/Dashboard Styles/AddEvent.css';
+import '../../css/DashboardStyles/AddEvent.css';
 import moment from 'moment';
 import API from "../../utils/API";
 
