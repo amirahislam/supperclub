@@ -14,7 +14,6 @@ import Reservation from './pages/Reservations/Reservations.jsx';
 import Events from './pages/Events/Events.jsx'
 import Signup from './pages/Signup/Signup.jsx'
 import Login from './pages/Login/Login';
-import Navbar from './components/Navbar';
 
 
 

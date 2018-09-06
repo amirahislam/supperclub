@@ -2,8 +2,9 @@ import React from 'react'
 import '../pages/Patron/UpcomingEvents.css'
 
 const UpcomingEvents = props => (
-  <div className="container UpcomingEvents">
-    <h1 className='eventTitle'>Upcoming Events</h1>
+    <div  className="col-lg-4 col-md-4 col-sm-4 mb">
+  {/* <div className="container UpcomingEvents"> */}
+    <h2 className='eventTitle'>Upcoming Events</h2>
     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -12,13 +13,13 @@ const UpcomingEvents = props => (
         </ol>
         <div className="carousel-inner">
             <div className="carousel-item active">
-                <img className="d-block w-100 eventsImg" src={props.img1} alt="First slide" />
+                <img className="d-block w-100 eventsImg" src={"https://blog.inspitrip.com/wp-content/uploads/2018/05/2.jpg"} alt="First slide" />
             </div>
             <div className="carousel-item">
-                <img className="d-block w-100 eventsImg" src={props.img2} alt="Second slide" />
+                <img className="d-block w-100 eventsImg" src={"https://berlinfoodstories.com/wp-content/uploads/2017/11/23155002_1645545768818342_6121728967607120425_o.jpg"} alt="Second slide" />
             </div>
             <div className="carousel-item">
-                <img className="d-block w-100 eventsImg" src={props.img3} alt="Third slide" />
+                <img className="d-block w-100 eventsImg" src={"https://www.youngisthan.in/wp-content/uploads/2018/05/featured-15.jpg"} alt="Third slide" />
             </div>
         </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -30,6 +31,7 @@ const UpcomingEvents = props => (
                 <span className="sr-only">Next</span>
             </a>
         </div>
+    {/* </div> */}
     </div>
     )
 

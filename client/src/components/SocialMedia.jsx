@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './Dashboard Styles/DashboardStyle.css';
-import './Dashboard Styles/DashboardStyle-responsive.css';
-import './Dashboard Styles/DashboardBootstrap.css';
+import '../css/DashboardStyles/DashboardStyle.css';
+import '../css/DashboardStyles/DashboardStyle-responsive.css';
+import '../css/DashboardStyles/DashboardBootstrap.css';
+import '../css/DashboardStyles/Dashboard-custom.css';
 
 import { Link } from 'react-router-dom';
 

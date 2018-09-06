@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import NavbarPages from '../../components/NavbarPages';
+import NavbarPages from '../../components/navigation/NavbarPages';
 import ProfilePage from '../../components/ProfilePage';
 import SocialMedia from '../../components/SocialMedia';
-import Badges from '../../components/Badges';
+import Badges from '../../components/BadgesComponent';
 import City from '../../components/City';
 
 

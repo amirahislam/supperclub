@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import NavbarPages from '../../components/NavbarPages';
-import SideToolBar from '../../components/SideToolBar';
+import NavbarPages from '../../components/navigation/NavbarPages';
 import UpcomingEventsTest from '../../components/UpcomingEventsTest';
 import SocialMedia from '../../components/SocialMedia';
-import Badges from '../../components/Badges';
-import ActivitiesPanel from '../../components/ActivitiesPanel';
+import Badges from '../../components/BadgesComponent';
+import ActivitiesPanel from '../../components/containers/ActivitiesPanel';
 import Notifications from '../../components/Notifications';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/navigation/SideBar';
 import FriendCard from '../../components/FriendCard';
 import ToDoPanel from '../../components/ToDoPanel';
 // import Revenue from '../../components/Revenue';
@@ -18,7 +17,9 @@ import  Flexbox from 'flexbox-react';
 
 class Chef extends Component {
 
-    
+    componentDidMount() {
+        console.log('mounted');
+    }
 
     render() {
         const instaPanel = {
@@ -31,7 +32,9 @@ class Chef extends Component {
         return (
             <div>
                 <NavbarPages />
-                <SideBar />
+                <SideBar
+                    
+                />
                 <div className='wrapper chefPage'>
                     {/* <SideToolBar /> */}
                     {/* <UpcomingEventsTest /> */}
