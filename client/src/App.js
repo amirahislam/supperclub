@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import API from './utils/API';
 
 
 import Home from './pages/Home/Home.jsx';
@@ -20,48 +22,67 @@ class App extends Component {
 
   state = {
     loggedIn: false,
-    username: null
+    username: null,
+    sessionID: null,
+    redirect: false
   }
 
   componentDidMount() {
-    // this.getUser()
+    // console.log(req.session)
+    this.getUser()
   }
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  };
+
+  renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/login' />
+      }
+  };
+
   updateUser = (userObject) => {
-    console.log("Update user");
     this.setState(
         userObject
     )
-    console.log(this.state.loggedIn);
-    console.log(this.state.username);
+    localStorage.setItem("user", this.state.username);
+    localStorage.setItem("sessionID", this.state.sessionID);
+    console.log("Logged in: " + this.state.loggedIn);
+    console.log("Username: " + this.state.username);
+    console.log("Session ID: " + this.state.sessionID);
   };
 
   getUser = () => {
-    console.log("Get user")
-    axios.get('/api/patrons/login').then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
-      if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
-
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username
-        })
+    let localsessionUser = localStorage.getItem("user")
+    let localsessionID = localStorage.getItem("sessionID")
+    let sessionData = {
+      sessionUserID: localsessionUser,
+      sessionID: localsessionID
+    };
+    API.checkSession(sessionData)
+    .then(response => {
+      if (response.data._id && response.data.sessionUserID) {
+        console.log("Login confirmed: ")
+        console.log(response);
       } else {
-        console.log('Get user: no user');
-        this.setState({
-          loggedIn: false,
-          username: null
-        })
+        console.log("No matching sessions")
       }
-    })
+  }).catch(error => {
+      console.log('Login error: ')
+      console.log(error);
+      console.log(this)
+      this.setRedirect();
+  })
   }
 
   render() {
     return (
       <Router>
         <div>
+          {this.renderRedirect()}
           <Route exact path='/' component={Home}/>
           <Route exact path='/Chef' component={Chef}/>
           <Route exact path='/Patron' component={Patron}/>

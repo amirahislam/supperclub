@@ -123,6 +123,7 @@ class Signup extends Component {
                 <SubmitButton
                     onClick={this.handleFormSubmit}
                 />
+                <h3>Already have a login? <a href="/login">Log in here!</a></h3>
             </div>
         )
     };

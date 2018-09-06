@@ -34,8 +34,8 @@ app.use(
   session({
     secret: 'fraggle-rock',
     store: new MongoStore({ mongooseConnection: dbConnection }),
-    resave: false,
-    saveUninitialized: false
+    // resave: false,
+    // saveUninitialized: false
   })
 );
 
