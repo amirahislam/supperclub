@@ -14,17 +14,17 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 
-require("dotenv").config()
-
 // Define middleware here
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client", "build")));
+// }
+
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -57,13 +57,7 @@ app.use( (req, res, next) => {
 });
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true }, (err) => {
-  if (err) console.error(err);
-
-// mongoose.Promise = global.Promise;
-// mongoose.connect("mongodb://localhost:27017/supperclub", { useMongoClient: true }, (err) => {
-//     if (err) console.error(err);
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/supperclub");
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
