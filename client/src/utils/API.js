@@ -3,11 +3,11 @@ import axios from "axios";
 export default {
   // Gets the patron with the given id
   getPatron: function(id) {
-    return axios.get("/api/patron/" + id);
+    return axios.get("/api/patrons/" + id);
   },
   // Deletes the book with the given id
   deletePatron: function(id) {
-    return axios.delete("/api/patron/" + id);
+    return axios.delete("/api/patrons/" + id);
   },
   // Saves a patron to the database (upon signup)
   savePatron: function(patronData) {
