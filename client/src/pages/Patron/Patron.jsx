@@ -11,8 +11,8 @@ class Patron extends Component {
     state = {
         username: 'jtrimble6',
         profpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
-        firstName: 'Joshua',
-        lastName: 'Trimble',
+        firstName: '',
+        lastName: '',
         badges: '',
         buzzVal: '',
         currentBuzz: [],
@@ -26,6 +26,16 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
+        let localsessionUser = localStorage.getItem("user")
+        console.log("hi " + localsessionUser)
+        API.getPatron(localsessionUser)
+        .then(response => {
+            this.setState({
+                firstName: response.data[0].firstName,
+                lastName: response.data[0].lastName
+            })
+        })
+        .catch(err => console.log(err))
         // console.log(props.this.state.loggedIn);
         // console.log(props.this.state.username);
     }
