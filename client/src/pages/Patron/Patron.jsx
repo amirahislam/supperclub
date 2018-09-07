@@ -26,7 +26,16 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
-        this.getUser()
+        let localsessionUser = localStorage.getItem("user")
+        console.log("hi " + localsessionUser)
+        API.getPatron(localsessionUser)
+        .then(response => {
+            this.setState({
+                firstName: response.data[0].firstName,
+                lastName: response.data[0].lastName
+            })
+        })
+        .catch(err => console.log(err))
         // console.log(props.this.state.loggedIn);
         // console.log(props.this.state.username);
     }
