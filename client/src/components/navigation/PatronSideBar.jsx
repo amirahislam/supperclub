@@ -32,8 +32,8 @@ class PatronSideBar extends Component {
               {/* <!-- sidebar menu start--> */}
               <ul  className="sidebar-menu" id="nav-accordion">
               
-              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userName} className="img-circle" width="60"/></a></p>
-              	  <h5  className="centered">{this.props.userFullName}</h5>
+              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
+              	  <h5  className="centered">{this.props.username}</h5>
               	  	
                   <li  className="mt">
                       <a  className="active" href="index.html">

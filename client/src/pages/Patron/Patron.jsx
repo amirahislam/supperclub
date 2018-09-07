@@ -9,10 +9,10 @@ import API from "../../utils/API";
 class Patron extends Component {
 
     state = {
-        username: 'jtrimble6',
-        profpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
-        firstName: 'Joshua',
-        lastName: 'Trimble',
+        username: '',
+        profpic: '',
+        firstName: '',
+        lastName: '',
         badges: '',
         buzzVal: '',
         currentBuzz: [],
@@ -26,8 +26,24 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
+        this.getUser()
         // console.log(props.this.state.loggedIn);
         // console.log(props.this.state.username);
+    }
+
+    getUser = () => {
+        let localsessionUser = localStorage.getItem("user")
+        this.setState({ username: localsessionUser })
+        // API.getPatron(localsessionUser)
+        //   .then(res => {
+        //     console.log(res.data)
+        //     console.log(localsessionUser)
+        //     // this.setState({ currentUser: res.data });
+        //     // console.log('here is our user')
+        //     // console.log(this.state.currentUser)
+        //   })
+
+        console.log(localsessionUser)
     }
 
     getBuzz = () => {
@@ -75,6 +91,7 @@ class Patron extends Component {
                 <NavbarPages />
                 <PatronSideBar 
                     userPP={this.state.profpic}
+                    username={this.state.username}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
                     badges={this.state.badges}

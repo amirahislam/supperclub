@@ -1,10 +1,12 @@
 import React from 'react'
 import '../../pages/Patron/Patron.css'
 import '../../pages/Patron/FriendsList.css'
-import SocialMedia from '../SocialMedia';
-import Badges from '../BadgesComponent';
+import SocialMedia from '../SocialMedia'
+import Badges from '../BadgesComponent'
 import Timeline from './TimelineContainer'
 import UpcomingEvents from '../UpcomingEvents'
+import BuzzInput from '../BuzzInput'
+import SubmitButton from '../SubmitButton'
 
 const PatronPP = props => (
 
@@ -12,26 +14,27 @@ const PatronPP = props => (
 
             <Badges />
             <SocialMedia />
-            
-            <Timeline 
-              currentBuzz={props.currentBuzz}
-            />
             <UpcomingEvents 
               img1={props.img1}
               img2={props.img2}
               img3={props.img3}
             />
+            
+            <Timeline 
+              currentBuzz={props.currentBuzz}
+            />
+            
 
 
-            {/* <BuzzInput
+            <BuzzInput
               name={props.name}
               onChange={props.onChange}
               placeholder={props.placeholder}
               value={props.value}
-            /> */}
-            {/* <SubmitButton 
+            />
+            <SubmitButton 
               onClick={props.onClick}
-            /> */}
+            />
               
           
           {/* <div className='col-md-4 communityDiv'>
