@@ -24,7 +24,8 @@ class App extends Component {
     username: null,
     sessionID: null,
     redirect: false,
-    onLogin: false
+    onLogin: false,
+    userObject: {}
   }
 
   componentDidMount() {
@@ -50,9 +51,7 @@ class App extends Component {
     )
     localStorage.setItem("user", this.state.username);
     localStorage.setItem("sessionID", this.state.sessionID);
-    console.log("Logged in: " + this.state.loggedIn);
-    console.log("Username: " + this.state.username);
-    console.log("Session ID: " + this.state.sessionID);
+
   };
 
   getUser = () => {

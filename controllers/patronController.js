@@ -12,11 +12,7 @@ module.exports = {
     console.log("find by id");
     console.log(req.params)
     db.Patron
-<<<<<<< HEAD
-      .find(req.params.id)
-=======
       .find({username: req.params.id})
->>>>>>> d8bce4732a4f8e89fc6149c7682bac21e152e7fc
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

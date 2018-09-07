@@ -29,19 +29,28 @@ ul.timeline > li:before {
     z-index: 400;
 }
 
+.container {
+    padding: 0;
+}
+
 .timelineDiv {
+    padding: 0;
     height: 700px;
+    width: 100%;
+    
+    text-align: right;
+}
+
+.timelineContent {
+    text-align: right;
     overflow: scroll;
 }
 
-.buzzTitle {
-    text-align: center;
+.thumb {
+    float: left;
 }
 
-.buzz {
-    float: right;
-}
-
-.detailes {
-    width: 100%;
+.details {
+    min-width: 90%;
+    margin-right: 50px;
 }

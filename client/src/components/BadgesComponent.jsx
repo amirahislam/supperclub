@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
+import '../css/DashboardStyles/Badges.css'
 
 import { Link } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ class Badges extends Component {
 
     render() {
         return (
-            <div  className="col-lg-4 col-md-4 col-sm-4 mb">
+            <div  className="badgesDiv">
                       		<div className="darkblue-panel pn">
                       			<div className="darkblue-header">
 						  			<h5>BADGES</h5>

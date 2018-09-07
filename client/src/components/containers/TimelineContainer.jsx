@@ -7,8 +7,8 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
 import '../../pages/Patron/Timeline.css'
 
 const Timeline = props => (
-    <div className="container">
-        <div  className="col-lg-4 ds timelineDiv">
+    
+        <div className="ds timelineDiv">
         <h3>TIMELINE</h3>
         {
           props.currentBuzz.map(buzz => {
@@ -22,7 +22,7 @@ const Timeline = props => (
         }
 
         </div>
-    </div>
+    
 
         
     )

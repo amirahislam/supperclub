@@ -26,6 +26,10 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
+        
+    }
+
+    getUser = () => {
         let localsessionUser = localStorage.getItem("user")
         console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
@@ -36,23 +40,9 @@ class Patron extends Component {
             })
         })
         .catch(err => console.log(err))
-        // console.log(props.this.state.loggedIn);
-        // console.log(props.this.state.username);
-    }
-
-    getUser = () => {
-        let localsessionUser = localStorage.getItem("user")
-        this.setState({ username: localsessionUser })
-        // API.getPatron(localsessionUser)
-        //   .then(res => {
-        //     console.log(res.data)
-        //     console.log(localsessionUser)
-        //     // this.setState({ currentUser: res.data });
-        //     // console.log('here is our user')
-        //     // console.log(this.state.currentUser)
-        //   })
-
-        console.log(localsessionUser)
+        console.log(this.state.loggedIn);
+        console.log(this.state.username);
+        
     }
 
     getBuzz = () => {

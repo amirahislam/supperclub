@@ -1,3 +1,16 @@
-.profilePage {
-    margin-top: 200px;
+.patronMiddle {
+    margin-top: 100px;
+}
+
+.timelineDiv {
+    width: 340px;
+    height: 680px;
+}
+
+.timelineContent {
+    width: 100%;
+}
+
+.buzzInput {
+    width: 100%;
 }

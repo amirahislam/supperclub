@@ -13,7 +13,13 @@
     max-width: 100%;
 }
 
-.eventsImg {
+.imagesDiv {
+    max-height: 400px;
+    width: 800px;
+    margin-top: 25px;
+}
+
+.carousel-item {
     max-height: 400px;
     width: 800px;
 }

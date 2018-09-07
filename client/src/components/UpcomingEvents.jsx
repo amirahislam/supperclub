@@ -2,8 +2,11 @@ import React from 'react'
 import '../pages/Patron/UpcomingEvents.css'
 
 const UpcomingEvents = props => (
-    <div  className="col-lg-4 col-md-4 col-sm-4 mb">
+    
+    <div className="row upcomingEventsDiv">
   {/* <div className="container UpcomingEvents"> */}
+    <div className="col-md-2"></div>
+    <div className="imagesDiv col-md-8">
     <h2 className='eventTitle'>Upcoming Events</h2>
     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
@@ -31,6 +34,8 @@ const UpcomingEvents = props => (
                 <span className="sr-only">Next</span>
             </a>
         </div>
+        </div>
+    <div className="col-md-2"></div>
     {/* </div> */}
     </div>
     )
