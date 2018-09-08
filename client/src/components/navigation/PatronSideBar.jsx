@@ -72,7 +72,7 @@ class PatronSideBar extends Component {
                   </li>
                     <div>
                         <AddEventModal 
-                        
+                         onClick={this.props.onClick}
                         />
                     </div>
                   <li  className="sub-menu">

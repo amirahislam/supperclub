@@ -86,7 +86,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {this.renderRedirect()}
+          {/* {this.renderRedirect()} */}
           <Route exact path='/' component={Home}/>
           <Route exact path='/Chef' component={Chef}/>
           <Route exact path='/Patron' component={Patron}/>
