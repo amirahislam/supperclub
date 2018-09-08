@@ -26,6 +26,7 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
+        this.getUser()
         
     }
 
@@ -34,9 +35,12 @@ class Patron extends Component {
         console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
         .then(response => {
+            console.log('the data i neeeeeeed')
+            console.log(response)
             this.setState({
                 firstName: response.data[0].firstName,
-                lastName: response.data[0].lastName
+                lastName: response.data[0].lastName,
+                username: response.data[0].username
             })
         })
         .catch(err => console.log(err))
@@ -72,6 +76,9 @@ class Patron extends Component {
             username: this.state.username,
             buzz: this.state.buzzVal
         }
+
+        console.log(buzzData)
+
         API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));

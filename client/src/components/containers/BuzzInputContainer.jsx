@@ -17,6 +17,7 @@ const BuzzInputContainer = props => (
         
               <SubmitButton 
                 onClick={props.onClick}
+                value={props.value}
               />
     
       </div>

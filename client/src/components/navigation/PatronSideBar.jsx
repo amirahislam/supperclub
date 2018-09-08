@@ -28,7 +28,7 @@ class PatronSideBar extends Component {
     render() {
         return (
             <aside>
-          <div id="sidebar"   className="nav-collapse ">
+          <div id="sidebar" className="nav-collapse ">
               {/* <!-- sidebar menu start--> */}
               <ul  className="sidebar-menu" id="nav-accordion">
               

@@ -31,7 +31,6 @@ const PatronPageEnd = props => (
               />
             </div>
 
-    
             <BuzzInputContainer
               name={props.name}
               onChange={props.onChange}
@@ -40,9 +39,6 @@ const PatronPageEnd = props => (
               onClick={props.onClick}
             />
           
-          
-          
-    
       </div>
         
     )
