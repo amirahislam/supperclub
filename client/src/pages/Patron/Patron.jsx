@@ -26,7 +26,7 @@ class Patron extends Component {
     componentDidMount() {
         console.log('mounted');
         this.getBuzz()
-        
+        this.getUser()
     }
 
     getUser = () => {
@@ -34,15 +34,17 @@ class Patron extends Component {
         console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
         .then(response => {
+            console.log(response);
             this.setState({
                 firstName: response.data[0].firstName,
-                lastName: response.data[0].lastName
+                lastName: response.data[0].lastName,
+                username: response.data[0].username,
+                profpic: response.data[0].img
             })
         })
         .catch(err => console.log(err))
         console.log(this.state.loggedIn);
         console.log(this.state.username);
-        
     }
 
     getBuzz = () => {

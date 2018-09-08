@@ -9,7 +9,8 @@ class Login extends Component {
     state = {
         username: "",
         password: "",
-        redirect: false
+        redirect: false,
+        userType: "",
     };
 
     componentDidMount() {
@@ -18,16 +19,21 @@ class Login extends Component {
         })
     };
 
-    setRedirect = () => {
+    setRedirect = (userType) => {
         this.setState({
-          redirect: true
+            userType: userType,
+            redirect: true
         })
     };
 
     renderRedirect = () => {
-        if (this.state.redirect) {
-          return <Redirect to='/patron' />
+        console.log(this.state.userType);
+        if (this.state.redirect === true && this.state.userType === "Patron") {
+            return <Redirect to='/patron' />
         }
+        else if (this.state.redirect === true && this.state.userType === "Chef") {
+            return <Redirect to='/chef' />
+        } else {}
     };
 
     handleInputChange = event => {
@@ -49,6 +55,9 @@ class Login extends Component {
         .then(response => {
             if (response.status === 200) {
                 console.log("Authenticated!")
+                console.log("Login response: ")
+                console.log(response);
+                let thisUser = response.data.username;
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
@@ -68,7 +77,12 @@ class Login extends Component {
                     console.log('Login error: ')
                     console.log(error);  
                 })
-                this.setRedirect();
+                API.getPatron(thisUser)
+                .then(response => {
+                    console.log(response);
+                    let userType = response.data[0].userType;
+                    this.setRedirect(userType);
+                })
             }
         }).catch(error => {
             console.log('Login error: ')
