@@ -3,7 +3,6 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
-
 import AddEventModal from '../modals/AddEventModal';
 
 class PatronSideBar extends Component {
