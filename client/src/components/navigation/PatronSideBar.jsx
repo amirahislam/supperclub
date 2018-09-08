@@ -8,6 +8,11 @@ import AddEventModal from '../modals/AddEventModal';
 
 class PatronSideBar extends Component {
 
+    componentDidMount() {
+        console.log('mounted');
+     
+    }
+
     ProfilePic = props => (
   
         <div className='col-md-4'>
