@@ -15,7 +15,12 @@ const PatronPP = props => (
             <div className="col-md-2"></div>
             <div className='col-md-4'>
               <PatronPageEnd
+                name={props.name}
+                onClick={props.onClick}
                 currentBuzz={props.currentBuzz}
+                value={props.value}
+                placeholder={props.placeholder}
+                onChange={props.onChange}
               />
           </div>
         </div>

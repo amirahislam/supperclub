@@ -74,6 +74,9 @@ class Patron extends Component {
             username: this.state.username,
             buzz: this.state.buzzVal
         }
+
+        console.log(buzzData)
+
         API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
