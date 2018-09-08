@@ -44,7 +44,6 @@ class Patron extends Component {
             })
         })
         .catch(err => console.log(err))
-        console.log(this.state.loggedIn);
         console.log(this.state.username);
         
     }

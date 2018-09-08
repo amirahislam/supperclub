@@ -65,9 +65,11 @@ class PatronSideBar extends Component {
                           <li><a  href="todo_list.html">Todo List</a></li>
                       </ul>
                   </li>
-                    <AddEventModal 
-                    
-                    />
+                    <div>
+                        <AddEventModal 
+                        
+                        />
+                    </div>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
                           <i  className="fa fa-tasks"></i>
