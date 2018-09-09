@@ -78,6 +78,8 @@ class PatronSideBar extends Component {
                     <div>
                         <FollowModal 
                          onClick={this.props.onClick}
+                         currentPatrons={this.props.currentPatrons}
+                         patronName={this.props.patronName}
                         />
                     </div>
                   <li  className="sub-menu">

@@ -14,6 +14,7 @@ const Timeline = props => (
           props.currentBuzz.map(buzz => {
             return(
             <BuzzComponent
+                key={buzz._id}
                 username={buzz.username}
                 date={buzz.date}
                 buzz={buzz.buzz}

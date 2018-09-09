@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
+import '../css/DashboardStyles/FriendCard.css'
+import FollowComponent from './FollowComponent'
 
 import { Link } from 'react-router-dom';
 
@@ -9,98 +11,36 @@ class FriendCard extends Component {
 
     render() {
         return (
-            <div>
-            <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="content-panel pn">
-                        <div id="profile-01">
-                            <h3>Sharon Holmes</h3>
-                            <h6>FOODIE</h6>
+            <div className="friendCard">
+
+                {
+                    
+                this.props.currentPatrons.map(patron => {
+                    return(
+                    <div className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
+                    
+                        <div id="patronImg">
+                            <a href="#">
+                                <img className="profilePic" src={patron.img} alt={patron.username} />
+                            </a>
                         </div>
-                        <div class="profile-01 centered">
-                            <p>ADD TO CONTACT LIST</p>
+                        <FollowComponent 
+                        key={this.props.key}
+                        data-tag={this.props.patronName}
+                        name={this.props.name}
+                        patronName={this.props.patronName}
+                        onClick={this.props.onClick}
+                        />
+                        <div className="centered">
+                            <h3>{patron.username}</h3>
+                            <h6>{patron.email}</h6>
                         </div>
-                        <div class="centered">
-                            {/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
-                        </div>
-                    </div>
-                            
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                    <div class="content-panel pn">
-                        <div id="profile-01">
-                            <h3>Sharon Holmes</h3>
-                            <h6>FOODIE</h6>
-                        </div>
-                        <div class="profile-01 centered">
-                            <p>ADD TO CONTACT LIST</p>
-                        </div>
-                        <div class="centered">
-                            {/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
-                        </div>
-             </div>
                     
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 mb">
-                <div class="content-panel pn">
-                    <div id="profile-01">
-                        <h3>Sharon Holmes</h3>
-                        <h6>FOODIE</h6>
-                    </div>
-                    <div class="profile-01 centered">
-                        <p>ADD TO CONTACT LIST</p>
-                    </div>
-                    <div class="centered">
-                        {/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
-                    </div>
-                </div>
-                
-            </div>
+                )})
 
-            <div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<div class="content-panel pn">
-								<div id="profile-01">
-									<h3>Sharon Holmes</h3>
-									<h6>FOODIE</h6>
-								</div>
-								<div class="profile-01 centered">
-									<p>ADD TO CONTACT LIST</p>
-								</div>
-								<div class="centered">
-									{/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
-								</div>
-							</div>
-                            
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<div class="content-panel pn">
-								<div id="profile-01">
-									<h3>Sharon Holmes</h3>
-									<h6>FOODIE</h6>
-								</div>
-								<div class="profile-01 centered">
-									<p>ADD TO CONTACT LIST</p>
-								</div>
-								<div class="centered">
-									{/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
-								</div>
-							</div>
-                            
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<div class="content-panel pn">
-								<div id="profile-01">
-									<h3>Sharon Holmes</h3>
-									<h6>FOODIE</h6>
-								</div>
-								<div class="profile-01 centered">
-									<p>ADD TO CONTACT LIST</p>
-								</div>
-								<div class="centered">
-									{/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
-								</div>
-							</div>
-                            
-                        </div>
+                }
+
             </div>
 
         )

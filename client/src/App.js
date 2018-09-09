@@ -45,14 +45,14 @@ class App extends Component {
   //     }
   // };
 
-  // updateUser = (userObject) => {
-  //   this.setState(
-  //       userObject
-  //   )
-  //   localStorage.setItem("user", this.state.username);
-  //   localStorage.setItem("sessionID", this.state.sessionID);
+  updateUser = (userObject) => {
+    this.setState(
+        userObject
+    )
+    localStorage.setItem("user", this.state.username);
+    localStorage.setItem("sessionID", this.state.sessionID);
 
-  // };
+  };
 
   getUser = () => {
     let localsessionUser = localStorage.getItem("user")

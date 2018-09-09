@@ -5,6 +5,7 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
+import $ from 'jquery'
 
 class Patron extends Component {
 
@@ -15,7 +16,10 @@ class Patron extends Component {
         lastName: '',
         badges: '',
         buzzVal: '',
+        patronName: '',
         currentBuzz: [],
+        currentPatrons: [],
+        thisPatron: {},
         newBuzz: '',
         placeholder: '',
         img1: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
@@ -27,6 +31,7 @@ class Patron extends Component {
         console.log('mounted');
         this.getBuzz()
         this.getUser()
+        this.getPatrons()
     }
 
     getUser = () => {
@@ -46,6 +51,16 @@ class Patron extends Component {
         console.log(this.state.username);
     }
 
+    getPatrons = () => {
+        API.getPatrons()
+          .then(res => {
+              this.setState({ currentPatrons: res.data })
+              console.log('we got the patrons')
+              console.log(this.state.currentPatrons)
+          })
+          .catch(err => console.log(err))
+    }
+
     getBuzz = () => {
         API.getBuzz()
           .then(res => {
@@ -55,6 +70,18 @@ class Patron extends Component {
             }
         )
           .catch(err => console.log(err))
+    }
+
+    handleFollow = event => {
+        const { name, value } = event.target;
+        
+        // this.setState({
+        //     [name]: value
+        // });
+        console.log("I want to follow you")
+        console.log(event.target)
+        console.log(event.target.dataset.tag)
+        
     }
 
     handleInputChange = event => {
@@ -99,6 +126,10 @@ class Patron extends Component {
                     lastName={this.state.lastName}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
+                    currentPatrons={this.state.currentPatrons}
+                    onClick={this.handleFollow}
+                    patronName={this.state.patronName}
+                    name="patronName"
                 />
                 <PatronPP 
                     key={this.state.username}
