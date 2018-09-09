@@ -4,6 +4,7 @@ import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
 import AddEventModal from '../modals/AddEventModal';
+import FollowModal from '../modals/FollowModal';
 
 class PatronSideBar extends Component {
 
@@ -74,15 +75,11 @@ class PatronSideBar extends Component {
                          onClick={this.props.onClick}
                         />
                     </div>
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-tasks"></i>
-                          <span>Guests</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="form_component.html">Form Components</a></li>
-                      </ul>
-                  </li>
+                    <div>
+                        <FollowModal 
+                         onClick={this.props.onClick}
+                        />
+                    </div>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
                           <i  className="fa fa-th"></i>
