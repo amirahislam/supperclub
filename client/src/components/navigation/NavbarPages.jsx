@@ -171,7 +171,7 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
             	<ul  className="nav pull-right top-menu">
                     <li>
                         <a  className="logout"
-                            href="/login"
+                            href="/"
                             onClick={this.logout}
                         >Logout</a>
                     </li>

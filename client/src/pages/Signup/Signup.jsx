@@ -13,10 +13,17 @@ class Signup extends Component {
         lastName: "",
         email: "",
         username: "",
+        nameTaken: "",
         userType: "",
         password: "",
         img: "",
         redirect: false
+    };
+
+    componentDidMount() {
+        this.props.updateUser({
+            onSignup: true
+        })
     };
 
     setRedirect = () => {
@@ -48,6 +55,32 @@ class Signup extends Component {
         console.log(event.target.value);
     };
 
+    checkUserName = event => {
+        const username = event.target.value;
+        console.log(username);
+        this.setState({
+            username: username
+        });
+        API.getPatron(username)
+        .then(res => {
+            console.log(res)
+            if (!res.data[0]) {
+                console.log("Username available");
+                this.setState({
+                    nameTaken: "Username available"
+                })
+            } else {
+                console.log("Username taken");
+                this.setState({
+                    nameTaken: "Username taken"
+                })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         let patronData = {
@@ -60,14 +93,26 @@ class Signup extends Component {
             img: this.state.img
         };
         console.log(patronData);
-        API.savePatron(patronData)
+        API.getPatron(patronData.username)
         .then(res => {
             console.log(res)
-            if (res.data) {
-                console.log("Successful signup!")
-                this.setRedirect();
+            if (!res.data[0]) {
+                console.log("Username available");
+                API.savePatron(patronData)
+                .then(res => {
+                    console.log(res)
+                    if (res.data) {
+                        console.log("Successful signup!")
+                        this.setRedirect();
+                    } else {
+                        console.log("Signup error")
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
             } else {
-                console.log("Signup error")
+                console.log("Username taken");
             }
         })
         .catch(error => {
@@ -126,12 +171,13 @@ class Signup extends Component {
                                 <input
                                     value={this.state.username}
                                     name="username"
-                                    onChange={this.handleInputChange}
+                                    onChange={this.checkUserName}
                                     type="text"
                                     className="form-control"
                                     id="username"
                                     placeholder="Username"                                        
                                 />
+                                <small id="usernameAvail" className="form-text text-muted">{this.state.nameTaken}</small>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="image">Image</label>

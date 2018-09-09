@@ -25,25 +25,26 @@ class App extends Component {
     sessionID: null,
     redirect: false,
     onLogin: false,
+    onSignup: false,
+    onHome: false,
     userObject: {}
   }
 
   componentDidMount() {
-    // console.log(req.session)
     this.getUser()
   }
 
-  // setRedirect = () => {
-  //   this.setState({
-  //     redirect: true
-  //   })
-  // };
+  setRedirect = () => {
+      this.setState({
+        redirect: true
+      })
+  };
 
-  // renderRedirect = () => {
-  //     if (this.state.redirect) {
-  //       return <Redirect to='/login' />
-  //     }
-  // };
+  renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/' />
+      }
+  };
 
   updateUser = (userObject) => {
     this.setState(
@@ -51,7 +52,6 @@ class App extends Component {
     )
     localStorage.setItem("user", this.state.username);
     localStorage.setItem("sessionID", this.state.sessionID);
-
   };
 
   getUser = () => {
@@ -63,37 +63,50 @@ class App extends Component {
     };
     API.checkSession(sessionData)
     .then(response => {
+      console.log(response);
       if (response.data._id && response.data.sessionUserID) {
         console.log("Login confirmed: ")
         console.log(response);
       } else {
         console.log("No matching sessions")
       }
-  }).catch(error => {
-      console.log('Login error: ')
-      console.log(error);
-      console.log(this)
-      console.log(this.state.onLogin);
-      if (this.state.onLogin === false) {
-        // this.setRedirect();
-      } else {
-        console.log("already on login page");
-      }
-  })
+    }).catch(error => {
+        console.log('Login error: ')
+        console.log(error);
+        console.log(this)
+        if (this.state.onLogin === false && this.state.onSignup === false && this.state.onHome === false) {
+          console.log("Redirect!");
+          this.setRedirect();
+        } else {
+          console.log("No redirect: Already on login, signup or home");
+        }
+    })
   }
 
   render() {
     return (
       <Router>
         <div>
-          {/* {this.renderRedirect()} */}
-          <Route exact path='/' component={Home}/>
+          {this.renderRedirect()}
+          <Route exact path='/'
+            render={() =>
+              <Home
+                updateUser={this.updateUser}
+              />
+            }
+          />
           <Route exact path='/Chef' component={Chef}/>
           <Route exact path='/Patron' component={Patron}/>
           <Route exact path='/Profile' component={Profile}/>
           <Route exact path='/Reservations' component={Reservation}/>
           <Route exact path='/Events' component={Events}/>
-          <Route exact path='/Signup' component={Signup}/>
+          <Route 
+            exact path='/Signup'
+            render={() =>
+              <Signup
+                updateUser={this.updateUser}
+              />}
+          />
           <Route
             exact path='/Login'
             render={() =>
