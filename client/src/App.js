@@ -69,17 +69,17 @@ class App extends Component {
       } else {
         console.log("No matching sessions")
       }
-  }).catch(error => {
-      console.log('Login error: ')
-      console.log(error);
-      console.log(this)
-      console.log(this.state.onLogin);
-      if (this.state.onLogin === false) {
-        // this.setRedirect();
-      } else {
-        console.log("already on login page");
-      }
-  })
+    }).catch(error => {
+        console.log('Login error: ')
+        console.log(error);
+        console.log(this)
+        console.log(this.state.onLogin);
+        if (this.state.onLogin === false) {
+          // this.setRedirect();
+        } else {
+          console.log("already on login page");
+        }
+    })
   }
 
   render() {
