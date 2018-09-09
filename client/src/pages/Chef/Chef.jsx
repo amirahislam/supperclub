@@ -84,7 +84,7 @@ class Chef extends Component {
                 </div>
                 
                     
-                    {/* <FriendCard /> */}
+                    <FriendCard />
                 {/* <DashboardComponents /> */}
             </div>
         )

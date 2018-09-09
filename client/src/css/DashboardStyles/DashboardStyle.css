@@ -153,12 +153,12 @@ a, a:hover, a:focus {
 	color: white;
 }
 
-hr {
+/* hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #797979;
-}
+} */
 
 
 
@@ -2227,4 +2227,8 @@ label {
 
 .site-min-height {
     min-height: 900px;
+}
+
+#friendcard {
+    padding-right: 5px;
 }

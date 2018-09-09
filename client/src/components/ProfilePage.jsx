@@ -21,7 +21,7 @@ class ProfilePage extends Component {
 									</div>
 								</div>
                                 <div class="profile-01 centered">
-                            <p>ADD TO CONTACT LIST</p>
+								<p><h5><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h5></p>
                         </div>
 							</div>
 								{/* <div class="pr2-social centered">
