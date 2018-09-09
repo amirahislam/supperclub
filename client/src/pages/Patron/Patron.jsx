@@ -10,6 +10,7 @@ import $ from 'jquery'
 class Patron extends Component {
 
     state = {
+        id: '',
         username: '',
         profpic: '',
         firstName: '',
@@ -21,6 +22,7 @@ class Patron extends Component {
         currentPatrons: [],
         thisPatron: {},
         newBuzz: '',
+        newFollow: '',
         placeholder: '',
         img1: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA8BLAglQRn7puP_PCHyGx5LzPed7oZTYab1JObhFprzdVwQMdsA',
         img2: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINIEB01_NAsc6vlMZB2jMOXQzWeOAX-ykhRTfezZFqXVPtOtuVg',
@@ -39,13 +41,14 @@ class Patron extends Component {
         console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
         .then(response => {
-            console.log(response);
             this.setState({
+                id: response.data[0]._id,
                 firstName: response.data[0].firstName,
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
                 profpic: response.data[0].img
             })
+            console.log(response.data)
         })
         .catch(err => console.log(err))
         console.log(this.state.username);
@@ -73,15 +76,26 @@ class Patron extends Component {
     }
 
     handleFollow = event => {
-        const { name, value } = event.target;
-        
-        // this.setState({
-        //     [name]: value
-        // });
         console.log("I want to follow you")
-        console.log(event.target)
-        console.log(event.target.dataset.tag)
-        
+        console.log(event.target.getAttribute('patronName'))
+        let patronName = event.target.getAttribute('patronName')
+        this.setState({
+            patronName: patronName
+        })
+        let id = this.state.id
+        console.log('Patron name: ', patronName)
+        console.log("ID: ", id)
+
+        API.saveFollow(id, this.state.patronName)
+          .then(res => this.setState({ newFollow: res }))
+          .catch(err => console.log(err));
+        console.log("New Follow: ")
+        console.log(this.state.newFollow)
+        // this.getPatrons()
+        this.setState({
+            newFollow: ''
+        })
+
     }
 
     handleInputChange = event => {
@@ -128,8 +142,6 @@ class Patron extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
-                    patronName={this.state.patronName}
-                    name="patronName"
                 />
                 <PatronPP 
                     key={this.state.username}

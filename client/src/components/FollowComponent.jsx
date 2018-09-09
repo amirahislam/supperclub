@@ -8,13 +8,15 @@ import '../pages/Patron/Timeline.css';
 // Destructuring the type, className, children and onClick props, applying them to the button element
 const FollowComponent = props => (
 
-    <button className="profile-01 centered followButton">
-        <div 
-        class="followComponent"
-        onClick={props.onClick}
-        > Follow
-        </div>
+  <div>
+    <button 
+        className="profile-01 centered followButton" 
+        {...props}
+    >Follow
     </button>
+  </div>
+       
+    
 
 );
 

@@ -25,10 +25,8 @@ class FriendCard extends Component {
                             </a>
                         </div>
                         <FollowComponent 
-                        key={this.props.key}
-                        data-tag={this.props.patronName}
-                        name={this.props.name}
-                        patronName={this.props.patronName}
+                        key={patron.username}
+                        patronname={patron.username}
                         onClick={this.props.onClick}
                         />
                         <div className="centered">
