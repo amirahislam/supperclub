@@ -60,14 +60,26 @@ class Signup extends Component {
             img: this.state.img
         };
         console.log(patronData);
-        API.savePatron(patronData)
+        API.getPatron(patronData.username)
         .then(res => {
             console.log(res)
-            if (res.data) {
-                console.log("Successful signup!")
-                this.setRedirect();
+            if (!res.data[0]) {
+                console.log("Username available");
+                API.savePatron(patronData)
+                .then(res => {
+                    console.log(res)
+                    if (res.data) {
+                        console.log("Successful signup!")
+                        this.setRedirect();
+                    } else {
+                        console.log("Signup error")
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
             } else {
-                console.log("Signup error")
+                console.log("Username taken");
             }
         })
         .catch(error => {
