@@ -19,7 +19,7 @@ class BootstrapTemplate extends Component {
             </h1>
             <hr/>
           
-          <div   className="col-lg-8 mx-auto">
+          <div   className="col-lg-12 mx-auto">
             <p   className="text-faded mb-5"></p>
             <a   className="btn btn-primary btn-xl js-scroll-trigger" href="/about">Learn More</a>
           </div>
@@ -110,10 +110,10 @@ class BootstrapTemplate extends Component {
               <div   className="portfolio-box-caption">
                 <div   className="portfolio-box-caption-content">
                   <div   className="project-category text-faded">
-                    Category
+                    {/* Category */}
                   </div>
                   <div   className="project-name">
-                    Project Name
+                    {/* Project Name */}
                   </div>
                 </div>
               </div>
@@ -126,10 +126,10 @@ class BootstrapTemplate extends Component {
       <div   className="portfolio-box-caption">
         <div   className="portfolio-box-caption-content">
           <div   className="project-category text-faded">
-            Category
+            {/* Category */}
           </div>
           <div   className="project-name">
-            Project Name
+            {/* Project Name */}
           </div>
         </div>
       </div>
@@ -141,10 +141,10 @@ class BootstrapTemplate extends Component {
               <div   className="portfolio-box-caption">
                 <div   className="portfolio-box-caption-content">
                   <div   className="project-category text-faded">
-                    Category
+                    {/* Category */}
                   </div>
                   <div   className="project-name">
-                    Project Name
+                    {/* Project Name */}
                   </div>
                 </div>
               </div>
@@ -156,10 +156,10 @@ class BootstrapTemplate extends Component {
               <div   className="portfolio-box-caption">
                 <div   className="portfolio-box-caption-content">
                   <div   className="project-category text-faded">
-                    Category
+                    {/* Category */}
                   </div>
                   <div   className="project-name">
-                    Project Name
+                    {/* Project Name */}
                   </div>
                 </div>
               </div>
@@ -171,10 +171,10 @@ class BootstrapTemplate extends Component {
               <div   className="portfolio-box-caption">
                 <div   className="portfolio-box-caption-content">
                   <div   className="project-category text-faded">
-                    Category
+                    {/* Category */}
                   </div>
                   <div   className="project-name">
-                    Project Name
+                    {/* Project Name */}
                   </div>
                 </div>
               </div>
@@ -187,10 +187,10 @@ class BootstrapTemplate extends Component {
               <div   className="portfolio-box-caption">
                 <div   className="portfolio-box-caption-content">
                   <div   className="project-category text-faded">
-                    Category
+                    {/* Category */}
                   </div>
                   <div   className="project-name">
-                    Project Name
+                    {/* Project Name */}
                   </div>
                 </div>
               </div>

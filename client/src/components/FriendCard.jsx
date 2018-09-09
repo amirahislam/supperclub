@@ -17,7 +17,7 @@ class FriendCard extends Component {
                             <h6>FOODIE</h6>
                         </div>
                         <div class="profile-01 centered">
-                            <p>ADD TO CONTACT LIST</p>
+                       <p><h6><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h6></p>
                         </div>
                         <div class="centered">
                             {/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
@@ -32,7 +32,7 @@ class FriendCard extends Component {
                             <h6>FOODIE</h6>
                         </div>
                         <div class="profile-01 centered">
-                            <p>ADD TO CONTACT LIST</p>
+                        <p><h6><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h6></p>
                         </div>
                         <div class="centered">
                             {/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
@@ -47,7 +47,7 @@ class FriendCard extends Component {
                         <h6>FOODIE</h6>
                     </div>
                     <div class="profile-01 centered">
-                        <p>ADD TO CONTACT LIST</p>
+                    <p><h6><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h6></p>
                     </div>
                     <div class="centered">
                         {/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
@@ -63,7 +63,7 @@ class FriendCard extends Component {
 									<h6>FOODIE</h6>
 								</div>
 								<div class="profile-01 centered">
-									<p>ADD TO CONTACT LIST</p>
+                                <p><h6><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h6></p>
 								</div>
 								<div class="centered">
 									{/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
@@ -78,7 +78,7 @@ class FriendCard extends Component {
 									<h6>FOODIE</h6>
 								</div>
 								<div class="profile-01 centered">
-									<p>ADD TO CONTACT LIST</p>
+                                <p><h6><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h6></p>
 								</div>
 								<div class="centered">
 									{/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
@@ -93,7 +93,7 @@ class FriendCard extends Component {
 									<h6>FOODIE</h6>
 								</div>
 								<div class="profile-01 centered">
-									<p>ADD TO CONTACT LIST</p>
+                                <p><h6><i class="fa fa-telegram" id="friendcard"></i>FOLLOW</h6></p>
 								</div>
 								<div class="centered">
 									{/* <h6><i class="fa fa-envelope"></i><br/>MESSAGE</h6> */}
