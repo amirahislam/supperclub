@@ -14,7 +14,6 @@ class Login extends Component {
     };
 
     componentDidMount() {
-
     };
 
     setRedirect = (userType) => {
@@ -55,7 +54,7 @@ class Login extends Component {
                 console.log("Login response: ")
                 console.log(response);
                 let thisUser = response.data.username;
-                // update App.js state
+                // // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
                     username: response.data.username

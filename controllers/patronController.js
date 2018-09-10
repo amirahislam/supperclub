@@ -19,9 +19,15 @@ module.exports = {
   findByUsernamePassword: function(req, res, next) {
     // Insert function from patron.js here if there is time
   },
+  findOneAndUpdate: function (req, res) {
+    db.Patron
+      .update({$push: {following: req.body}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
   create: function(req, res) {
     db.Patron
-      .create(req.body)
+      .post(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

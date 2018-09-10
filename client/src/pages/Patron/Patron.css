@@ -1,4 +1,4 @@
-.patronMiddle {
+.patronMiddle, .chefMiddle {
     margin-top: 100px;
 }
 
@@ -13,4 +13,10 @@
 
 .buzzInput {
     width: 100%;
+}
+
+.toDoPanel {
+    width: 550px;
+    height: 100%;
+    padding-top: 50px;
 }

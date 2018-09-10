@@ -3,10 +3,15 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
-
 import AddEventModal from '../modals/AddEventModal';
+import FollowModal from '../modals/FollowModal';
 
 class PatronSideBar extends Component {
+
+    componentDidMount() {
+        console.log('mounted');
+     
+    }
 
     ProfilePic = props => (
   
@@ -65,18 +70,18 @@ class PatronSideBar extends Component {
                           <li><a  href="todo_list.html">Todo List</a></li>
                       </ul>
                   </li>
-                    <AddEventModal 
-                    
-                    />
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-tasks"></i>
-                          <span>Guests</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="form_component.html">Form Components</a></li>
-                      </ul>
-                  </li>
+                    <div>
+                        <AddEventModal 
+                         onClick={this.props.onClick}
+                        />
+                    </div>
+                    <div>
+                        <FollowModal 
+                         onClick={this.props.onClick}
+                         currentPatrons={this.props.currentPatrons}
+                         patronName={this.props.patronName}
+                        />
+                    </div>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
                           <i  className="fa fa-th"></i>

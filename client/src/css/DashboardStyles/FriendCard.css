@@ -1,0 +1,13 @@
+.patronImg {
+	margin-top: -15px;
+}
+
+.friendCard {
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.profilePic {
+    height: 100%;
+	width: 100%;
+}
