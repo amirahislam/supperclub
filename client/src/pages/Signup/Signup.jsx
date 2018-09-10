@@ -21,9 +21,7 @@ class Signup extends Component {
     };
 
     componentDidMount() {
-        this.props.updateUser({
-            onSignup: true
-        })
+
     };
 
     setRedirect = () => {

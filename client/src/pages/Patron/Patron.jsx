@@ -24,14 +24,12 @@ class Patron extends Component {
     }
 
     componentDidMount() {
-        console.log('mounted');
         this.getBuzz()
-        this.getUser()
+        this.getUserData()
     }
 
-    getUser = () => {
+    getUserData = () => {
         let localsessionUser = localStorage.getItem("user")
-        console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
         .then(response => {
             console.log(response);
@@ -43,8 +41,6 @@ class Patron extends Component {
             })
         })
         .catch(err => console.log(err))
-        console.log(this.state.loggedIn);
-        console.log(this.state.username);
     }
 
     getBuzz = () => {

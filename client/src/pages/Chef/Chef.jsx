@@ -34,13 +34,11 @@ class Chef extends Component {
     }
 
     componentDidMount() {
-        console.log('mounted');
-        this.getUser();
+        this.getUserData();
     }
 
-    getUser = () => {
+    getUserData = () => {
         let localsessionUser = localStorage.getItem("user")
-        console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
         .then(response => {
             console.log(response);
