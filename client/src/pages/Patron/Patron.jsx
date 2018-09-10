@@ -5,7 +5,6 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
-import $ from 'jquery'
 
 class Patron extends Component {
 

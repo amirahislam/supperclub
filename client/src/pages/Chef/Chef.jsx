@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import NavbarPages from '../../components/navigation/NavbarPages';
-import UpcomingEventsTest from '../../components/UpcomingEventsTest';
-import SocialMedia from '../../components/SocialMedia';
-import Badges from '../../components/BadgesComponent';
-import ActivitiesPanel from '../../components/containers/ActivitiesPanel';
-import Notifications from '../../components/Notifications';
+import ChefPP from '../../components/containers/ChefPageContainer'
 import SideBar from '../../components/navigation/SideBar';
-import FriendCard from '../../components/FriendCard';
-import ToDoPanel from '../../components/ToDoPanel';
 // import Revenue from '../../components/Revenue';
 import API from "../../utils/API";
-
 import './Chef.css'
-import  Flexbox from 'flexbox-react';
 
 
 
@@ -54,7 +46,82 @@ class Chef extends Component {
         .catch(err => console.log(err))
         console.log(this.state.loggedIn);
         console.log(this.state.username);   
-    }
+      }
+
+    getPatrons = () => {
+        API.getPatrons()
+          .then(res => {
+              this.setState({ currentPatrons: res.data })
+              console.log('we got the patrons')
+              console.log(this.state.currentPatrons)
+          })
+          .catch(err => console.log(err))
+      }
+
+    getBuzz = () => {
+        API.getBuzz()
+          .then(res => {
+            this.setState({ currentBuzz: res.data });
+            console.log('we got the buzz')
+            console.log(this.state.currentBuzz)
+            }
+        )
+          .catch(err => console.log(err))
+      }
+
+    handleFollow = event => {
+        console.log("I want to follow you")
+        console.log(event.target.getAttribute('patronName'))
+        let patronName = event.target.getAttribute('patronName')
+        this.setState({
+            patronName: patronName
+        })
+        let id = this.state.id
+        console.log('Patron name: ', patronName)
+        console.log("ID: ", id)
+
+        API.saveFollow(id, this.state.patronName)
+          .then(res => this.setState({ newFollow: res }))
+          .catch(err => console.log(err));
+        console.log("New Follow: ")
+        console.log(this.state.newFollow)
+        // this.getPatrons()
+        this.setState({
+            newFollow: ''
+        })
+
+      }
+
+    handleInputChange = event => {
+        // Destructure the name and value properties off of event.target
+        // Update the appropriate state
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+      };
+
+    handleFormSubmit = event => {
+        // When the form is submitted, prevent its default behavior, get recipes update the recipes state
+        event.preventDefault();
+        let buzzData = {
+            username: this.state.username,
+            buzz: this.state.buzzVal
+        }
+
+        console.log(buzzData)
+
+        API.createBuzz(buzzData)
+          .then(res => this.setState({ newBuzz: res.data }))
+          .catch(err => console.log(err));
+        console.log(this.state.buzzVal)
+        this.getBuzz()
+        this.setState({
+            buzzVal: ''
+        })
+        
+      };
+
 
     render() {
         const instaPanel = {
@@ -68,23 +135,31 @@ class Chef extends Component {
             <div>
                 <NavbarPages />
                 <SideBar
-                    
+                  userPP={this.state.profpic}
+                  username={this.state.username}
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  badges={this.state.badges}
+                  userFullName={this.state.firstName + ' ' + this.state.lastName}
+                  currentPatrons={this.state.currentPatrons}
+                  onClick={this.handleFollow}  
                 />
-                <div className='wrapper chefPage'>
-                    {/* <SideToolBar /> */}
-                    {/* <UpcomingEventsTest /> */}
-                    {/* <Revenue /> */}
-                    <Badges />
-                    <SocialMedia />
-                    <ActivitiesPanel />
-                    <ToDoPanel />
-                    {/* <Notifications /> */}
-                
-                   
-                </div>
+                <ChefPP 
+                key={this.state.username}
+                user={this.state.username}
+                img1={this.state.img1}
+                img2={this.state.img2}
+                img3={this.state.img3}
+                onClick={this.handleFormSubmit}
+                name='buzzVal'
+                value={this.state.buzzVal}
+                placeholder='Create some buzz...'
+                onChange={this.handleInputChange}
+                currentBuzz={this.state.currentBuzz}
+                />
                 
                     
-                    <FriendCard />
+                
                 {/* <DashboardComponents /> */}
             </div>
         )
