@@ -9,17 +9,25 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
   },
   findById: function(req, res) {
+    console.log("find by id");
+    console.log(req.params)
     db.Patron
-      .findById(req.params.id)
+      .find({username: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findByUsernamePassword: function(req, res, next) {
     // Insert function from patron.js here if there is time
   },
+  findOneAndUpdate: function (req, res) {
+    db.Patron
+      .update({$push: {following: req.body}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
   create: function(req, res) {
     db.Patron
-      .create(req.body)
+      .post(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

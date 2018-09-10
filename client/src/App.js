@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import API from './utils/API';
 
 
 import Home from './pages/Home/Home.jsx';
@@ -19,41 +21,65 @@ class App extends Component {
 
   state = {
     loggedIn: false,
-    username: null
+    username: null,
+    sessionID: null,
+    redirect: false,
+    onLogin: false,
+    onSignup: false,
+    onHome: false,
+    userObject: {}
   }
 
   componentDidMount() {
-    // this.getUser()
+    this.getUser()
   }
 
+  setRedirect = () => {
+      this.setState({
+        redirect: true
+      })
+  };
+
+  renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/' />
+      }
+  };
+
   updateUser = (userObject) => {
-    console.log("Update user");
     this.setState(
         userObject
     )
-    console.log(this.state.loggedIn);
-    console.log(this.state.username);
+    localStorage.setItem("user", this.state.username);
+    localStorage.setItem("sessionID", this.state.sessionID);
   };
 
   getUser = () => {
-    console.log("Get user")
-    axios.get('/api/patrons/login').then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
-      if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
-
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username
-        })
+    let localsessionUser = localStorage.getItem("user")
+    let localsessionID = localStorage.getItem("sessionID")
+    let sessionData = {
+      sessionUserID: localsessionUser,
+      sessionID: localsessionID
+    };
+    API.checkSession(sessionData)
+    .then(response => {
+      console.log(response);
+      if (response.data._id && response.data.sessionUserID) {
+        console.log("Login confirmed: ")
+        console.log(response);
       } else {
-        console.log('Get user: no user');
-        this.setState({
-          loggedIn: false,
-          username: null
-        })
+        console.log("No matching sessions")
       }
+    }).catch(error => {
+        console.log('Login error: ')
+        console.log(error);
+        console.log(this)
+        if (this.state.onLogin === false && this.state.onSignup === false && this.state.onHome === false) {
+          console.log("Redirect!");
+          this.setRedirect();
+        } else {
+          console.log("No redirect: Already on login, signup or home");
+        }
     })
   }
 
@@ -61,13 +87,26 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path='/' component={Home}/>
+          {/* {this.renderRedirect()} */}
+          <Route exact path='/'
+            render={() =>
+              <Home
+                updateUser={this.updateUser}
+              />
+            }
+          />
           <Route exact path='/Chef' component={Chef}/>
           <Route exact path='/Patron' component={Patron}/>
           <Route exact path='/Profile' component={Profile}/>
           <Route exact path='/Reservations' component={Reservation}/>
           <Route exact path='/Events' component={Events}/>
-          <Route exact path='/Signup' component={Signup}/>
+          <Route 
+            exact path='/Signup'
+            render={() =>
+              <Signup
+                updateUser={this.updateUser}
+              />}
+          />
           <Route
             exact path='/Login'
             render={() =>

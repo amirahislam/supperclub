@@ -1,3 +1,22 @@
-.profilePage {
-    margin-top: 200px;
+.patronMiddle, .chefMiddle {
+    margin-top: 100px;
+}
+
+.timelineDiv {
+    width: 340px;
+    height: 680px;
+}
+
+.timelineContent {
+    width: 100%;
+}
+
+.buzzInput {
+    width: 100%;
+}
+
+.toDoPanel {
+    width: 550px;
+    height: 100%;
+    padding-top: 50px;
 }

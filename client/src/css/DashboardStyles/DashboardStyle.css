@@ -1,5 +1,5 @@
 /* Import fonts */
-@import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Ruda:400,700,900);
 
 /* BASIC THEME CONFIGURATION */
 
@@ -153,12 +153,12 @@ a, a:hover, a:focus {
 	color: white;
 }
 
-hr {
+/* hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #797979;
-}
+} */
 
 
 
@@ -1159,7 +1159,7 @@ PANELS CONFIGURATIONS
 
 /* Weather 1 */
 .weather {
-	/* background: url(../img/weather.jpg) no-repeat center top; */
+	background: url(./img/austin.jpg) no-repeat center top;
 	text-align: center;
 	background-position: center center;
 }
@@ -1478,22 +1478,18 @@ PANELS CONFIGURATIONS
 
 /* PROFILE PANELS */
 /* Profile 01*/
-#profile-01 {
-	background: url(./img/profile-01.jpg) no-repeat center top;
+.patronImg {
 	margin-top: -15px;
-	background-attachment: relative;
-	background-position: center center;
-	min-height: 150px;
-	width: 100%;
-    -webkit-background-size: 100%;
+    /* -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
     background-size: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
 }
+
 #profile-01 h3 {
 	color: white;
 	padding-top: 50px;
@@ -2231,4 +2227,8 @@ label {
 
 .site-min-height {
     min-height: 900px;
+}
+
+#friendcard {
+    padding-right: 5px;
 }

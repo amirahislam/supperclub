@@ -10,7 +10,8 @@ const patronSchema = new Schema({
   userType: { type: String, required: true },
   password: { type: String, required: true },
   img: { type: String },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  following: []
 });
 
 patronSchema.methods = {

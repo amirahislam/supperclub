@@ -40,7 +40,7 @@ router.get('/', (req, res, next) => {
 
 router.route("/:id")
   .get(patronController.findById)
-  .put(patronController.update)
+  .put(patronController.findOneAndUpdate)
   .delete(patronController.remove);
 
 module.exports = router;

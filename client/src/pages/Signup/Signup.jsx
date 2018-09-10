@@ -4,6 +4,7 @@ import BuzzInput from '../../components/BuzzInput';
 import SubmitButton from '../../components/SubmitButton';
 import DropDown from '../../components/DropDown';
 import API from "../../utils/API";
+import SignUpPage from '../../components/SignUpPage';
 
 class Signup extends Component {
 
@@ -12,10 +13,17 @@ class Signup extends Component {
         lastName: "",
         email: "",
         username: "",
+        nameTaken: "",
         userType: "",
         password: "",
         img: "",
         redirect: false
+    };
+
+    componentDidMount() {
+        this.props.updateUser({
+            onSignup: true
+        })
     };
 
     setRedirect = () => {
@@ -47,6 +55,32 @@ class Signup extends Component {
         console.log(event.target.value);
     };
 
+    checkUserName = event => {
+        const username = event.target.value;
+        console.log(username);
+        this.setState({
+            username: username
+        });
+        API.getPatron(username)
+        .then(res => {
+            console.log(res)
+            if (!res.data[0]) {
+                console.log("Username available");
+                this.setState({
+                    nameTaken: "Username available"
+                })
+            } else {
+                console.log("Username taken");
+                this.setState({
+                    nameTaken: "Username taken"
+                })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         let patronData = {
@@ -59,14 +93,26 @@ class Signup extends Component {
             img: this.state.img
         };
         console.log(patronData);
-        API.savePatron(patronData)
+        API.getPatron(patronData.username)
         .then(res => {
             console.log(res)
-            if (res.data) {
-                console.log("Successful signup!")
-                this.setRedirect();
+            if (!res.data[0]) {
+                console.log("Username available");
+                API.savePatron(patronData)
+                .then(res => {
+                    console.log(res)
+                    if (res.data) {
+                        console.log("Successful signup!")
+                        this.setRedirect();
+                    } else {
+                        console.log("Signup error")
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
             } else {
-                console.log("Signup error")
+                console.log("Username taken");
             }
         })
         .catch(error => {
@@ -76,53 +122,155 @@ class Signup extends Component {
 
     render() {
         return (
-            <div>
+            <div id="login-page">
                 {this.renderRedirect()}
-                <h1>Signup Page</h1>
+                <div className="container">
+                    <form className="form-login" action="index.html">
+                        <h2 className="form-login-heading">sign up now</h2>
+                        <div className="login-wrap">
+                            <div className="form-group">
+                                <label htmlFor="firstName">First Name</label>
+                                    <input 
+                                    value={this.state.firstName}
+                                    name="firstName"
+                                    onChange={this.handleInputChange}
+                                    type="text"
+                                    className="form-control"
+                                    id="firstName"
+                                    placeholder="First name"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="lastName">Last Name</label>
+                                    <input
+                                        value={this.state.lastName}
+                                        name="lastName"
+                                        onChange={this.handleInputChange}
+                                        type="text"
+                                        className="form-control"
+                                        id="lastName"
+                                        placeholder="Last name"                                        
+                                    />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputEmail1">Email address</label>
+                                    <input
+                                        value={this.state.email}
+                                        name="email"
+                                        onChange={this.handleInputChange}
+                                        type="email"
+                                        className="form-control"
+                                        id="exampleInputEmail1"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Enter email"
+                                    />
+                                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="username">Username</label>
+                                <input
+                                    value={this.state.username}
+                                    name="username"
+                                    onChange={this.checkUserName}
+                                    type="text"
+                                    className="form-control"
+                                    id="username"
+                                    placeholder="Username"                                        
+                                />
+                                <small id="usernameAvail" className="form-text text-muted">{this.state.nameTaken}</small>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="image">Image</label>
+                                <input
+                                    value={this.state.img}
+                                    name="img"
+                                    onChange={this.handleInputChange}
+                                    type="text"
+                                    className="form-control"
+                                    id="img"
+                                    placeholder="Image URL"                                        
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Password</label>
+                                <input
+                                    value={this.state.password}
+                                    name="password"
+                                    onChange={this.handleInputChange}
+                                    type="password"
+                                    className="form-control"
+                                    id="exampleInputPassword1"
+                                    placeholder="Password"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">Chef/Patron</label>
+                                    <select
+                                        className="custom-select my-1 mr-sm-2"
+                                        id="inlineFormCustomSelectPref"
+                                        onChange={this.handleDropDown}
+                                    >
+                                        <option>Choose...</option>
+                                        <option value="Chef">Chef</option>
+                                        <option value="Patron">Patron</option>
+                                    </select>
+                            </div>
+                            <button
+                                type="submit"
+                                className="btn btn-primary"
+                                onClick={this.handleFormSubmit}
+                            >
+                            Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>   
+                {/* <h2>Signup Page</h2>
                 <BuzzInput
-                    value={this.state.firstName}
-                    name="firstName"
-                    placeholder="First name"
-                    onChange={this.handleInputChange}
+                value={this.state.firstName}
+                name="firstName"
+                placeholder="First name"
+                onChange={this.handleInputChange}
                 />
                 <BuzzInput
-                    value={this.state.lastName}
-                    name="lastName"
-                    placeholder="Last name"
-                    onChange={this.handleInputChange}
+                value={this.state.lastName}
+                name="lastName"
+                placeholder="Last name"
+                onChange={this.handleInputChange}
                 />
                 <BuzzInput
-                    value={this.state.email}
-                    name="email"
-                    placeholder="Email address"
-                    onChange={this.handleInputChange}
+                value={this.state.email}
+                name="email"
+                placeholder="Email address"
+                onChange={this.handleInputChange}
                 />
                 <BuzzInput
-                    value={this.state.username}
-                    name="username"
-                    placeholder="Username"
-                    onChange={this.handleInputChange}
+                value={this.state.username}
+                name="username"
+                placeholder="Username"
+                onChange={this.handleInputChange}
                 />
                 <BuzzInput
-                    value={this.state.img}
-                    name="img"
-                    placeholder="Image URL (optional)"
-                    onChange={this.handleInputChange}
+                value={this.state.img}
+                name="img"
+                placeholder="Image URL (optional)"
+                onChange={this.handleInputChange}
                 />
                 <BuzzInput
-                    value={this.state.password}
-                    name="password"
-                    placeholder="Password"
-                    onChange={this.handleInputChange}
+                value={this.state.password}
+                name="password"
+                placeholder="Password"
+                onChange={this.handleInputChange}
                 />
                 <DropDown
-                    value={this.state.userType}
-                    name="userType"
-                    onChange={this.handleDropDown}
+                value={this.state.userType}
+                name="userType"
+                onChange={this.handleDropDown}
                 />
                 <SubmitButton
-                    onClick={this.handleFormSubmit}
+                onClick={this.handleFormSubmit}
                 />
+                <h3>Already have a login? <a href="/login">Log in here!</a></h3> */}
             </div>
         )
     };

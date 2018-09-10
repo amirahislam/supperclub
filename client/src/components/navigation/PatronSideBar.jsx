@@ -3,37 +3,42 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
-
 import AddEventModal from '../modals/AddEventModal';
+import FollowModal from '../modals/FollowModal';
 
 class PatronSideBar extends Component {
 
-    // ProfilePic = props => (
+    componentDidMount() {
+        console.log('mounted');
+     
+    }
+
+    ProfilePic = props => (
   
-    //     <div className='col-md-4'>
-    //       <div className="row">
-    //         <div className="card profileCard">
-    //           <img className="card-img-top" src={this.props.userPP} alt={this.props.userName} />
-    //             <div className="card-body">
-    //               <h5 className="card-title">{this.props.userFullName}</h5>
-    //               <p className="card-text">Add your bio here</p>
-    //               <a href="#" className="btn btn-primary">Find suppers!!!</a>
-    //             </div>
-    //         </div>
-    //       </div>
-    //     </div>
+        <div className='col-md-4'>
+          <div className="row">
+            <div className="card profileCard">
+              <img className="card-img-top" src={this.props.userPP} alt={this.props.userName} />
+                <div className="card-body">
+                  <h5 className="card-title">{this.props.userFullName}</h5>
+                  <p className="card-text">Add your bio here</p>
+                  <a href="#" className="btn btn-primary">Find suppers!!!</a>
+                </div>
+            </div>
+          </div>
+        </div>
     
-    // )
+    )
     
     render() {
         return (
             <aside>
-          <div id="sidebar"   className="nav-collapse ">
+          <div id="sidebar" className="nav-collapse ">
               {/* <!-- sidebar menu start--> */}
               <ul  className="sidebar-menu" id="nav-accordion">
               
-              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userName} className="img-circle" width="60"/></a></p>
-              	  <h5  className="centered">{this.props.userFullName}</h5>
+              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
+              	  <h5  className="centered">{this.props.username}</h5>
               	  	
                   <li  className="mt">
                       <a  className="active" href="index.html">
@@ -65,18 +70,18 @@ class PatronSideBar extends Component {
                           <li><a  href="todo_list.html">Todo List</a></li>
                       </ul>
                   </li>
-                    <AddEventModal 
-                    patronId={this.props.username}
-                    />
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-tasks"></i>
-                          <span>Guests</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="form_component.html">Form Components</a></li>
-                      </ul>
-                  </li>
+                    <div>
+                        <AddEventModal 
+                         onClick={this.props.onClick}
+                        />
+                    </div>
+                    <div>
+                        <FollowModal 
+                         onClick={this.props.onClick}
+                         currentPatrons={this.props.currentPatrons}
+                         patronName={this.props.patronName}
+                        />
+                    </div>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
                           <i  className="fa fa-th"></i>

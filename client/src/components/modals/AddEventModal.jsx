@@ -9,8 +9,13 @@ import API from "../../utils/API";
 
 class AddEventModal extends React.Component {
 
+    componentDidMount() {
+        console.log('mounted');
+     
+    }
+
         constructor(props, context) {
-        super(props, context);
+        super(props, context);  
       
         this.state = {
           showModal: false,
@@ -144,7 +149,8 @@ class AddEventModal extends React.Component {
                                       rows="3" 
                                       name="description"
                                       value={this.state.description}
-                                      onChange={this.handleSelection}>
+                                      onChange={this.handleSelection}
+                                    >
                                     </textarea>
                                 </FormGroup>
 
@@ -159,7 +165,6 @@ class AddEventModal extends React.Component {
                                             name="eventImg"
                                             onChange={this.handleSelection}
                                         >
-                                        
                                         </FormControl>
                                 </FormGroup>
 
@@ -221,7 +226,9 @@ class AddEventModal extends React.Component {
                                       rows="3" 
                                       name="rules"
                                       value={this.state.rules}
-                                      onChange={this.handleSelection}></textarea>
+                                      onChange={this.handleSelection}
+                                    >
+                                    </textarea>
                                 </FormGroup>
 
                             </FormGroup>
