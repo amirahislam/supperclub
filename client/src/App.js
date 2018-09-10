@@ -26,11 +26,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getUser()
+    this.getUser();
+    // console.log(this.getUser());
+    // this.checkLogin = () => {
+    //   this.getUser()
+    // }
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    // console.log(this.state);
+    // console.log(this.checkLogin(this.state.loggedIn));
+    // console.log(this.getUser());
   }
 
   updateUser = (userObject) => {
@@ -41,48 +47,55 @@ class App extends Component {
     localStorage.setItem("sessionID", this.state.sessionID);
   };
 
+  // checkLogin = (loggedIn) => {
+  //   return (loggedIn ? true : false)
+  // }
+
   getUser = () => {
     let localSessionID = localStorage.getItem("sessionID")
-    console.log(localSessionID);
+    // console.log(localSessionID);
     if (!localSessionID || localSessionID === "null") {
-      console.log("Session null");
+      // console.log("Session null");
       this.setState({
         loggedIn: false
       });
-      // const isLoggedin = 0;
-      // console.log(isLoggedin);
-      // return isLoggedin;
+      const isLoggedin = false;
+      console.log(isLoggedin);
+      console.log(this.state.loggedIn);
+      return (isLoggedin ? true : false)
     } else {
-      console.log("Session not null")
+      // console.log("Session not null")
       API.checkSession(localSessionID)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data._id === localSessionID) {
-          console.log("Login confirmed");
+          // console.log("Login confirmed");
           this.setState({
             loggedIn: true
           });
-          // const isLoggedin = 1;
-          // console.log(isLoggedin);
-          // return isLoggedin;          
+          const isLoggedin = true;
+          console.log(isLoggedin);
+          console.log(this.state.loggedIn);
+          return (isLoggedin ? true : false)    
         } else {
-          console.log("No matching sessions");
+          // console.log("No matching sessions");
           this.setState({
             loggedIn: false
           });
-          // const isLoggedin = 0;
-          // console.log(isLoggedin);
-          // return isLoggedin;        
+          const isLoggedin = false;
+          console.log(isLoggedin);
+          console.log(this.state.loggedIn);
+          return (isLoggedin ? true : false)
         }
       }).catch(error => {
-          console.log('Login error: ')
-          console.log(error);
-          this.setState({
-            loggedIn: false
-          });
-          // const isLoggedin = 0;
+          // console.log('Login error: ')
+          // console.log(error);
+          // this.setState({
+          //   loggedIn: false
+          // });
+          // const isLoggedin = false;
           // console.log(isLoggedin);
-          // return isLoggedin;
+          // return (isLoggedin ? true : false)
       })
     }
   }
@@ -91,6 +104,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+          {/* {this.getUser()} */}
           <Switch>
             <Route exact path='/'
               render={() =>
@@ -112,46 +126,56 @@ class App extends Component {
                   updateUser={this.updateUser}
                 />}
             />
-            <Route exact path='/Chef' component={Chef}/>
-            {/* <Route exact path="/Chef" render={() => (
-              this.state.loggedIn ? (
+            {/* <Route exact path='/Chef' component={Chef}/> */}
+            <Route exact path="/Chef" render={() => (
+              this.state.loggedIn === true ? (
                 <Chef />
-              ) : (
+              ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
+              ) : (
+                null
               )
-            )}/>             */}
-            <Route exact path='/Patron' component={Patron} />
-            {/* <Route exact path="/Patron" render={() => (
-              this.state.loggedIn ? (
+            )}/>            
+            {/* <Route exact path='/Patron' component={Patron} /> */}
+            <Route exact path="/Patron" render={() => (
+              this.state.loggedIn === true ? (
                 <Patron />
-              ) : (
+              ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
+              ) : (
+                null
               )
-            )}/> */}
-            <Route exact path='/Profile' component={Profile}/>
-            {/* <Route exact path="/Profile" render={() => (
-              this.state.loggedIn ? (
+            )}/>
+            {/* <Route exact path='/Profile' component={Profile}/> */}
+            <Route exact path="/Profile" render={() => (
+              this.state.loggedIn === true ? (
                 <Profile />
-              ) : (
+              ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
+              ) : (
+                null
               )
-            )}/> */}
-            <Route exact path='/Reservations' component={Reservation}/>
-            {/* <Route exact path="/Reservations" render={() => (
-              this.state.loggedIn ? (
+            )}/>
+            {/* <Route exact path='/Reservations' component={Reservation}/> */}
+            <Route exact path="/Reservations" render={() => (
+              this.state.loggedIn === true ? (
                 <Reservation />
-              ) : (
+              ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
+              ) : (
+                null
               )
-            )}/> */}
-            <Route exact path='/Events' component={Events}/>
-            {/* <Route exact path="/Events" render={() => (
-              this.state.loggedIn ? (
+            )}/>
+            {/* <Route exact path='/Events' component={Events}/> */}
+            <Route exact path="/Events" render={() => (
+              this.state.loggedIn === true ? (
                 <Events />
-              ) : (
+              ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
+              ) : (
+                null
               )
-            )}/> */}
+            )}/>
           </Switch>
         </div>
       </Router>
