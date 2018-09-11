@@ -4,13 +4,17 @@ import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
 import '../css/DashboardStyles/FriendCard.css'
 import FollowComponent from './FollowComponent'
+import ViewProfileComponent from './ViewProfileComponent'
+
 
 import { Link } from 'react-router-dom';
 
 class FriendCard extends Component {
 
     render() {
+        let uuidv4 = require('uuid/v4');
         return (
+            
             <div className="friendCard">
 
                 {
@@ -24,14 +28,30 @@ class FriendCard extends Component {
                                 <img className="profilePic" src={patron.img} alt={patron.username} />
                             </a>
                         </div>
-                        <FollowComponent 
-                        key={patron.username}
-                        patronname={patron.username}
-                        onClick={this.props.onClick}
-                        />
+                        
                         <div className="centered">
                             <h3>{patron.username}</h3>
                             <h6>{patron.email}</h6>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-md-1"></div>
+                            <div className="col-md-10">
+                              <div className="row">
+                                <FollowComponent 
+                                key={uuidv4()}
+                                patronname={patron.username}
+                                patronid={patron.id}
+                                onClick={this.props.onClick}
+                                />
+                                <ViewProfileComponent 
+                                key={uuidv4()}
+                                // patronname={patron.username}
+                                // onClick={this.props.onClick}
+                                />
+                              </div>
+                            </div>
+                          <div className="col-md-1"></div>
                         </div>
                     
                 </div>

@@ -5,6 +5,9 @@ import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
 import AddEventModal from '../modals/AddEventModal';
 import FollowModal from '../modals/FollowModal';
+import EventsButton from '../EventsButton';
+import HomeButton from '../HomeButton';
+let uuidv4 = require('uuid/v4');
 
 class PatronSideBar extends Component {
 
@@ -40,24 +43,13 @@ class PatronSideBar extends Component {
               	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
               	  <h5  className="centered">{this.props.username}</h5>
               	  	
-                  <li  className="mt">
-                      <a  className="active" href="index.html">
-                          <i  className="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
+                  <HomeButton 
+                
+                  />
 
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-desktop"></i>
-                          <span>Reviews</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
-                      </ul>
-                  </li>
+                  <EventsButton 
+                    
+                  />
 
                   <li  className="sub-menu">
                       <a href="javascript:;" >
@@ -72,11 +64,13 @@ class PatronSideBar extends Component {
                   </li>
                     <div>
                         <AddEventModal 
+                         key={uuidv4()}
                          onClick={this.props.onClick}
                         />
                     </div>
                     <div>
                         <FollowModal 
+                         key={uuidv4()}
                          onClick={this.props.onClick}
                          currentPatrons={this.props.currentPatrons}
                          patronName={this.props.patronName}
