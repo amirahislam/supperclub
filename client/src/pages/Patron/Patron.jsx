@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import NavbarPages from '../../components/navigation/NavbarPages';
 import PatronPP from '../../components/containers/PatronPageContainer';
 import PatronSideBar from '../../components/navigation/PatronSideBar';
+import Events from '../Events/Events.jsx'
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
+let uuidv4 = require('uuid/v4');
 
 class Patron extends Component {
 
+
     state = {
+        redirect: false,
         id: '',
         username: '',
         profpic: '',
@@ -34,6 +40,19 @@ class Patron extends Component {
         this.getUser()
         this.getPatrons()
     }
+
+    setRedirect = () => {
+        console.log("Redirect");
+        this.setState({
+          redirect: true
+        })
+    };
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/Events' />
+        }
+    };
 
     getUser = () => {
         let localsessionUser = localStorage.getItem("user")
@@ -86,7 +105,7 @@ class Patron extends Component {
         console.log("ID: ", id)
 
         API.saveFollow(id, this.state.patronName)
-          .then(res => this.setState({ newFollow: res }))
+          .then(res => this.setState({ newFollow: res.data }))
           .catch(err => console.log(err));
         console.log("New Follow: ")
         console.log(this.state.newFollow)
@@ -95,6 +114,17 @@ class Patron extends Component {
             newFollow: ''
         })
 
+    }
+
+    // handleViewProfile = event => {
+
+    // }
+
+    showEvents = event => {
+        console.log("Show me the events page")
+        
+        this.setRedirect()
+        this.renderRedirect()
     }
 
     handleInputChange = event => {
@@ -133,6 +163,7 @@ class Patron extends Component {
             <div>
                 <NavbarPages />
                 <PatronSideBar 
+                    key={uuidv4()}
                     userPP={this.state.profpic}
                     username={this.state.username}
                     firstName={this.state.firstName}
@@ -141,6 +172,7 @@ class Patron extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
+                    onEventsClick={this.showEvents}
                 />
                 <PatronPP 
                     key={this.state.username}

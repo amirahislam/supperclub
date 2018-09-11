@@ -8,6 +8,7 @@ import moment from 'moment';
 import API from "../../utils/API";
 
 
+
 class FollowModal extends React.Component {
 
     componentDidMount() {
@@ -83,6 +84,7 @@ class FollowModal extends React.Component {
       
   
     render() {
+      const uuidv4 = require('uuid/v4')
       return (
         <div>
             <li className="sub-menu">
@@ -93,6 +95,7 @@ class FollowModal extends React.Component {
                 </span>
                 <div>
                     <Modal className="followModal" 
+                    key={uuidv4}
                     show={this.state.showModal} 
                     onHide={this.close}
                     animation={true} 
@@ -107,7 +110,7 @@ class FollowModal extends React.Component {
 
                     <Modal.Body>
                         <FriendCard 
-                        key={this.props.patronName}
+                        key={uuidv4()}
                         name={this.props.name}
                         currentPatrons={this.props.currentPatrons}
                         onClick={this.props.onClick}
@@ -117,7 +120,7 @@ class FollowModal extends React.Component {
 
                     <Modal.Footer>
                         <Button onClick={this.close}>Close</Button>
-                        <Button bsStyle="primary" onClick={this.handleSaveEvent}>Save event</Button>
+                        <Button bsStyle="primary" onClick={this.handleSaveEvent}>Find More Foodies...</Button>
                     </Modal.Footer>         
                     </Modal> 
                 </div>

@@ -5,6 +5,8 @@ import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
 import AddEventModal from '../modals/AddEventModal';
 import FollowModal from '../modals/FollowModal';
+import EventsButton from '../EventsButton';
+let uuidv4 = require('uuid/v4');
 
 class PatronSideBar extends Component {
 
@@ -47,17 +49,9 @@ class PatronSideBar extends Component {
                       </a>
                   </li>
 
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-desktop"></i>
-                          <span>Reviews</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
-                      </ul>
-                  </li>
+                  <EventsButton 
+                    onClick={this.props.onEventsClick}
+                  />
 
                   <li  className="sub-menu">
                       <a href="javascript:;" >
@@ -72,11 +66,13 @@ class PatronSideBar extends Component {
                   </li>
                     <div>
                         <AddEventModal 
+                         key={uuidv4()}
                          onClick={this.props.onClick}
                         />
                     </div>
                     <div>
                         <FollowModal 
+                         key={uuidv4()}
                          onClick={this.props.onClick}
                          currentPatrons={this.props.currentPatrons}
                          patronName={this.props.patronName}
