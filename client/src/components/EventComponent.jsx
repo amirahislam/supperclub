@@ -4,8 +4,7 @@ import '../pages/Events/Events.css'
 
 
 const EventComponent = props => (
-<section id="portfolio">
-    <div className="row posts-container">
+    <div id="portfolio" className="portfolio col-md posts-container">
         <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
             <div className="posts-wrap" post-id={props.id}>
                 <figure>
@@ -115,7 +114,7 @@ const EventComponent = props => (
             </div>
         </div>
     </div>
-</section>
+
     )
 
 export default EventComponent;

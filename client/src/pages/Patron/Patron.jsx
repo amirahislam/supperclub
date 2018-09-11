@@ -41,19 +41,6 @@ class Patron extends Component {
         this.getPatrons()
     }
 
-    setRedirect = () => {
-        console.log("Redirect");
-        this.setState({
-          redirect: true
-        })
-    };
-
-    renderRedirect = () => {
-        if (this.state.redirect) {
-          return <Redirect to='/Events' />
-        }
-    };
-
     getUser = () => {
         let localsessionUser = localStorage.getItem("user")
         console.log("hi " + localsessionUser)
@@ -120,13 +107,6 @@ class Patron extends Component {
 
     // }
 
-    showEvents = event => {
-        console.log("Show me the events page")
-        
-        this.setRedirect()
-        this.renderRedirect()
-    }
-
     handleInputChange = event => {
         // Destructure the name and value properties off of event.target
         // Update the appropriate state
@@ -172,7 +152,6 @@ class Patron extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
-                    onEventsClick={this.showEvents}
                 />
                 <PatronPP 
                     key={this.state.username}

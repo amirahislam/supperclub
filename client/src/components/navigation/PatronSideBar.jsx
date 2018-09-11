@@ -6,6 +6,7 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
 import AddEventModal from '../modals/AddEventModal';
 import FollowModal from '../modals/FollowModal';
 import EventsButton from '../EventsButton';
+import HomeButton from '../HomeButton';
 let uuidv4 = require('uuid/v4');
 
 class PatronSideBar extends Component {
@@ -42,15 +43,12 @@ class PatronSideBar extends Component {
               	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
               	  <h5  className="centered">{this.props.username}</h5>
               	  	
-                  <li  className="mt">
-                      <a  className="active" href="index.html">
-                          <i  className="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
+                  <HomeButton 
+                
+                  />
 
                   <EventsButton 
-                    onClick={this.props.onEventsClick}
+                    
                   />
 
                   <li  className="sub-menu">
