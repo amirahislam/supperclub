@@ -14,9 +14,6 @@ class Login extends Component {
     };
 
     componentDidMount() {
-        // this.props.updateUser({
-        //     onLogin: true
-        // })
     };
 
     setRedirect = (userType) => {

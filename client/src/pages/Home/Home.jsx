@@ -5,10 +5,7 @@ import BootstrapTemplate from '../../components/BootstrapTemplate';
 class Home extends Component {
 
     componentDidMount() {
-        this.props.updateUser({
-            onHome: true,
-            redirect: false
-        })
+
     };
 
     render() {
