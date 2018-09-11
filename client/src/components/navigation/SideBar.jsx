@@ -14,9 +14,8 @@ class SideBar extends Component {
               {/* <!-- sidebar menu start--> */}
               <ul  className="sidebar-menu" id="nav-accordion">
               
-              	  <p  className="centered"><a href="profile.html"><img src="https://media.licdn.com/dms/image/C4E03AQGGMLsKMgow7Q/profile-displayphoto-shrink_200_200/0?e=1541635200&v=beta&t=snAAxc_C49f_L_8SMu_dHFzi3PP62GlR5zVvIFedv7M"  className="img-circle" width="60"/></a></p>
-              	  <h5  className="centered">Amirah Islam</h5>
-                    <h6 className="centered">Boss Chef</h6>
+              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP}  className="img-circle" width="60"/></a></p>
+              	  <h5  className="centered">{this.props.username}</h5>
               	  	
                   <li  className="mt">
                       <a  className="active" href="index.html">

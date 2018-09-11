@@ -8,9 +8,10 @@ module.exports = {
   // },
   checkSession: function(req, res) {
     console.log("Checking session")
-    console.log(req.body);
+    console.log(req.params);
+    console.log(req.params.id);
     db.Session
-      .findById(req.body.sessionID)
+      .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

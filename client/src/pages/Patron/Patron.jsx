@@ -35,15 +35,13 @@ class Patron extends Component {
     }
 
     componentDidMount() {
-        console.log('mounted');
-        this.getBuzz()
-        this.getUser()
-        this.getPatrons()
+        this.getBuzz();
+        this.getUserData();
+        this.getPatrons();
     }
 
-    getUser = () => {
+    getUserData = () => {
         let localsessionUser = localStorage.getItem("user")
-        console.log("hi " + localsessionUser)
         API.getPatron(localsessionUser)
         .then(response => {
             this.setState({

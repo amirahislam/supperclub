@@ -28,8 +28,8 @@ export default {
     console.log(sessionData);
     return axios.post("/api/sessions", sessionData);
   },
-  checkSession: function(sessionData) {
-    return axios.post("/api/sessions/checksession", sessionData);
+  checkSession: function(localSessionID) {
+    return axios.get("/api/sessions/" + localSessionID);
   },
   createBuzz: function(buzz) {
     return axios.post("/api/buzz", buzz)
