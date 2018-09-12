@@ -6,6 +6,7 @@ const express = require("express");
 router.route("/")
   .post(patronController.create)
   .get(patronController.findAll)
+  .get(patronController.findById)
 
 // router.route("/login")
 //   .post(patronController.findByUsernamePassword)
@@ -41,6 +42,9 @@ router.get('/', (req, res, next) => {
 router.route("/:id")
   .get(patronController.findById)
   .put(patronController.findOneAndUpdate)
-  .delete(patronController.remove);
+  .delete(patronController.remove)
+
+// router.route("/patron")
+//   .put(patronController.update)
 
 module.exports = router;

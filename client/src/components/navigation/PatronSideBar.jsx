@@ -5,6 +5,7 @@ import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
 import AddEventModal from '../modals/AddEventModal';
 import FollowModal from '../modals/FollowModal';
+import FollowingModal from '../modals/FollowingModal';
 import EventsButton from '../EventsButton';
 import HomeButton from '../HomeButton';
 let uuidv4 = require('uuid/v4');
@@ -64,28 +65,26 @@ class PatronSideBar extends Component {
                   </li>
                     <div>
                         <AddEventModal 
-                         key={uuidv4()}
-                         onClick={this.props.onClick}
+                            key={uuidv4()}
+                            onClick={this.props.onClick}
                         />
                     </div>
                     <div>
                         <FollowModal 
-                         key={uuidv4()}
-                         onClick={this.props.onClick}
-                         currentPatrons={this.props.currentPatrons}
-                         patronName={this.props.patronName}
+                            key={uuidv4()}
+                            onClick={this.props.onClick}
+                            currentPatrons={this.props.currentPatrons}
+                            patronName={this.props.patronName}
                         />
                     </div>
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-th"></i>
-                          <span>Location</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="basic_table.html">Basic Table</a></li>
-                          <li><a  href="responsive_table.html">Responsive Table</a></li>
-                      </ul>
-                  </li>
+                    <div>
+                        <FollowingModal 
+                            key={uuidv4()}
+                            onClick={this.props.onFollowClick}
+                            currentFollowing={this.props.currentFollowing}
+                            patronName={this.props.patronName}
+                        />
+                    </div>
                   <li  className="sub-menu">
                       <a href="javascript:;" >
                           <i  className=" fa fa-bar-chart-o"></i>
