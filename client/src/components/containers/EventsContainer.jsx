@@ -1,5 +1,6 @@
 import React from 'react'
 import EventComponent from '../EventComponent'
+import '../../pages/Events/Events'
 import '../../pages/Events/Events.css'
 
 const EventsContainer = props => (
@@ -19,6 +20,7 @@ const EventsContainer = props => (
             eventDate={event.eventDate}
             description={event.description}
             rules={event.rules}
+            joinEvent={props.joinEvent}
         />
         )})
     }

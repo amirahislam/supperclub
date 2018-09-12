@@ -24,9 +24,14 @@ const EventComponent = props => (
                     />
                 </figure>
 
-                <div className="portfolio-info" >
+                <div className="portfolio-info">
                     <h4>{props.eventName}</h4>
-                    <p>Request to Join</p>
+                    <button
+                    value={props.id}
+                    onClick={props.joinEvent}
+                    >
+                    Request to Join
+                    </button>
                 </div>
             </div>
 

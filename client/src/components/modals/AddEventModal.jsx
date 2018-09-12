@@ -21,7 +21,7 @@ class AddEventModal extends React.Component {
           showModal: false,
           patronId: '',
           newEvent: {},
-          username: '',
+          username: 'testUser',
           eventName: '',
           menu: '',
           guests: '',
