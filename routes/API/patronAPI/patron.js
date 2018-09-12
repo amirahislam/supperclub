@@ -6,7 +6,6 @@ const express = require("express");
 router.route("/")
   .post(patronController.create)
   .get(patronController.findAll)
-  .get(patronController.findById)
 
 // router.route("/login")
 //   .post(patronController.findByUsernamePassword)
