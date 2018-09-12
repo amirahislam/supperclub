@@ -10,13 +10,14 @@ const EventsContainer = props => (
         props.currentEvents.map(event => {
         return(
         <EventComponent
+            patronId={event.username}
             id={event._id}
             username={event.username}
             eventName={event.eventName}
             eventImg={event.eventImg}
             guests={event.guests}
             price={event.price}
-            date={event.date}
+            eventDate={event.eventDate}
             description={event.description}
             rules={event.rules}
             joinEvent={props.joinEvent}

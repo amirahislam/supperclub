@@ -1,15 +1,15 @@
 import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
-import FriendCard from '../FriendCard'
+import FollowingCard from '../FollowingCard'
 import 'react-datepicker/dist/react-datepicker.css';
-import '../../css/DashboardStyles/Follow.css';
+import '../../css/DashboardStyles/Following.css';
 import moment from 'moment';
 import API from "../../utils/API";
 
 
 
-class FollowModal extends React.Component {
+class FollowingModal extends React.Component {
 
     componentDidMount() {
         console.log('mounted');
@@ -44,35 +44,6 @@ class FollowModal extends React.Component {
           [name]: value
         });
       }
-
-    //   handleSaveEvent = (event) => {
-    //     event.preventDefault()
-
-    //     let eventData = {
-            
-    //     }
-
-    //     console.log(eventData)
-
-    //     API.saveEvent(eventData)
-    //       .then(res => this.setState({ newEvent: res.data }))
-    //       .catch(err => console.log(err));
-    //     console.log('new event added:')
-    //     console.log(this.state.newEvent)
-        
-    //     this.setState({
-    //       eventName: '',
-    //       eventImg: '',
-    //       menu: 'no menu today',
-    //       guests: '',
-    //       price: '25',
-    //       eventDate: moment(),
-    //       description: '',
-    //       rules: '',
-    //       showModal: false
-    //     })
-
-    //   }
       
       open() {
         this.setState({showModal: true});
@@ -91,10 +62,10 @@ class FollowModal extends React.Component {
                 <a href="javascript:;">
                 <span className="addEvent" onClick={this.open}>
                     <i className="fa fa-book"></i>
-                    Follow
+                    Following
                 </span>
                 <div>
-                    <Modal className="followModal" 
+                    <Modal className="followingModal" 
                     key={uuidv4}
                     show={this.state.showModal} 
                     onHide={this.close}
@@ -102,17 +73,17 @@ class FollowModal extends React.Component {
                     bsSize="small">
 
                     <Modal.Header>
-                        <Modal.Title>Follow Fellow Foodies</Modal.Title>
+                        <Modal.Title>My Foodies</Modal.Title>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" onClick={this.close}>&times;</span>
                         </button>
                     </Modal.Header>
 
                     <Modal.Body>
-                        <FriendCard 
+                        <FollowingCard 
                         key={uuidv4()}
                         name={this.props.name}
-                        currentPatrons={this.props.currentPatrons}
+                        currentFollowing={this.props.currentFollowing}
                         onClick={this.props.onClick}
                         patronName={this.props.patronName}
                         />
@@ -131,4 +102,4 @@ class FollowModal extends React.Component {
     }
   }
 
-export default FollowModal
+export default FollowingModal

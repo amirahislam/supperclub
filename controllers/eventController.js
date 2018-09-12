@@ -17,6 +17,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    // update: function(req, res) {
+    //     console.log("saving your spot");
+    //     db.Event
+    //       .findOneAndUpdate({id: _id }, guestsReserved: patronId)
+    //       .then(dbModel = res.json(dbModel))
+    //       .catch(err => res.status(422).json(err))
+    // },
     create: function(req, res) {
         console.log("you created an event");
         console.log(req.body);
