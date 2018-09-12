@@ -12,7 +12,7 @@ module.exports = {
     console.log("find by id");
     console.log(req.params)
     db.Patron
-      .find({_id: req.params.id})
+      .find({username: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
