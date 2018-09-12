@@ -5,6 +5,7 @@ import SideBar from '../../components/navigation/SideBar';
 // import Revenue from '../../components/Revenue';
 import API from "../../utils/API";
 import './Chef.css'
+import Calendar from '../../components/Calendar';
 
 
 
@@ -159,6 +160,7 @@ class Chef extends Component {
                     
                 
                 {/* <DashboardComponents /> */}
+                <Calendar />
             </div>
         )
     }

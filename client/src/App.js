@@ -126,7 +126,7 @@ class App extends Component {
                   updateUser={this.updateUser}
                 />}
             />
-            {/* <Route exact path='/Chef' component={Chef}/> */}
+            <Route exact path='/Chef' component={Chef}/>
             <Route exact path="/Chef" render={() => (
               this.state.loggedIn === true ? (
                 <Chef />
@@ -136,7 +136,7 @@ class App extends Component {
                 null
               )
             )}/>            
-            {/* <Route exact path='/Patron' component={Patron} /> */}
+            <Route exact path='/Patron' component={Patron} />
             <Route exact path="/Patron" render={() => (
               this.state.loggedIn === true ? (
                 <Patron />
@@ -146,7 +146,7 @@ class App extends Component {
                 null
               )
             )}/>
-            {/* <Route exact path='/Profile' component={Profile}/> */}
+            <Route exact path='/Profile' component={Profile}/>
             <Route exact path="/Profile" render={() => (
               this.state.loggedIn === true ? (
                 <Profile />
