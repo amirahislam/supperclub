@@ -5,4 +5,7 @@ eventRouter.route("/")
   .get(eventController.findAll)
   .post(eventController.create)
 
+eventRouter.route("/:id")
+  .get(eventController.findOne)
+
 module.exports = eventRouter;

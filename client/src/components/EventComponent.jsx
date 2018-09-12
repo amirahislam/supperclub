@@ -4,6 +4,7 @@ import '../pages/Events/Events.css'
 
 
 const EventComponent = props => (
+
 <section id="portfolio">
     <div className="row posts-container">
         <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
@@ -24,9 +25,14 @@ const EventComponent = props => (
                     />
                 </figure>
 
-                <div className="portfolio-info" >
+                <div className="portfolio-info">
                     <h4>{props.eventName}</h4>
-                    <p>Request to Join</p>
+                    <button
+                    value={props.id}
+                    onClick={props.joinEvent}
+                    >
+                    Request to Join
+                    </button>
                 </div>
             </div>
 

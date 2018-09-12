@@ -42,6 +42,14 @@ export default {
   },
   getEvents: function() {
     return axios.get("/api/events")
+  },
+  getEvent: function(id) {
+    return axios.get("/api/events/" + id)
+  },
+  joinEvent: function(id, attendeeData) {
+    console.log(id);
+    console.log(attendeeData);
+    return axios.put("/api/join/" + id, attendeeData)
   }
 
 };
