@@ -4,7 +4,7 @@ import '../pages/Events/Events.css'
 
 
 const EventComponent = props => (
-    <div id="portfolio" className="portfolio col-md posts-container">
+    <div key={props._id} id="portfolio" className="portfolio col-md posts-container">
         <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
             <div className="posts-wrap" post-id={props.id}>
                 <figure>
@@ -31,7 +31,7 @@ const EventComponent = props => (
             </div>
 
             
-            <div className="modal fade" id={"modal + {props.id}"} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id={"modal + {props.id}"} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -90,11 +90,11 @@ const EventComponent = props => (
                                                 </div>
                                             </div>
                                             <div className="form-group" align="left">
-                                                <label for="exampleFormControlInput1">Email address</label>
+                                                <label htmlFor="exampleFormControlInput1">Email address</label>
                                                 <input type="email" className="form-control" id="emailInput" placeholder="name@example.com" />
                                             </div>
                                             <div className="form-group" align="left">
-                                                <label for="formGroupExampleInput">Phone Number</label>
+                                                <label htmlFor="formGroupExampleInput">Phone Number</label>
                                                 <input type="text" className="form-control" id="phoneInput" placeholder="Example input" />
                                             </div>
 

@@ -9,49 +9,46 @@ import ViewProfileComponent from './ViewProfileComponent'
 class FollowingCard extends Component {
 
     render() {
-        let uuidv4 = require('uuid/v4');
+        let uuidv4 = require('uuid/v4')
         return (
             
             <div className="friendCard">
 
-                {/* {
+                {
                     
-                this.props.currentFollowing.map(following => {
-                    return(
-                    <div className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
+                this.props.dataFollowings.map(dataFollowing => {
+                    return (
+                    <div key={uuidv4()} className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
                     
-                        <div id="followingImg">
+                        <div id="patronImg">
                             <a href="#">
-                                <img className="profilePic" src={following.img} alt={following.username} />
+                                <img className="profilePic" src={dataFollowing.img} alt={dataFollowing.username} />
                             </a>
                         </div>
                         
                         <div className="centered">
-                            <h3>{following.username}</h3>
-                            <h6>{following.email}</h6>
+                            <h3>{dataFollowing.username}</h3>
+                            <h6>{dataFollowing.email}</h6>
                         </div>
 
                         <div className="row">
-                          <div className="col-md-1"></div>
-                            <div className="col-md-10">
-                              <div className="row">
-                                <FollowingComponent 
-                                key={uuidv4()}
-                                followingname={following.username}
-                                followingid={following.id}
-                                onClick={this.props.onClick}
-                                currentFollowing={this.props.currentFollowing}
-                                />
-                            
-                              </div>
+                          
+                            <div className="col-md-8">
+                              <button>View Profile</button>
                             </div>
-                          <div className="col-md-1"></div>
+
+                            <div className="col-md-1"></div>
+
+                            <div className="col-md-4">
+                              <button>Unfollow</button>
+                            </div>
+                          
                         </div>
                     
                 </div>
                 )})
 
-                } */}
+                }
 
             </div>
 

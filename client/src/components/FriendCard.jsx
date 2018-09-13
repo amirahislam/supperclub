@@ -6,9 +6,6 @@ import '../css/DashboardStyles/FriendCard.css'
 import FollowComponent from './FollowComponent'
 import ViewProfileComponent from './ViewProfileComponent'
 
-
-import { Link } from 'react-router-dom';
-
 class FriendCard extends Component {
 
     render() {
@@ -20,8 +17,8 @@ class FriendCard extends Component {
                 {
                     
                 this.props.currentPatrons.map(patron => {
-                    return(
-                    <div className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
+                    return (
+                    <div key={patron.username} className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
                     
                         <div id="patronImg">
                             <a href="#">

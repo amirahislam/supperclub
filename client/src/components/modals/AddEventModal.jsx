@@ -10,7 +10,7 @@ import API from "../../utils/API";
 class AddEventModal extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 

@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import NavbarPages from '../../components/navigation/NavbarPages';
-import PatronPP from '../../components/containers/PatronPageContainer';
-import PatronSideBar from '../../components/navigation/PatronSideBar';
-import Events from '../Events/Events.jsx'
-import './FriendsList.css';
-import './Patron.css';
-import API from "../../utils/API";
-let uuidv4 = require('uuid/v4');
+import React, { Component } from 'react'
+import NavbarPages from '../../components/navigation/NavbarPages'
+import PatronPP from '../../components/containers/PatronPageContainer'
+import PatronSideBar from '../../components/navigation/PatronSideBar'
+import './FriendsList.css'
+import './Patron.css'
+import API from "../../utils/API"
+let uuidv4 = require('uuid/v4')
 
 class Patron extends Component {
-
-
     state = {
         redirect: false,
         id: '',
@@ -23,9 +18,11 @@ class Patron extends Component {
         badges: '',
         buzzVal: '',
         patronName: '',
+        availablePatrons: [],
         currentBuzz: [],
         currentPatrons: [],
-        currentFollowing: [],
+        currentFollowings: [],
+        dataFollowings: [],
         thisPatron: {},
         newBuzz: '',
         newFollow: '',
@@ -36,10 +33,10 @@ class Patron extends Component {
     }
 
     componentDidMount() {
+        this.getPatrons();
         this.getUserData();
         this.getBuzz();
-        this.getPatrons();
-        this.getFollowing();
+        
     }
 
     getBuzz = () => {
@@ -63,15 +60,18 @@ class Patron extends Component {
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
                 profpic: response.data[0].img,
-                currentFollowing: response.data[0].following
+                currentFollowings: response.data[0].following
             })
+            
             console.log("This is the current user:")
             console.log(response.data)
             console.log("This is who I follow:")
-            console.log(response.data[0].following)
+            console.log(this.state.currentFollowings)
+            let currentFollowings = this.state.currentFollowings
+            this.getFollowing(currentFollowings);
         })
         .catch(err => console.log(err))
-        console.log(this.state.username);
+        
     }
 
     getPatrons = () => {
@@ -84,12 +84,32 @@ class Patron extends Component {
           .catch(err => console.log(err))
     }
 
-    getFollowing = event => {
-        let following = this.state.currentFollowing
-        console.log("I am currently following:")
-        console.log(following)
-    }
+    
+    getFollowing = (currentFollowings) => {
+        let following = currentFollowings
 
+        for (let i=0; i<following.length; i++) {
+            let thisUser = following[i].patronName
+            API.getPatron(thisUser)
+            .then(response => {
+                if (response.data[0] !== undefined || null)  {
+                    this.state.dataFollowings.push(response.data[0])
+                    
+                }
+                
+            })
+            .catch(err => console.log(err))
+        }
+        let currentPatrons = this.state.currentPatrons
+        let dataFollowings = this.state.dataFollowings
+        console.log("Current Patrons:")
+        console.log(currentPatrons)
+        console.log("Current Followings:")
+        console.log(dataFollowings)
+        // this.getAvailPatrons(currentPatrons, dataFollowings);
+        // console.log(this.getAvailPatrons(currentPatrons, dataFollowings))
+    }
+    
     handleFollow = event => {
         event.preventDefault()
         console.log("I want to follow you")
@@ -108,23 +128,126 @@ class Patron extends Component {
           .catch(err => console.log(err));
         console.log("New Follow: ")
         console.log(thisFollow)
-        // this.getPatrons()
+        // this.getAvailPatrons()
         this.setState({
             newFollow: ''
         })
-
     }
+
+    getAvailPatrons = (currentPatrons, dataFollowings) => {
+        console.log("GETTING AVAIL PATRONS")
+        // Get the currentPatrons type
+        const type = Object.prototype.toString.call(currentPatrons);
+
+        // If the two objects are not the same type, return false
+        if (type !== Object.prototype.toString.call(dataFollowings)) console.log("false 1");
+
+        // If items are not an object or array, return false
+        if (['[object Array]', '[object Object]'].indexOf(type) < 0) console.log("false 2");
+
+        // Compare the length of the length of the two items
+        let currentPatronsLen = type === '[object Array]' ? currentPatrons.length : Object.keys(currentPatrons).length;
+        let dataFollowingsLen = type === '[object Array]' ? dataFollowings.length : Object.keys(dataFollowings).length;
+        console.log("Current Patrons length:")
+        console.log(currentPatronsLen)
+        console.log("Current Followings length:")
+        console.log(dataFollowingsLen)
+        if (currentPatronsLen !== dataFollowingsLen) console.log("false 3");
+        else {return true;}
+        // const compare = function (currentPatrons, dataFollowings) {
+        //     // Get the object type
+        //     var itemType = Object.prototype.toString.call(currentPatrons);
+
+        //     // If an object or array, compare recursively
+        //     if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
+        //         if (!this.getAvailPatrons(currentPatrons, dataFollowings)) return false;
+        //     }
+        //     // Otherwise, do a simple comparison
+        //     else {  
+        //         // If the two items are not the same type, return false
+        //         if (itemType !== Object.prototype.toString.call(dataFollowings)) return false;
+        //         if (itemType === '[object Function]') {
+        //             if (currentPatrons.toString() !== dataFollowings.toString()) return false;
+        //         } else {
+        //             if (currentPatrons !== dataFollowings) return false;
+        //         }
+	    //     }
+        // }
+        // let match;
+        // if (type === '[object Array]') {
+        //     for (let p = 0; p < currentPatronsLen; p++) {
+        //         compare(currentPatrons[p], dataFollowings[p]);
+        //     }
+        // } else {
+        //     for (let username in currentPatrons) {
+        //         if (currentPatrons.hasOwnProperty(username)) {
+        //             compare(currentPatrons[username], dataFollowings[username]);
+        //         }
+        //     }
+        // // Compare properties
+        // if (type === '[object Array]') {
+        //     for (var i = 0; i < currentPatronsLen; i++) {
+        //         if (compare(currentPatrons[i], dataFollowings[i]) === false) return false;
+        //     }
+        // } else {
+        //     for (var username in currentPatrons) {
+        //         if (currentPatrons.hasOwnProperty(username)) {
+        //             if (compare(currentPatrons[username], dataFollowings[username]) === false) return false;
+        //         }
+        //     }
+        // }
+
+	    // // If nothing failed, return true
+	    //     return true;
+        // };
+
+        // const matches = []
+        // console.log("current patrons")
+        // console.log(currentPatrons)
+        // console.log("current followings")
+        // console.log(dataFollowings)
+        // currentPatrons.forEach((e1)=>dataFollowings.forEach((e2)=> {if(e1 !== e2){
+        //     console.log(e1)
+        //     // matches.push(e1)
+        //     }
+        // }))
+        // console.log("Matches:", matches)
+        
+        
+
+        // for(let z=0; z<dataFollowings.length; z++) {
+        //     let data = dataFollowings[z].username
+        //     console.log("data")
+        //     console.log(data)
+        //     console.log("username")
+        //     console.log(this.state.currentPatrons[z].username)
+        //     // if (data === this.state.currentPatrons[z].username) {
+        //     //     console.log("True", data)
+        //     // } else {
+        //     //     console.log("False", data)
+        //     // }
+        //     // API.getPatron(data)
+        //     //   .then(res => {
+        //     //         console.log('I can follow you:')
+        //     //         console.log(res.data)
+                
+        //     //   })
+        //     //   .catch(err => console.log(err))
+        // }
+        
+    }
+
 
     // handleViewProfile = event => {
 
     // }
 
     handleInputChange = event => {
-        // Destructure the name and value properties off of event.target
+        // Destructure the name and currentPatrons properties off of event.target
         // Update the appropriate state
-        const { name, value } = event.target;
+        const { name, currentPatrons } = event.target;
         this.setState({
-          [name]: value
+          [name]: currentPatrons
         });
       };
 
@@ -164,9 +287,10 @@ class Patron extends Component {
                     lastName={this.state.lastName}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
-                    currentPatrons={this.state.currentPatrons}
+                    currentPatrons={this.state.availablePatrons}
+                    dataFollowings={this.state.dataFollowings}
                     onClick={this.handleFollow}
-                    onFollowClick={this.getFollowing}
+                    onFollowingClick={this.getFollowing}
                     
                 />
                 <PatronPP 
@@ -177,7 +301,7 @@ class Patron extends Component {
                     img3={this.state.img3}
                     onClick={this.handleFormSubmit}
                     name='buzzVal'
-                    value={this.state.buzzVal}
+                    currentPatrons={this.state.buzzVal}
                     placeholder='Create some buzz...'
                     onChange={this.handleInputChange}
                     currentBuzz={this.state.currentBuzz}

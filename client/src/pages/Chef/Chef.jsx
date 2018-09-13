@@ -122,13 +122,7 @@ class Chef extends Component {
 
 
     render() {
-        const instaPanel = {
-            paddingRight: "300px"
-        };
-
-        const rightSide = {
-            marginRight: "200px"
-        };
+        
         return (
             <div>
                 <NavbarPages />
