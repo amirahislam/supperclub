@@ -1,0 +1,9 @@
+.calendarDiv {
+    width: 525px;
+    height: 450px;
+    background-color: #FFB230;
+}
+
+#calendarCont {
+    padding-left: 250px;
+}
