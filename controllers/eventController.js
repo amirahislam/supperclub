@@ -2,13 +2,21 @@ const db = require("../models");
 
 module.exports = {
     findAll: function(req, res) {
-        console.log("find event");
+        console.log("find all events");
         db.Event
           .find({})
           .sort({ date: -1 })
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
+    findOne: function(req, res) {
+        console.log(req.params.id);
+        console.log("find event with id: ");
+        db.Event
+            .find({_id: req.params.id})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     // update: function(req, res) {
     //     console.log("saving your spot");
     //     db.Event
@@ -23,6 +31,5 @@ module.exports = {
           .create(req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
-      }
-
+    }
   };

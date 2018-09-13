@@ -17,6 +17,7 @@ const EventComponent = props => (
                     eventName={props.eventName}
                     eventImg={props.eventImg}
                     guests={props.guests}
+                    spotsLeft={props.spotsLeft}
                     price={props.price}
                     eventDate={props.eventDate}
                     description={props.description}
@@ -24,9 +25,15 @@ const EventComponent = props => (
                     />
                 </figure>
 
-                <div className="portfolio-info" >
+                <div className="portfolio-info">
                     <h4>{props.eventName}</h4>
-                    <p>Request to Join</p>
+                    <h4>Spots left: {props.spotsLeft}</h4>
+                    <button
+                    value={props.id}
+                    onClick={props.joinEvent}
+                    >
+                    Request to Join
+                    </button>
                 </div>
             </div>
 

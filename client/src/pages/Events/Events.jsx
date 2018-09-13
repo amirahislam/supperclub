@@ -4,6 +4,7 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
+import Calendar from "../../components/Calendar";
 
 class Events extends Component {
 
@@ -52,6 +53,45 @@ class Events extends Component {
             }
         )
           .catch(err => console.log(err))
+    }
+
+    joinEvent = (event) => {
+        console.log(event.target.value)
+        API.getEvent(event.target.value)
+        .then(res => {
+            let totalGuests = res.data[0].guestArray.length;
+            let maxGuests = res.data[0].guests
+            let alreadyJoined = false;
+            res.data[0].guestArray.forEach((event) => {
+                if (event.username === this.state.username) {
+                    alreadyJoined = true
+                } else {
+                    console.log("all good")
+                }
+            })
+            if (totalGuests < maxGuests && alreadyJoined === false) {
+                    this.sendGuestData(res.data[0]._id);
+            } else {
+                console.log("Sorry, the event is full or you've already joined!")
+            }
+        })
+        .catch(err => console.log(err))
+
+    };
+
+    sendGuestData = (id) => {
+        console.log(id);
+        let attendeeData = {
+            username: this.state.username,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName
+        }
+        API.joinEvent(id, attendeeData)
+        .then(res => {
+            console.log(res)
+            this.getEvents();
+        })
+        .catch(err => console.log(err))
     }
 
     getPatrons = () => {
@@ -104,7 +144,10 @@ class Events extends Component {
                 <EventsContainer 
                 patronId={this.state.id}
                 currentEvents={this.state.currentEvents}
+                joinEvent={this.joinEvent}
                 /> 
+                <Calendar
+                />
             </div>
         )
     }
