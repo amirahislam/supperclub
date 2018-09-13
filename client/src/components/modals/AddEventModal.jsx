@@ -63,6 +63,7 @@ class AddEventModal extends React.Component {
             description: this.state.description,
             menu: this.state.menu,
             guests: this.state.guests,
+            spotsLeft: this.state.guests,
             price: this.state.price,
             rules: this.state.rules,
             date: this.state.eventDate
