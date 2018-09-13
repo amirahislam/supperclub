@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Switch, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import API from './utils/API';
 
@@ -19,25 +20,31 @@ import Login from './pages/Login/Login';
 class App extends Component {
 
   state = {
-    loggedIn: "",
+    loggedIn: false,
     username: null,
     sessionID: null,
+    redirect: false,
+    onLogin: false,
+    onSignup: false,
+    onHome: false,
     userObject: {}
   }
 
   componentDidMount() {
-    this.getUser();
-    // console.log(this.getUser());
-    // this.checkLogin = () => {
-    //   this.getUser()
-    // }
+    this.getUser()
   }
 
-  componentDidUpdate() {
-    // console.log(this.state);
-    // console.log(this.checkLogin(this.state.loggedIn));
-    // console.log(this.getUser());
-  }
+  setRedirect = () => {
+      this.setState({
+        redirect: true
+      })
+  };
+
+  renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/' />
+      }
+  };
 
   updateUser = (userObject) => {
     this.setState(
@@ -47,63 +54,40 @@ class App extends Component {
     localStorage.setItem("sessionID", this.state.sessionID);
   };
 
-  // checkLogin = (loggedIn) => {
-  //   return (loggedIn ? true : false)
-  // }
-
   getUser = () => {
-    let localSessionID = localStorage.getItem("sessionID")
-    // console.log(localSessionID);
-    if (!localSessionID || localSessionID === "null") {
-      // console.log("Session null");
-      this.setState({
-        loggedIn: false
-      });
-      const isLoggedin = false;
-      console.log(isLoggedin);
-      console.log(this.state.loggedIn);
-      return (isLoggedin ? true : false)
-    } else {
-      // console.log("Session not null")
-      API.checkSession(localSessionID)
-      .then(response => {
-        // console.log(response);
-        if (response.data._id === localSessionID) {
-          // console.log("Login confirmed");
-          this.setState({
-            loggedIn: true
-          });
-          const isLoggedin = true;
-          console.log(isLoggedin);
-          console.log(this.state.loggedIn);
-          return (isLoggedin ? true : false)    
+    let localsessionUser = localStorage.getItem("user")
+    let localsessionID = localStorage.getItem("sessionID")
+    let sessionData = {
+      sessionUserID: localsessionUser,
+      sessionID: localsessionID
+    };
+    API.checkSession(sessionData)
+    .then(response => {
+      console.log(response);
+      if (response.data._id && response.data.sessionUserID) {
+        console.log("Login confirmed: ")
+        console.log(response);
+      } else {
+        console.log("No matching sessions")
+      }
+    }).catch(error => {
+        console.log('Login error: ')
+        console.log(error);
+        console.log(this)
+        if (this.state.onLogin === false && this.state.onSignup === false && this.state.onHome === false) {
+          console.log("Redirect!");
+          this.setRedirect();
         } else {
-          // console.log("No matching sessions");
-          this.setState({
-            loggedIn: false
-          });
-          const isLoggedin = false;
-          console.log(isLoggedin);
-          console.log(this.state.loggedIn);
-          return (isLoggedin ? true : false)
+          console.log("No redirect: Already on login, signup or home");
         }
-      }).catch(error => {
-          // console.log('Login error: ')
-          // console.log(error);
-          // this.setState({
-          //   loggedIn: false
-          // });
-          // const isLoggedin = false;
-          // console.log(isLoggedin);
-          // return (isLoggedin ? true : false)
-      })
-    }
+    })
   }
 
   render() {
     return (
       <Router>
         <div>
+<<<<<<< HEAD
           {/* {this.getUser()} */}
           <Switch>
             <Route exact path='/'
@@ -177,6 +161,35 @@ class App extends Component {
               )
             )}/>
           </Switch>
+=======
+          {/* {this.renderRedirect()} */}
+          <Route exact path='/'
+            render={() =>
+              <Home
+                updateUser={this.updateUser}
+              />
+            }
+          />
+          <Route exact path='/Chef' component={Chef}/>
+          <Route exact path='/Patron' component={Patron}/>
+          <Route exact path='/Profile' component={Profile}/>
+          <Route exact path='/Reservations' component={Reservation}/>
+          <Route exact path='/Events' component={Events}/>
+          <Route 
+            exact path='/Signup'
+            render={() =>
+              <Signup
+                updateUser={this.updateUser}
+              />}
+          />
+          <Route
+            exact path='/Login'
+            render={() =>
+              <Login
+                updateUser={this.updateUser}
+              />}
+          />
+>>>>>>> 10ee0a8b54bf8bfb77ccf79cf41c905c3c79b7b7
         </div>
       </Router>
     );

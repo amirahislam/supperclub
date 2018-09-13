@@ -21,19 +21,13 @@ module.exports = {
   },
   findOneAndUpdate: function (req, res) {
     db.Patron
-      .update({$push: {following: req.body}})
+      .update({ _id: req.params.id }, {$push: {following: req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   },
   create: function(req, res) {
     db.Patron
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  update: function(req, res) {
-    db.Patron
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

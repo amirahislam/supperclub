@@ -13,8 +13,8 @@ export default {
   deletePatron: function(id) {
     return axios.delete("/api/patrons/" + id);
   },
-  saveFollow: function(id, patronName) {
-    return axios.put("/api/patrons/" + id, patronName)
+  saveFollow: function(id, thisFollow) {
+    return axios.put("/api/patrons/" + id, thisFollow)
   },
   // Saves a patron to the database (upon signup)
   savePatron: function(patronData) {
@@ -37,11 +37,21 @@ export default {
   getBuzz: function() {
     return axios.get("/api/buzz")
   },
-  saveEvent: function(eventData) {
+  createEvent: function(eventData) {
     return axios.post("/api/events", eventData)
   },
   getEvents: function() {
     return axios.get("/api/events")
+  },
+  getEvent: function(id) {
+    return axios.get("/api/events/" + id)
+  },
+  joinEvent: function(id, attendeeData) {
+    console.log(id);
+    console.log(attendeeData);
+    return axios.put("/api/join/" + id, attendeeData)
+  },
+  saveEvent: function(eventData) {
+    return axios.post("/api/events/:id", eventData)
   }
-
 };

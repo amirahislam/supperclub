@@ -3,13 +3,10 @@ import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
 import '../css/DashboardStyles/FriendCard.css'
-import FollowComponent from './FollowComponent'
+import FollowingComponent from './FollowComponent'
 import ViewProfileComponent from './ViewProfileComponent'
 
-
-import { Link } from 'react-router-dom';
-
-class FriendCard extends Component {
+class FollowingCard extends Component {
 
     render() {
         let uuidv4 = require('uuid/v4');
@@ -17,38 +14,35 @@ class FriendCard extends Component {
             
             <div className="friendCard">
 
-                {
+                {/* {
                     
-                this.props.currentPatrons.map(patron => {
+                this.props.currentFollowing.map(following => {
                     return(
                     <div className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
                     
-                        <div id="patronImg">
+                        <div id="followingImg">
                             <a href="#">
-                                <img className="profilePic" src={patron.img} alt={patron.username} />
+                                <img className="profilePic" src={following.img} alt={following.username} />
                             </a>
                         </div>
                         
                         <div className="centered">
-                            <h3>{patron.username}</h3>
-                            <h6>{patron.email}</h6>
+                            <h3>{following.username}</h3>
+                            <h6>{following.email}</h6>
                         </div>
 
                         <div className="row">
                           <div className="col-md-1"></div>
                             <div className="col-md-10">
                               <div className="row">
-                                <FollowComponent 
+                                <FollowingComponent 
                                 key={uuidv4()}
-                                patronname={patron.username}
-                                patronid={patron.id}
+                                followingname={following.username}
+                                followingid={following.id}
                                 onClick={this.props.onClick}
+                                currentFollowing={this.props.currentFollowing}
                                 />
-                                <ViewProfileComponent 
-                                key={uuidv4()}
-                                // patronname={patron.username}
-                                // onClick={this.props.onClick}
-                                />
+                            
                               </div>
                             </div>
                           <div className="col-md-1"></div>
@@ -57,7 +51,7 @@ class FriendCard extends Component {
                 </div>
                 )})
 
-                }
+                } */}
 
             </div>
 
@@ -65,4 +59,4 @@ class FriendCard extends Component {
     }
 }
 
-export default FriendCard;
+export default FollowingCard;

@@ -41,6 +41,9 @@ router.get('/', (req, res, next) => {
 router.route("/:id")
   .get(patronController.findById)
   .put(patronController.findOneAndUpdate)
-  .delete(patronController.remove);
+  .delete(patronController.remove)
+
+// router.route("/patron")
+//   .put(patronController.update)
 
 module.exports = router;

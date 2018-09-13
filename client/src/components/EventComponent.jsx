@@ -4,29 +4,34 @@ import '../pages/Events/Events.css'
 
 
 const EventComponent = props => (
-<section id="portfolio">
-    <div className="row posts-container">
+    <div id="portfolio" className="portfolio col-md posts-container">
         <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
             <div className="posts-wrap" post-id={props.id}>
                 <figure>
                     <img src={props.eventImg} className="img" alt="Oops" />
                     <a href={props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="fas fa-camera-retro"></i></a>
                     <EventInfoModal
+                    patronId={props.patronId}
                     id={props._id}
                     username={props.username}
                     eventName={props.eventName}
                     eventImg={props.eventImg}
                     guests={props.guests}
                     price={props.price}
-                    date={props.date}
+                    eventDate={props.eventDate}
                     description={props.description}
                     rules={props.rules}
                     />
                 </figure>
 
-                <div className="portfolio-info" >
+                <div className="portfolio-info">
                     <h4>{props.eventName}</h4>
-                    <p>Request to Join</p>
+                    <button
+                    value={props.id}
+                    onClick={props.joinEvent}
+                    >
+                    Request to Join
+                    </button>
                 </div>
             </div>
 
@@ -114,7 +119,7 @@ const EventComponent = props => (
             </div>
         </div>
     </div>
-</section>
+
     )
 
 export default EventComponent;

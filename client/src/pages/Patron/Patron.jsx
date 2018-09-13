@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import NavbarPages from '../../components/navigation/NavbarPages';
 import PatronPP from '../../components/containers/PatronPageContainer';
 import PatronSideBar from '../../components/navigation/PatronSideBar';
+import Events from '../Events/Events.jsx'
 import './FriendsList.css';
 import './Patron.css';
 import API from "../../utils/API";
+let uuidv4 = require('uuid/v4');
 
 class Patron extends Component {
 
+
     state = {
+        redirect: false,
         id: '',
         username: '',
         profpic: '',
@@ -19,6 +25,7 @@ class Patron extends Component {
         patronName: '',
         currentBuzz: [],
         currentPatrons: [],
+        currentFollowing: [],
         thisPatron: {},
         newBuzz: '',
         newFollow: '',
@@ -29,9 +36,21 @@ class Patron extends Component {
     }
 
     componentDidMount() {
-        this.getBuzz();
         this.getUserData();
+        this.getBuzz();
         this.getPatrons();
+        this.getFollowing();
+    }
+
+    getBuzz = () => {
+        API.getBuzz()
+          .then(res => {
+            this.setState({ currentBuzz: res.data });
+            console.log('Here is all the buzz')
+            console.log(this.state.currentBuzz)
+            }
+        )
+          .catch(err => console.log(err))
     }
 
     getUserData = () => {
@@ -43,9 +62,13 @@ class Patron extends Component {
                 firstName: response.data[0].firstName,
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
-                profpic: response.data[0].img
+                profpic: response.data[0].img,
+                currentFollowing: response.data[0].following
             })
+            console.log("This is the current user:")
             console.log(response.data)
+            console.log("This is who I follow:")
+            console.log(response.data[0].following)
         })
         .catch(err => console.log(err))
         console.log(this.state.username);
@@ -55,45 +78,46 @@ class Patron extends Component {
         API.getPatrons()
           .then(res => {
               this.setState({ currentPatrons: res.data })
-              console.log('we got the patrons')
+              console.log('Here are all users:')
               console.log(this.state.currentPatrons)
           })
           .catch(err => console.log(err))
     }
 
-    getBuzz = () => {
-        API.getBuzz()
-          .then(res => {
-            this.setState({ currentBuzz: res.data });
-            console.log('we got the buzz')
-            console.log(this.state.currentBuzz)
-            }
-        )
-          .catch(err => console.log(err))
+    getFollowing = event => {
+        let following = this.state.currentFollowing
+        console.log("I am currently following:")
+        console.log(following)
     }
 
     handleFollow = event => {
+        event.preventDefault()
         console.log("I want to follow you")
         console.log(event.target.getAttribute('patronName'))
-        let patronName = event.target.getAttribute('patronName')
-        this.setState({
-            patronName: patronName
-        })
+        let thisFollow = {
+            patronName: event.target.getAttribute('patronName')
+          }
+        
         let id = this.state.id
-        console.log('Patron name: ', patronName)
-        console.log("ID: ", id)
+        this.savingFollow(id, thisFollow)
+    }
 
-        API.saveFollow(id, this.state.patronName)
-          .then(res => this.setState({ newFollow: res }))
+    savingFollow = (id, thisFollow) => {
+        API.saveFollow(id, thisFollow)
+          .then(res => this.setState({ newFollow: res.data }))
           .catch(err => console.log(err));
         console.log("New Follow: ")
-        console.log(this.state.newFollow)
+        console.log(thisFollow)
         // this.getPatrons()
         this.setState({
             newFollow: ''
         })
 
     }
+
+    // handleViewProfile = event => {
+
+    // }
 
     handleInputChange = event => {
         // Destructure the name and value properties off of event.target
@@ -122,6 +146,8 @@ class Patron extends Component {
         this.setState({
             buzzVal: ''
         })
+
+        this.getBuzz()
         
     };
 
@@ -131,6 +157,7 @@ class Patron extends Component {
             <div>
                 <NavbarPages />
                 <PatronSideBar 
+                    key={uuidv4()}
                     userPP={this.state.profpic}
                     username={this.state.username}
                     firstName={this.state.firstName}
@@ -139,6 +166,8 @@ class Patron extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
+                    onFollowClick={this.getFollowing}
+                    
                 />
                 <PatronPP 
                     key={this.state.username}

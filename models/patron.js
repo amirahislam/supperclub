@@ -11,7 +11,7 @@ const patronSchema = new Schema({
   password: { type: String, required: true },
   img: { type: String },
   date: { type: Date, default: Date.now },
-  following: []
+  following: { type: Array, default: [] }
 });
 
 patronSchema.methods = {
