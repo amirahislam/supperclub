@@ -4,7 +4,7 @@ module.exports = {
     findOneAndUpdate: function(req, res) {
         console.log("you joined an event");
         db.Event
-        .findByIdAndUpdate( { _id: req.params.id }, { $push: {guestArray: req.body} } )
+        .findByIdAndUpdate( { _id: req.params.id }, { $push: {guestArray: req.body}, $inc: { spotsLeft: -1 } } )
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }
