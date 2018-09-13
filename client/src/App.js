@@ -79,7 +79,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* {this.getUser()} */}
           <Switch>
             <Route exact path='/'
               render={() =>
