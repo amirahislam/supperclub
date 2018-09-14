@@ -31,12 +31,16 @@ class Patron extends Component {
         img2: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINIEB01_NAsc6vlMZB2jMOXQzWeOAX-ykhRTfezZFqXVPtOtuVg',
         img3: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6tulBsRVy8aTCCsdwQFGkumZva_jZ_hvsZHJVlBUoZEwXeAseVw'
     }
-
-    componentDidMount() {
+    
+    componentWillMount() {
         this.getPatrons();
         this.getUserData();
         this.getBuzz();
         
+    }
+    componentDidMount() {
+        this.getFollowing();
+        this.getAvailPatrons();
     }
 
     getBuzz = () => {
@@ -68,7 +72,7 @@ class Patron extends Component {
             console.log("This is who I follow:")
             console.log(this.state.currentFollowings)
             let currentFollowings = this.state.currentFollowings
-            this.getFollowing(currentFollowings);
+            // this.getFollowing(currentFollowings);
         })
         .catch(err => console.log(err))
         
@@ -85,8 +89,8 @@ class Patron extends Component {
     }
 
     
-    getFollowing = (currentFollowings) => {
-        let following = currentFollowings
+    getFollowing = () => {
+        let following = this.state.currentFollowings
 
         for (let i=0; i<following.length; i++) {
             let thisUser = following[i].patronName
@@ -106,7 +110,6 @@ class Patron extends Component {
         console.log(currentPatrons)
         console.log("Current Followings:")
         console.log(dataFollowings)
-        // this.getAvailPatrons(currentPatrons, dataFollowings);
         // console.log(this.getAvailPatrons(currentPatrons, dataFollowings))
     }
     
@@ -134,106 +137,35 @@ class Patron extends Component {
         })
     }
 
-    getAvailPatrons = (currentPatrons, dataFollowings) => {
+    getAvailPatrons = () => {
         console.log("GETTING AVAIL PATRONS")
-        // Get the currentPatrons type
-        const type = Object.prototype.toString.call(currentPatrons);
 
-        // If the two objects are not the same type, return false
-        if (type !== Object.prototype.toString.call(dataFollowings)) console.log("false 1");
+        for(let z=0; z<this.state.currentPatrons.length; z++) {
+            let data = this.state.currentPatrons[z].username
+            // console.log("Data:")
+            // console.log(data)
 
-        // If items are not an object or array, return false
-        if (['[object Array]', '[object Object]'].indexOf(type) < 0) console.log("false 2");
-
-        // Compare the length of the length of the two items
-        let currentPatronsLen = type === '[object Array]' ? currentPatrons.length : Object.keys(currentPatrons).length;
-        let dataFollowingsLen = type === '[object Array]' ? dataFollowings.length : Object.keys(dataFollowings).length;
-        console.log("Current Patrons length:")
-        console.log(currentPatronsLen)
-        console.log("Current Followings length:")
-        console.log(dataFollowingsLen)
-        if (currentPatronsLen !== dataFollowingsLen) console.log("false 3");
-        else {return true;}
-        // const compare = function (currentPatrons, dataFollowings) {
-        //     // Get the object type
-        //     var itemType = Object.prototype.toString.call(currentPatrons);
-
-        //     // If an object or array, compare recursively
-        //     if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
-        //         if (!this.getAvailPatrons(currentPatrons, dataFollowings)) return false;
-        //     }
-        //     // Otherwise, do a simple comparison
-        //     else {  
-        //         // If the two items are not the same type, return false
-        //         if (itemType !== Object.prototype.toString.call(dataFollowings)) return false;
-        //         if (itemType === '[object Function]') {
-        //             if (currentPatrons.toString() !== dataFollowings.toString()) return false;
-        //         } else {
-        //             if (currentPatrons !== dataFollowings) return false;
-        //         }
-	    //     }
-        // }
-        // let match;
-        // if (type === '[object Array]') {
-        //     for (let p = 0; p < currentPatronsLen; p++) {
-        //         compare(currentPatrons[p], dataFollowings[p]);
-        //     }
-        // } else {
-        //     for (let username in currentPatrons) {
-        //         if (currentPatrons.hasOwnProperty(username)) {
-        //             compare(currentPatrons[username], dataFollowings[username]);
-        //         }
-        //     }
-        // // Compare properties
-        // if (type === '[object Array]') {
-        //     for (var i = 0; i < currentPatronsLen; i++) {
-        //         if (compare(currentPatrons[i], dataFollowings[i]) === false) return false;
-        //     }
-        // } else {
-        //     for (var username in currentPatrons) {
-        //         if (currentPatrons.hasOwnProperty(username)) {
-        //             if (compare(currentPatrons[username], dataFollowings[username]) === false) return false;
-        //         }
-        //     }
-        // }
-
-	    // // If nothing failed, return true
-	    //     return true;
-        // };
-
-        // const matches = []
-        // console.log("current patrons")
-        // console.log(currentPatrons)
-        // console.log("current followings")
-        // console.log(dataFollowings)
-        // currentPatrons.forEach((e1)=>dataFollowings.forEach((e2)=> {if(e1 !== e2){
-        //     console.log(e1)
-        //     // matches.push(e1)
-        //     }
-        // }))
-        // console.log("Matches:", matches)
-        
-        
-
-        // for(let z=0; z<dataFollowings.length; z++) {
-        //     let data = dataFollowings[z].username
-        //     console.log("data")
-        //     console.log(data)
-        //     console.log("username")
-        //     console.log(this.state.currentPatrons[z].username)
-        //     // if (data === this.state.currentPatrons[z].username) {
-        //     //     console.log("True", data)
-        //     // } else {
-        //     //     console.log("False", data)
-        //     // }
-        //     // API.getPatron(data)
-        //     //   .then(res => {
-        //     //         console.log('I can follow you:')
-        //     //         console.log(res.data)
-                
-        //     //   })
-        //     //   .catch(err => console.log(err))
-        // }
+            for (let y=0; y<this.state.dataFollowings.length; y++) {
+                let following = this.state.dataFollowings[y].username
+                // console.log("Following:")
+                // console.log(following)
+                if (data !== following) {
+                    console.log("These two match")
+                    console.log(data)
+                    console.log("and")
+                    console.log(following)
+                    API.getPatron(data)
+                    .then(res => {
+                        this.setState({ availablePatrons: res.data })
+                        console.log('Here are all available patrons:')
+                        console.log(this.state.availablePatrons)
+                    })
+                    .catch(err => console.log(err))
+                } else {
+                    console.log("no match")
+                }
+            }
+        }
         
     }
 
