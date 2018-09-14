@@ -3,7 +3,9 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
+import HomeButton from '../HomeButton';
 import AddEventModal from '../modals/AddEventModal';
+import ChefCalendarModal from '../modals/ChefCalendarModal'
 
 class SideBar extends Component {
     
@@ -17,12 +19,9 @@ class SideBar extends Component {
               	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP}  className="img-circle" width="60"/></a></p>
               	  <h5  className="centered">{this.props.username}</h5>
               	  	
-                  <li  className="mt">
-                      <a  className="active" href="index.html">
-                          <i  className="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
+                    <HomeButton 
+                
+                    />
 
                   <li  className="sub-menu">
                       <a href="javascript:;" >
@@ -36,17 +35,11 @@ class SideBar extends Component {
                       </ul>
                   </li>
 
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-calendar-o"></i>
-                          <span>Calender</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
-                      </ul>
-                  </li>
+                  <ChefCalendarModal  
+                  onClick={this.props.onClick}
+                  />
+                    
+                
                     <AddEventModal 
                     
                     />
