@@ -8,6 +8,7 @@ import FollowModal from '../modals/FollowModal';
 import FollowingModal from '../modals/FollowingModal';
 import EventsButton from '../EventsButton';
 import HomeButton from '../HomeButton';
+import ChefCalendarModal from '../modals/ChefCalendarModal'
 let uuidv4 = require('uuid/v4');
 
 class PatronSideBar extends Component {
@@ -52,17 +53,9 @@ class PatronSideBar extends Component {
                     
                   />
 
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className="fa fa-cogs"></i>
-                          <span>Calender</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
-                      </ul>
-                  </li>
+                  <ChefCalendarModal
+                  onClick={this.props.onClick}
+                  />
                     <div>
                         <AddEventModal 
                             key={uuidv4()}
