@@ -87,81 +87,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-<<<<<<< HEAD
-          {/* {this.getUser()} */}
-          <Switch>
-            <Route exact path='/'
-              render={() =>
-                <Home
-                  updateUser={this.updateUser}
-                />}
-            />
-            <Route 
-              exact path='/Signup'
-              render={() =>
-                <Signup
-                  updateUser={this.updateUser}
-                />}
-            />
-            <Route
-              exact path='/Login'
-              render={() =>
-                <Login
-                  updateUser={this.updateUser}
-                />}
-            />
-            <Route exact path='/Chef' component={Chef}/>
-            <Route exact path="/Chef" render={() => (
-              this.state.loggedIn === true ? (
-                <Chef />
-              ) : this.state.loggedIn === false ? (
-                <Redirect to="/"/>
-              ) : (
-                null
-              )
-            )}/>            
-            <Route exact path='/Patron' component={Patron} />
-            <Route exact path="/Patron" render={() => (
-              this.state.loggedIn === true ? (
-                <Patron />
-              ) : this.state.loggedIn === false ? (
-                <Redirect to="/"/>
-              ) : (
-                null
-              )
-            )}/>
-            <Route exact path='/Profile' component={Profile}/>
-            <Route exact path="/Profile" render={() => (
-              this.state.loggedIn === true ? (
-                <Profile />
-              ) : this.state.loggedIn === false ? (
-                <Redirect to="/"/>
-              ) : (
-                null
-              )
-            )}/>
-            {/* <Route exact path='/Reservations' component={Reservation}/> */}
-            <Route exact path="/Reservations" render={() => (
-              this.state.loggedIn === true ? (
-                <Reservation />
-              ) : this.state.loggedIn === false ? (
-                <Redirect to="/"/>
-              ) : (
-                null
-              )
-            )}/>
-            {/* <Route exact path='/Events' component={Events}/> */}
-            <Route exact path="/Events" render={() => (
-              this.state.loggedIn === true ? (
-                <Events />
-              ) : this.state.loggedIn === false ? (
-                <Redirect to="/"/>
-              ) : (
-                null
-              )
-            )}/>
-          </Switch>
-=======
           {/* {this.renderRedirect()} */}
           <Route exact path='/'
             render={() =>
@@ -189,7 +114,6 @@ class App extends Component {
                 updateUser={this.updateUser}
               />}
           />
->>>>>>> 10ee0a8b54bf8bfb77ccf79cf41c905c3c79b7b7
         </div>
       </Router>
     );
