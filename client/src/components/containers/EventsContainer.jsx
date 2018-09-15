@@ -20,6 +20,7 @@ const EventsContainer = props => (
             eventDate={event.eventDate}
             description={event.description}
             rules={event.rules}
+            spotsLeft={event.spotsLeft}
             joinEvent={props.joinEvent}
         />
         )})

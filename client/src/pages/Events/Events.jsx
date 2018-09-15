@@ -4,6 +4,7 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
+import Calendar from "../../components/Calendar";
 
 class Events extends Component {
 
@@ -60,10 +61,18 @@ class Events extends Component {
         .then(res => {
             let totalGuests = res.data[0].guestArray.length;
             let maxGuests = res.data[0].guests
-            if (totalGuests <= maxGuests) {
-                this.sendGuestData(res.data[0]._id);                
+            let alreadyJoined = false;
+            res.data[0].guestArray.forEach((event) => {
+                if (event.username === this.state.username) {
+                    alreadyJoined = true
+                } else {
+                    console.log("all good")
+                }
+            })
+            if (totalGuests < maxGuests && alreadyJoined === false) {
+                    this.sendGuestData(res.data[0]._id);
             } else {
-                console.log("Sorry, the event is full!")
+                console.log("Sorry, the event is full or you've already joined!")
             }
         })
         .catch(err => console.log(err))
@@ -80,6 +89,7 @@ class Events extends Component {
         API.joinEvent(id, attendeeData)
         .then(res => {
             console.log(res)
+            this.getEvents();
         })
         .catch(err => console.log(err))
     }
@@ -136,6 +146,8 @@ class Events extends Component {
                 currentEvents={this.state.currentEvents}
                 joinEvent={this.joinEvent}
                 /> 
+                <Calendar
+                />
             </div>
         )
     }

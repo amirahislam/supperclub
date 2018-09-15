@@ -9,6 +9,7 @@ const eventSchema = new Schema({
   menu: { type: String, required: false },
   guests: { type: Number, required: true },
   guestArray: { type: Array, default: [] },
+  spotsLeft: { type: Number },
   price: { type: String, required: true },
   rules: { type: String, required: false },
   date: { type: Date, default: Date.now },
