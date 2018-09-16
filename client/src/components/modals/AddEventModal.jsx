@@ -10,11 +10,11 @@ import API from "../../utils/API";
 class AddEventModal extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        console.log('i am mounted');
         this.getUserData();
     }
 
-        constructor(props, context) {
+    constructor(props, context) {
         super(props, context);  
       
         this.state = {
@@ -26,6 +26,7 @@ class AddEventModal extends React.Component {
           profpic: "",
           newEvent: {},
           eventName: '',
+          eventImg: '',
           menu: '',
           guests: '',
           price: '25',
@@ -190,9 +191,9 @@ class AddEventModal extends React.Component {
                                         </FormControl>
                                 </FormGroup>
 
-                                <ControlLabel>
+                                {/* <ControlLabel>
                                     Upload Menu
-                                </ControlLabel>
+                                </ControlLabel> */}
 
                                 <FormControl 
                                     type="file" 

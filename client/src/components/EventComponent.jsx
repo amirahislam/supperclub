@@ -38,7 +38,7 @@ const EventComponent = props => (
             </div>
 
             
-            <div className="modal fade" id={"modal + {props.id}"} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id={"modal + {props.id}"} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -97,11 +97,11 @@ const EventComponent = props => (
                                                 </div>
                                             </div>
                                             <div className="form-group" align="left">
-                                                <label for="exampleFormControlInput1">Email address</label>
+                                                <label htmlFor="exampleFormControlInput1">Email address</label>
                                                 <input type="email" className="form-control" id="emailInput" placeholder="name@example.com" />
                                             </div>
                                             <div className="form-group" align="left">
-                                                <label for="formGroupExampleInput">Phone Number</label>
+                                                <label htmlFor="formGroupExampleInput">Phone Number</label>
                                                 <input type="text" className="form-control" id="phoneInput" placeholder="Example input" />
                                             </div>
 
