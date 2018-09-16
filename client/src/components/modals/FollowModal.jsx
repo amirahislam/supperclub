@@ -7,7 +7,7 @@ import '../../css/DashboardStyles/Follow.css';
 class FollowModal extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 
@@ -70,7 +70,7 @@ class FollowModal extends React.Component {
                         name={this.props.name}
                         currentPatrons={this.props.currentPatrons}
                         onClick={this.props.onClick}
-                        patronName={this.props.patronName}
+                        patron={this.props.patronName}
                         />
                     </Modal.Body>
 

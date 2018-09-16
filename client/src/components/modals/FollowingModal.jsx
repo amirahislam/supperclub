@@ -41,10 +41,10 @@ class FollowingModal extends React.Component {
     render() {
       const uuidv4 = require('uuid/v4')
       return (
-        <div onClick = {this.props.onClick}>
+        <div>
             <li className="sub-menu">
                 <a href="javascript:;">
-                <span className="addEvent" onClick={this.open}>
+                <span className="addEvent" onClick={this.open} >
                     <i className="fa fa-book"></i>
                     Following
                 </span>
@@ -68,7 +68,7 @@ class FollowingModal extends React.Component {
                         key={uuidv4()}
                         name={this.props.name}
                         dataFollowings={this.props.dataFollowings}
-                        patronName={this.props.patronName}
+                        patron={this.props.patronName}
                         />
                     </Modal.Body>
 

@@ -13,7 +13,7 @@ let uuidv4 = require('uuid/v4');
 class PatronSideBar extends Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 
@@ -72,17 +72,19 @@ class PatronSideBar extends Component {
                     <div>
                         <FollowModal 
                             key={uuidv4()}
+                            // onFollowClick={this.props.onFollowClick}
                             onClick={this.props.onClick}
                             currentPatrons={this.props.currentPatrons}
-                            patronName={this.props.patronName}
+                            patronName={this.props.patron}
                         />
                     </div>
                     <div>
                         <FollowingModal 
                             key={uuidv4()}
                             onClick={this.props.onFollowingClick}
+                            // onFollowingClick={this.props.onFollowingClick}
                             dataFollowings={this.props.dataFollowings}
-                            patronName={this.props.patronName}
+                            patronName={this.props.patron}
                         />
                     </div>
                   <li  className="sub-menu">

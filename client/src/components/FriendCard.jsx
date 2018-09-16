@@ -18,7 +18,7 @@ class FriendCard extends Component {
                     
                 this.props.currentPatrons.map(patron => {
                     return (
-                    <div key={patron.username} className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
+                    <div key={uuidv4()} className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
                     
                         <div id="patronImg">
                             <a href="#">
@@ -37,7 +37,7 @@ class FriendCard extends Component {
                               <div className="row">
                                 <FollowComponent 
                                 key={uuidv4()}
-                                patronname={patron.username}
+                                patron={patron.username}
                                 patronid={patron.id}
                                 onClick={this.props.onClick}
                                 />
