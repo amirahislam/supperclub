@@ -11,6 +11,7 @@ const EventsContainer = props => (
         return(
         <EventComponent
             patronId={event.username}
+            key={event._id}
             id={event._id}
             username={event.username}
             eventName={event.eventName}
