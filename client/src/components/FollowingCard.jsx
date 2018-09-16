@@ -22,13 +22,13 @@ class FollowingCard extends Component {
                     
                         <div id="patronImg">
                             <a href="#">
-                                <img className="profilePic" src={dataFollowing.img} alt={dataFollowing.username} />
+                                <img className="profilePic" src={dataFollowing.patronImg} alt={dataFollowing.patronName} />
                             </a>
                         </div>
                         
                         <div className="centered">
-                            <h3>{dataFollowing.username}</h3>
-                            <h6>{dataFollowing.email}</h6>
+                            <h3>{dataFollowing.patronName}</h3>
+                            <h6>{dataFollowing.patronName}</h6>
                         </div>
 
                         <div className="row">
