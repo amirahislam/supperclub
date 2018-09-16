@@ -20,10 +20,10 @@ class Navbar extends Component {
                         <a className="nav-link js-scroll-trigger" href="#about">About</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link js-scroll-trigger" href="#services">Reservations</a>
+                        <a className="nav-link js-scroll-trigger" href="#services">How it works</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link js-scroll-trigger" href="#portfolio">Chefs</a>
+                        <a className="nav-link js-scroll-trigger" href="#portfolio">Gallery</a>
                         </li>
                         <li className="nav-item">
                         <a className="nav-link js-scroll-trigger" href="/login">Log In/Sign Up</a>
