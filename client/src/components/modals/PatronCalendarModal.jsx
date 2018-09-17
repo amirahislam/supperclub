@@ -16,7 +16,7 @@ import FullCalendar from 'fullcalendar-reactwrapper';
 class ChefCalendarModal extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
         this.getUserData();
     }
 
@@ -43,18 +43,24 @@ class ChefCalendarModal extends React.Component {
             API.getEvents()
               .then(res => {
                 let events = [];
+                let localsessionUser = localStorage.getItem("user");
                 res.data.forEach((event) => {
-                    let splitDate = event.date.split("T")
-                    let eventDate = splitDate[0];
-                    let eventInfo = {
-                        title: event.eventName,
-                        start: eventDate
-                    };
-                    events.push(eventInfo)
+                    event.guestArray.forEach((guestArray) => {
+                        if (guestArray.username === localsessionUser) {
+                            // console.log("you are attending");
+                            let splitDate = event.date.split("T")
+                            let eventDate = splitDate[0];
+                            let eventInfo = {
+                                title: event.eventName,
+                                start: eventDate
+                            };
+                            events.push(eventInfo)
+                        } else {}
+                    })
                 })
                 this.setState({ currentEvents: events });
-                console.log('we got the events')
-                console.log(this.state.currentEvents)
+                // console.log('we got the events')
+                // console.log(this.state.currentEvents)
                 }
             )
               .catch(err => console.log(err))

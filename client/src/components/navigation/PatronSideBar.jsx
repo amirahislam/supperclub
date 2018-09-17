@@ -8,13 +8,13 @@ import FollowModal from '../modals/FollowModal';
 import FollowingModal from '../modals/FollowingModal';
 import EventsButton from '../EventsButton';
 import HomeButton from '../HomeButton';
-import ChefCalendarModal from '../modals/ChefCalendarModal'
+import PatronCalendarModal from '../modals/PatronCalendarModal';
 let uuidv4 = require('uuid/v4');
 
 class PatronSideBar extends Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 
@@ -42,55 +42,46 @@ class PatronSideBar extends Component {
               {/* <!-- sidebar menu start--> */}
               <ul  className="sidebar-menu" id="nav-accordion">
               
-              	  <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
-              	  <h5  className="centered">{this.props.username}</h5>
-              	  	
-                  <HomeButton 
+                <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
+                <h5  className="centered">{this.props.username}</h5>
+                <h6  className="centered">{this.props.userType}</h6>
                 
-                  />
+                <HomeButton 
 
-                  <EventsButton 
-                    
-                  />
+                />
 
-                  <ChefCalendarModal
-                  onClick={this.props.onClick}
-                  />
-                    <div>
-                        <AddEventModal 
-                            key={uuidv4()}
-                            onClick={this.props.onClick}
-                        />
-                    </div>
-                    <div>
-                        <FollowModal 
-                            key={uuidv4()}
-                            onClick={this.props.onClick}
-                            currentPatrons={this.props.currentPatrons}
-                            patronName={this.props.patronName}
-                        />
-                    </div>
-                    <div>
-                        <FollowingModal 
-                            key={uuidv4()}
-                            onClick={this.props.onFollowClick}
-                            currentFollowing={this.props.currentFollowing}
-                            patronName={this.props.patronName}
-                        />
-                    </div>
-                  <li  className="sub-menu">
-                      <a href="javascript:;" >
-                          <i  className=" fa fa-bar-chart-o"></i>
-                          <span>Revenue</span>
-                      </a>
-                      <ul  className="sub">
-                          <li><a  href="morris.html">Morris</a></li>
-                          <li><a  href="chartjs.html">Chartjs</a></li>
-                      </ul>
-                  </li>
+                <EventsButton 
 
+                />
+
+                <div>
+                    <AddEventModal 
+                      key={uuidv4()}
+                      onClick={this.props.onClick}
+                    />
+                </div>
+                    <PatronCalendarModal
+                      onClick={this.props.onClick}
+                    />
+                <div>
+                    <FollowModal 
+                      key={uuidv4()}
+                      onClick={this.props.onClick}
+                      currentPatrons={this.props.currentPatrons}
+                      patronName={this.props.patron}
+                    />
+                </div>
+                <div>
+                    <FollowingModal 
+                      key={uuidv4()}
+                      onClick={this.props.onUnfollowClick}
+                      dataFollowings={this.props.dataFollowings}
+                      patronName={this.props.patron}
+                    />
+                </div>
               </ul>
               {/* <!-- sidebar menu end--> */}
+              
           </div>
       </aside>
         )

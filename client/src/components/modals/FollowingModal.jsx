@@ -1,18 +1,13 @@
 import React from 'react';
-import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
+import { Modal, Button } from 'react-bootstrap';
 import FollowingCard from '../FollowingCard'
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/Following.css';
-import moment from 'moment';
-import API from "../../utils/API";
-
-
 
 class FollowingModal extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 
@@ -24,22 +19,12 @@ class FollowingModal extends React.Component {
 
         };
 
-        // this.handleSaveEvent = this.handleSaveEvent.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
       }
 
-      handleChange = date => {
-        console.log(date._d)
-        this.setState({
-          eventDate: date
-        });
-      }
-
       handleSelection = event => {
         const { name, value } = event.target;
-        // console.log(event.target.value)
         this.setState({
           [name]: value
         });
@@ -53,15 +38,16 @@ class FollowingModal extends React.Component {
         this.setState({showModal: false});
       }
       
-  
     render() {
       const uuidv4 = require('uuid/v4')
       return (
         <div>
             <li className="sub-menu">
                 <a href="javascript:;">
+
                 <span className="addEvent" onClick={this.open}>
                     <i className="fa fa-bars"></i>
+
                     Following
                 </span>
                 <div>
@@ -83,9 +69,9 @@ class FollowingModal extends React.Component {
                         <FollowingCard 
                         key={uuidv4()}
                         name={this.props.name}
-                        currentFollowing={this.props.currentFollowing}
+                        dataFollowings={this.props.dataFollowings}
+                        patron={this.props.patronName}
                         onClick={this.props.onClick}
-                        patronName={this.props.patronName}
                         />
                     </Modal.Body>
 

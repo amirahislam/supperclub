@@ -16,6 +16,9 @@ export default {
   saveFollow: function(id, thisFollow) {
     return axios.put("/api/patrons/" + id, thisFollow)
   },
+  saveUnfollow: function(id, thisUnfollow) {
+    return axios.delete("/api/patrons/" + id + "/" + thisUnfollow)
+  },
   // Saves a patron to the database (upon signup)
   savePatron: function(patronData) {
     return axios.post("/api/patrons", patronData);

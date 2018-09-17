@@ -7,7 +7,7 @@ import '../css/DashboardStyles/Follow.css';
 class HomeButton extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 

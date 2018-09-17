@@ -21,9 +21,21 @@ module.exports = {
   },
   findOneAndUpdate: function (req, res) {
     db.Patron
-      .update({ _id: req.params.id }, {$push: {following: req.body}})
+      .update({ _id: req.params.id }, { $push: { following: req.body }})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+  findOneAndDelete: function(req, res) {
+    db.Patron
+      .findByIdAndUpdate({_id: req.params.id }, { $pull: { following: { patronId: req.params.followid }}}, { multi: true }, function(err,model) {
+        if(err){
+          console.log(err);
+          return res.send(err);
+         }
+         return res.json(model);
+      })
+      // .then(dbModel => res.json(dbModel))
+      // .catch(err => res.status(422).json(err))
   },
   create: function(req, res) {
     db.Patron
@@ -37,5 +49,5 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
 };

@@ -10,7 +10,7 @@ import API from "../../utils/API";
 class AddEventModal extends React.Component {
 
     componentDidMount() {
-        console.log('i am mounted');
+        // console.log('i am mounted');
         this.getUserData();
     }
 
@@ -107,10 +107,10 @@ class AddEventModal extends React.Component {
                 username: response.data[0].username,
                 profpic: response.data[0].img
             })
-            console.log(response.data)
+            // console.log(response.data)
         })
         .catch(err => console.log(err))
-        console.log(this.state.username);
+        // console.log(this.state.username);
     }
       
       open() {

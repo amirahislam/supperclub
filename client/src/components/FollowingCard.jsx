@@ -3,46 +3,51 @@ import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
 import '../css/DashboardStyles/FriendCard.css'
-import FollowingComponent from './FollowComponent'
+import UnfollowComponent from './UnfollowComponent'
 import ViewProfileComponent from './ViewProfileComponent'
 
 class FollowingCard extends Component {
 
     render() {
-        let uuidv4 = require('uuid/v4');
+        let uuidv4 = require('uuid/v4')
         return (
             
             <div className="friendCard">
 
-                {/* {
+                {
                     
-                this.props.currentFollowing.map(following => {
-                    return(
-                    <div className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
+                this.props.dataFollowings.map(dataFollowing => {
+                    return (
+                    <div key={uuidv4()} className="friendCard content-panel pn col-lg-3 col-md-3 col-sm-3 mb">
                     
-                        <div id="followingImg">
+                        <div id="patronImg">
                             <a href="#">
-                                <img className="profilePic" src={following.img} alt={following.username} />
+                                <img className="profilePic" src={dataFollowing.patronImg} alt={dataFollowing.patronName} />
                             </a>
                         </div>
                         
                         <div className="centered">
-                            <h3>{following.username}</h3>
-                            <h6>{following.email}</h6>
+                            <h3>{dataFollowing.patronName}</h3>
+                            <h6>{dataFollowing.patronEmail}</h6>
                         </div>
 
                         <div className="row">
                           <div className="col-md-1"></div>
                             <div className="col-md-10">
                               <div className="row">
-                                <FollowingComponent 
+                                <UnfollowComponent 
                                 key={uuidv4()}
-                                followingname={following.username}
-                                followingid={following.id}
+                                patron={dataFollowing.patronName}
+                                patronid={dataFollowing.patronId}
+                                patronimg={dataFollowing.patronImg}
+                                patronemail={dataFollowing.patronEmail}
                                 onClick={this.props.onClick}
-                                currentFollowing={this.props.currentFollowing}
                                 />
-                            
+                                <ViewProfileComponent 
+                                key={uuidv4()}
+                                // patronname={patron.username}
+                                // onClick={this.props.onClick}
+                                />
                               </div>
                             </div>
                           <div className="col-md-1"></div>
@@ -51,7 +56,7 @@ class FollowingCard extends Component {
                 </div>
                 )})
 
-                } */}
+                }
 
             </div>
 
