@@ -11,6 +11,7 @@ class EventInfoModal extends React.Component {
       
         this.state = {
           showModal: false,
+          Attending: this.props.attending
         };
 
         this.handleSaveEvent = this.handleSaveEvent.bind(this);
@@ -70,7 +71,9 @@ class EventInfoModal extends React.Component {
                     <Modal.Body>
                         <div>
                             <p><strong>Event Description:</strong> <br/> {this.props.description}</p>
-                            <p><strong>Number of Guests:</strong> {this.props.guests}</p>  
+                            <p><strong>Number of Guests:</strong> {this.props.guests}</p>
+                            <p><strong>Are you attending?</strong> {this.props.attending}</p>
+                            <p><strong>Spots Left:</strong> {this.props.spotsLeft}</p>
                             <p><strong>Price:</strong> ${this.props.price}</p>
                             <p><strong>Note:</strong> <br />{this.props.rules}</p>
                         </div>
@@ -100,7 +103,12 @@ class EventInfoModal extends React.Component {
                             <br />
 
                             <p align="center">
-                                <a className="btn btn-light" id="submitprofile" data-toggle="collapse" href={"#collapse {this.props.id}"}>
+                                <a
+                                    className="btn btn-light"
+                                    data-toggle="collapse"
+                                    value={this.props.value}
+                                    onClick={this.props.joinEvent}
+                                >
                                     Reserve your seat
                                 </a>
                             </p>
@@ -136,7 +144,7 @@ class EventInfoModal extends React.Component {
 
                     <Modal.Footer>
                         {/* <Button onClick={this.close}>Close</Button> */}
-                        <Button bsStyle="primary" onClick={this.handleSaveEvent}>Save To Upcoming Events</Button>
+                        {/* <Button bsStyle="primary" onClick={this.handleSaveEvent}>Save To Upcoming Events</Button> */}
                     </Modal.Footer>         
                     </Modal> 
                 </div>

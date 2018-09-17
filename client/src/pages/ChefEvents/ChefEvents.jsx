@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavbarPages from '../../components/navigation/NavbarPages';
-import PatronSideBar from '../../components/navigation/PatronSideBar';
+import SideBar from '../../components/navigation/SideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
@@ -56,8 +56,8 @@ class Events extends Component {
     }
 
     joinEvent = (event) => {
-        let value = event.target.getAttribute("value")
-        API.getEvent(value)
+        console.log(event.target.value)
+        API.getEvent(event.target.value)
         .then(res => {
             let totalGuests = res.data[0].guestArray.length;
             let maxGuests = res.data[0].guests
@@ -131,7 +131,7 @@ class Events extends Component {
         return (
             <div>
                 <NavbarPages />
-                <PatronSideBar 
+                <SideBar 
                     userPP={this.state.profpic}
                     username={this.state.username}
                     firstName={this.state.firstName}
