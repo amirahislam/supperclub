@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   username: { type: String, required: true },
   eventName: { type: String, required: true },
-  eventImg: { type: String, require: false },
+  eventImg: { type: String, required: false },
   description: { type: String, required: true },
   menu: { type: String, required: false },
   guests: { type: Number, required: true },
