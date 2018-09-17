@@ -62,7 +62,7 @@ class Patron extends Component {
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
                 profpic: response.data[0].img,
-                currentFollowing: response.data[0].following,
+                currentFollowings: response.data[0].following,
                 userType: response.data[0].userType
             })
             
