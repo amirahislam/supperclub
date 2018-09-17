@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
 import '../pages/Signup/Signup';
 
-import { Link } from 'react-router-dom';
 
 const SignUpPage = props => (
             <div id="login-page">

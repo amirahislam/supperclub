@@ -14,7 +14,7 @@ let uuidv4 = require('uuid/v4');
 class PatronSideBar extends Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 
@@ -47,51 +47,41 @@ class PatronSideBar extends Component {
                 <h6  className="centered">{this.props.userType}</h6>
                 
                 <HomeButton 
-            
+
                 />
 
                 <EventsButton 
-                
+
                 />
 
-                <PatronCalendarModal
-                onClick={this.props.onClick}
-                />
                 <div>
-                    {/* <AddEventModal 
-                        key={uuidv4()}
-                        onClick={this.props.onClick}
-                    /> */}
+                    <AddEventModal 
+                      key={uuidv4()}
+                      onClick={this.props.onClick}
+                    />
                 </div>
+                    <PatronCalendarModal
+                      onClick={this.props.onClick}
+                    />
                 <div>
                     <FollowModal 
-                        key={uuidv4()}
-                        onClick={this.props.onClick}
-                        currentPatrons={this.props.currentPatrons}
-                        patronName={this.props.patronName}
+                      key={uuidv4()}
+                      onClick={this.props.onClick}
+                      currentPatrons={this.props.currentPatrons}
+                      patronName={this.props.patron}
                     />
                 </div>
                 <div>
                     <FollowingModal 
-                        key={uuidv4()}
-                        onClick={this.props.onFollowClick}
-                        currentFollowing={this.props.currentFollowing}
-                        patronName={this.props.patronName}
+                      key={uuidv4()}
+                      onClick={this.props.onUnfollowClick}
+                      dataFollowings={this.props.dataFollowings}
+                      patronName={this.props.patron}
                     />
                 </div>
-                {/* <li  className="sub-menu">
-                    <a href="javascript:;" >
-                        <i  className=" fa fa-bar-chart-o"></i>
-                        <span>Revenue</span>
-                    </a>
-                    <ul  className="sub">
-                        <li><a  href="morris.html">Morris</a></li>
-                        <li><a  href="chartjs.html">Chartjs</a></li>
-                    </ul>
-                </li> */}
-
               </ul>
               {/* <!-- sidebar menu end--> */}
+              
           </div>
       </aside>
         )

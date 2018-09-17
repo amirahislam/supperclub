@@ -126,11 +126,11 @@ class EventInfoModal extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="form-group" align="left">
-                                                <label for="exampleFormControlInput1">Email address</label>
+                                                <label htmlFor="exampleFormControlInput1">Email address</label>
                                                 <input type="email" className="form-control" id="emailInput" placeholder="name@example.com" />
                                             </div>
                                             <div className="form-group" align="left">
-                                                <label for="formGroupExampleInput">Phone Number</label>
+                                                <label htmlFor="formGroupExampleInput">Phone Number</label>
                                                 <input type="text" className="form-control" id="phoneInput" placeholder="Example input" />
                                             </div>
 
