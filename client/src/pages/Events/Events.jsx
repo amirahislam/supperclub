@@ -56,8 +56,8 @@ class Events extends Component {
     }
 
     joinEvent = (event) => {
-        console.log(event.target.value)
-        API.getEvent(event.target.value)
+        let value = event.target.getAttribute("value")
+        API.getEvent(value)
         .then(res => {
             let totalGuests = res.data[0].guestArray.length;
             let maxGuests = res.data[0].guests
@@ -146,8 +146,8 @@ class Events extends Component {
                 currentEvents={this.state.currentEvents}
                 joinEvent={this.joinEvent}
                 /> 
-                <Calendar
-                />
+                {/* <Calendar
+                /> */}
             </div>
         )
     }

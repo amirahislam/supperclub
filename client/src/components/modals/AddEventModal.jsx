@@ -10,30 +10,35 @@ import API from "../../utils/API";
 class AddEventModal extends React.Component {
 
     componentDidMount() {
-        // console.log('mounted');
-     
+        // console.log('i am mounted');
+        this.getUserData();
     }
 
-        constructor(props, context) {
+    constructor(props, context) {
         super(props, context);  
       
         this.state = {
           showModal: false,
-          patronId: '',
+          id: "",
+          firstName: "",
+          lastName: "",
+          username: "",
+          profpic: "",
           newEvent: {},
-          username: 'testUser',
           eventName: '',
+          eventImg: '',
           menu: '',
           guests: '',
           price: '25',
           eventDate: moment(),
           description: '',
-          rules: ''
+          rules: '',
 
         };
 
         this.handleSaveEvent = this.handleSaveEvent.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.getUserData = this.getUserData.bind(this);
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
       }
@@ -90,6 +95,23 @@ class AddEventModal extends React.Component {
         })
 
       }
+
+      getUserData = () => {
+        let localsessionUser = localStorage.getItem("user")
+        API.getPatron(localsessionUser)
+        .then(response => {
+            this.setState({
+                id: response.data[0]._id,
+                firstName: response.data[0].firstName,
+                lastName: response.data[0].lastName,
+                username: response.data[0].username,
+                profpic: response.data[0].img
+            })
+            console.log(response.data)
+        })
+        .catch(err => console.log(err))
+        console.log(this.state.username);
+    }
       
       open() {
         this.setState({showModal: true});
@@ -169,9 +191,9 @@ class AddEventModal extends React.Component {
                                         </FormControl>
                                 </FormGroup>
 
-                                <ControlLabel>
+                                {/* <ControlLabel>
                                     Upload Menu
-                                </ControlLabel>
+                                </ControlLabel> */}
 
                                 <FormControl 
                                     type="file" 

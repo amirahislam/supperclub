@@ -13,8 +13,6 @@
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "flexbox-react": "^4.4.0",
-    "fullcalendar-reactwrapper": "^1.0.7",
     "moment": "^2.22.2",
     "mongoose": "^5.2.12",
     "morgan": "^1.9.0",

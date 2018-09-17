@@ -15,6 +15,7 @@ class Patron extends Component {
         profpic: '',
         firstName: '',
         lastName: '',
+        userType: '',
         badges: '',
         buzzVal: '',
         patron: '',
@@ -61,7 +62,8 @@ class Patron extends Component {
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
                 profpic: response.data[0].img,
-                currentFollowings: response.data[0].following
+                currentFollowing: response.data[0].following,
+                userType: response.data[0].userType
             })
             
             console.log("This is the current user:")
@@ -280,6 +282,7 @@ class Patron extends Component {
                     username={this.state.username}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
+                    userType={this.state.userType}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.myUnfollowedPatrons}
