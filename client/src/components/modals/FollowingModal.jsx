@@ -44,8 +44,10 @@ class FollowingModal extends React.Component {
         <div>
             <li className="sub-menu">
                 <a href="javascript:;">
-                <span className="addEvent" onClick={this.open} >
-                    <i className="fa fa-book"></i>
+
+                <span className="addEvent" onClick={this.open}>
+                    <i className="fa fa-bars"></i>
+
                     Following
                 </span>
                 <div>
