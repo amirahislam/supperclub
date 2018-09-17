@@ -69,6 +69,7 @@ class FollowingModal extends React.Component {
                         name={this.props.name}
                         dataFollowings={this.props.dataFollowings}
                         patron={this.props.patronName}
+                        onClick={this.props.onClick}
                         />
                     </Modal.Body>
 

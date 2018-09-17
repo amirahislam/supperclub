@@ -38,8 +38,9 @@ class FriendCard extends Component {
                                 <FollowComponent 
                                 key={uuidv4()}
                                 patron={patron.username}
-                                patronId={patron._id}
-                                patronImg={patron.img}
+                                patronid={patron._id}
+                                patronimg={patron.img}
+                                patronemail={patron.email}
                                 onClick={this.props.onClick}
                                 />
                                 <ViewProfileComponent 

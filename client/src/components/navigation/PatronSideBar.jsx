@@ -81,7 +81,7 @@ class PatronSideBar extends Component {
                     <div>
                         <FollowingModal 
                             key={uuidv4()}
-                            onClick={this.props.onFollowingClick}
+                            onClick={this.props.onUnfollowClick}
                             // onFollowingClick={this.props.onFollowingClick}
                             dataFollowings={this.props.dataFollowings}
                             patronName={this.props.patron}

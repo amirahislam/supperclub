@@ -35,9 +35,9 @@ class Patron extends Component {
     }
 
     componentDidMount() {
-        this.getPatrons();
         this.getUserData();
         this.getBuzz();
+        this.getPatrons();
         
     }
 
@@ -45,8 +45,6 @@ class Patron extends Component {
         API.getBuzz()
           .then(res => {
             this.setState({ currentBuzz: res.data });
-            // console.log('Here is all the buzz')
-            // console.log(this.state.currentBuzz)
             }
         )
           .catch(err => console.log(err))
@@ -184,9 +182,10 @@ class Patron extends Component {
     handleFollow = event => {
         event.preventDefault()
         let thisFollow =  {
-            patronId: event.target.getAttribute('patronId'),
+            patronId: event.target.getAttribute('patronid'),
             patronName: event.target.getAttribute('patron'),
-            patronImg: event.target.getAttribute('patronImg')
+            patronImg: event.target.getAttribute('patronimg'),
+            patronEmail: event.target.getAttribute('patronemail')
         }
         let id = this.state.id
         this.savingFollow(id, thisFollow)
@@ -203,6 +202,35 @@ class Patron extends Component {
           this.setState({
             // myUnfollowedPatrons: this.state.myUnfollowedPatrons.splice(thisFollow, 1),
             newFollow: ''
+          })
+        // console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+    }
+
+    handleUnfollow = event => {
+        event.preventDefault()
+        let thisUnfollow =  {
+            patronId: event.target.getAttribute('patronId'),
+            patronName: event.target.getAttribute('patron'),
+            patronImg: event.target.getAttribute('patronImg'),
+            patronEmail: event.target.getAttribute('patronEmail')
+        }
+        let id = this.state.id
+        this.savingUnfollow(id, thisUnfollow)
+    }
+
+    savingUnfollow = (id, thisUnfollow) => {
+        console.log("NEW FOLLOWED STATE:", this.state.dataFollowings)
+        console.log("MY ID:", id)
+        console.log("NEW UNFOLLOW:", thisUnfollow)
+        let unfollowId = thisUnfollow.patronId
+        console.log("NEW UNFOLLOW ID:", unfollowId)
+        API.saveUnfollow(id, unfollowId)
+          .then(res => console.log("HUGE RESULT:", res))
+          .catch(err => console.log(err));
+          this.getUserData()
+          this.setState({
+            // myUnfollowedPatrons: this.state.myUnfollowedPatrons.splice(thisFollow, 1),
+            newUnfollow: ''
           })
         // console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
     }
@@ -257,6 +285,7 @@ class Patron extends Component {
                     currentPatrons={this.state.myUnfollowedPatrons}
                     dataFollowings={this.state.currentFollowings}
                     onClick={this.handleFollow}
+                    onUnfollowClick={this.handleUnfollow}
                     onFollowClick={this.getUserData}
                     onFollowingClick={this.getUserData}
                     

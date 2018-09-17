@@ -3,7 +3,7 @@ import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
 import '../css/DashboardStyles/FriendCard.css'
-import FollowingComponent from './FollowComponent'
+import UnfollowComponent from './UnfollowComponent'
 import ViewProfileComponent from './ViewProfileComponent'
 
 class FollowingCard extends Component {
@@ -28,21 +28,29 @@ class FollowingCard extends Component {
                         
                         <div className="centered">
                             <h3>{dataFollowing.patronName}</h3>
-                            <h6>{dataFollowing.patronName}</h6>
+                            <h6>{dataFollowing.patronEmail}</h6>
                         </div>
 
                         <div className="row">
-                          
-                            <div className="col-md-8">
-                              <button>View Profile</button>
+                          <div className="col-md-1"></div>
+                            <div className="col-md-10">
+                              <div className="row">
+                                <UnfollowComponent 
+                                key={uuidv4()}
+                                patron={dataFollowing.patronName}
+                                patronid={dataFollowing.patronId}
+                                patronimg={dataFollowing.patronImg}
+                                patronemail={dataFollowing.patronEmail}
+                                onClick={this.props.onClick}
+                                />
+                                <ViewProfileComponent 
+                                key={uuidv4()}
+                                // patronname={patron.username}
+                                // onClick={this.props.onClick}
+                                />
+                              </div>
                             </div>
-
-                            <div className="col-md-1"></div>
-
-                            <div className="col-md-4">
-                              <button>Unfollow</button>
-                            </div>
-                          
+                          <div className="col-md-1"></div>
                         </div>
                     
                 </div>
