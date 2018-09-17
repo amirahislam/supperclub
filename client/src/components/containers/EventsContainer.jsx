@@ -22,6 +22,7 @@ const EventsContainer = props => (
             description={event.description}
             rules={event.rules}
             spotsLeft={event.spotsLeft}
+            guestArray={event.guestArray}
             joinEvent={props.joinEvent}
         />
         )})
