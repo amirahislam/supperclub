@@ -33,6 +33,10 @@ class EventInfoModal extends React.Component {
         this.close()
 
       }
+
+      click = (event) => {
+        this.props.joinEvent(event, this.props.checkAttending)
+      }
       
       open() {
         this.setState({showModal: true});
@@ -107,7 +111,7 @@ class EventInfoModal extends React.Component {
                                     className="btn btn-light"
                                     data-toggle="collapse"
                                     value={this.props.value}
-                                    onClick={this.props.joinEvent}
+                                    onClick={this.click}
                                 >
                                     Reserve your seat
                                 </a>

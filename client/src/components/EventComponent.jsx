@@ -25,7 +25,10 @@ class EventComponent extends Component {
                     this.setState({
                         Attending: "Yes"
                     })
-                } else {}
+                    console.log("Attending");
+                } else {
+                    console.log("Not attending");
+                }
             });
         });
     }
@@ -53,7 +56,7 @@ class EventComponent extends Component {
                     value={this.props.id}
                     attending={this.state.Attending}
                     joinEvent={this.props.joinEvent}
-                    checkAttending={this.props.checkAttending}
+                    checkAttending={this.checkAttending}
                     />
                 </figure>
 
