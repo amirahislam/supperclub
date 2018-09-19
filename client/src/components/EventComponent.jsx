@@ -56,6 +56,7 @@ class EventComponent extends Component {
                     id={this.props.id}
                     username={this.props.username}
                     eventName={this.props.eventName}
+                    eventLocation={this.props.eventLocation}
                     eventImg={this.props.eventImg}
                     guests={this.props.guests}
                     spotsLeft={this.props.spotsLeft}

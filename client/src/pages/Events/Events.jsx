@@ -4,7 +4,6 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
-import Calendar from "../../components/Calendar";
 
 class Events extends Component {
 

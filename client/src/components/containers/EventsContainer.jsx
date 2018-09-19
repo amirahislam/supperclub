@@ -16,6 +16,7 @@ const EventsContainer = props => (
             id={event._id}
             username={event.username}
             eventName={event.eventName}
+            eventLocation={event.eventLocation}
             eventImg={event.eventImg}
             guests={event.guests}
             price={event.price}
