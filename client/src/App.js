@@ -12,6 +12,7 @@ import Profile from './pages/Profile/Profile.jsx';
 import Reservation from './pages/Reservations/Reservations.jsx';
 import Events from './pages/Events/Events.jsx'
 import ChefEvents from './pages/ChefEvents/ChefEvents.jsx'
+import PublicEvents from './pages/PublicEvents/PublicEvents.jsx'
 import Signup from './pages/Signup/Signup.jsx'
 import Login from './pages/Login/Login';
 import Gallery from './pages/Gallery/Gallery.jsx';
@@ -162,6 +163,7 @@ class App extends Component {
                 null
               )
             )}/>
+            <Route exact path='/PublicEvents' component={PublicEvents}/>            
             {/* <Route exact path='/Gallery' component={Gallery}/> */}
             <Route exact path="/Gallery" render={() => (
               this.state.loggedIn === true ? (
