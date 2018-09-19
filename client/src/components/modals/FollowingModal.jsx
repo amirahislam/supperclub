@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import FollowingCard from '../FollowingCard'
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/Following.css';
+import '../../css/DashboardStyles/Modals.css';
 
 class FollowingModal extends React.Component {
 

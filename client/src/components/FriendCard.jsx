@@ -4,7 +4,7 @@ import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
 import '../css/DashboardStyles/FriendCard.css'
 import FollowComponent from './FollowComponent'
-import ViewProfileComponent from './ViewProfileComponent'
+import ViewProfileModal from './modals/ViewProfileModal'
 
 class FriendCard extends Component {
 
@@ -43,10 +43,13 @@ class FriendCard extends Component {
                                 patronemail={patron.email}
                                 onClick={this.props.onClick}
                                 />
-                                <ViewProfileComponent 
+                                <ViewProfileModal 
                                 key={uuidv4()}
-                                // patronname={patron.username}
-                                // onClick={this.props.onClick}
+                                patron={patron.username}
+                                patronid={patron._id}
+                                patronimg={patron.img}
+                                patronemail={patron.email}
+                                
                                 />
                               </div>
                             </div>

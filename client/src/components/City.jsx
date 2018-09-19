@@ -10,8 +10,8 @@ class City extends Component {
     render() {
         return (
             <div className="col-lg-4 col-md-4 col-sm-4 mb">
-							<div class="weather pn">
-								<i class="fa fa-home fa-4x"></i>
+							<div className="weather pn">
+								<i className="fa fa-home fa-4x"></i>
 								<h2>Hyde Park</h2>
 								<h4>AUSTIN</h4>
 							</div>

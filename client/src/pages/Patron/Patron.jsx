@@ -26,6 +26,7 @@ class Patron extends Component {
         currentFollowings: [],
         dataFollowings: [],
         theseDataFollowings: [],
+        currentEvents: [],
         thisPatron: {},
         newBuzz: '',
         newFollow: '',
@@ -39,7 +40,7 @@ class Patron extends Component {
         this.getUserData();
         this.getBuzz();
         this.getPatrons();
-        
+        this.getEvents();
     }
 
     getBuzz = () => {
@@ -104,7 +105,7 @@ class Patron extends Component {
                 if (thisPatronUsername === thisUserUsername) {
                     unfollowed.splice(m, 1)
                 }
-                if (thisUser !== thisPatron && thisUserUsername !== undefined && thisUserUsername !== null) {
+                else if (thisUser !== thisPatron && thisUserUsername !== undefined && thisUserUsername !== null) {
                     // theseDataFollowings.splice(m, 1)
                     API.getPatron(thisUserUsername)
                     .then(response => {
@@ -124,11 +125,17 @@ class Patron extends Component {
         let currentPatrons = unfollowed
         let dataFollowings = following
         
-        const uniqueNames = Array.from(new Set(currentPatrons));
+        // const uniquePatrons = Array.from(new Set(currentPatrons));
+        const uniquePatrons = currentPatrons.filter(function (el, i, arr) {
+            return arr.indexOf(el) === i;
+        });
+        const uniqueFollowings = dataFollowings.filter(function (el, i, arr) {
+            return arr.indexOf(el) === i;
+        });
         console.log("UNIQUE Patrons:")
-        console.log(following)
-        // console.log("Current Followings:")
-        // console.log(dataFollowings)
+        console.log(uniquePatrons)
+        console.log("UNIQUE Followings:")
+        console.log(uniqueFollowings)
         this.setState({myUnfollowedPatrons: unfollowed})
         this.setState({dataFollowings: dataFollowings})
         this.getAvailPatrons(currentPatrons, dataFollowings);
@@ -141,7 +148,7 @@ class Patron extends Component {
         console.log("UNFOLLOWED PATRONS:", currentPatrons)
         console.log("FOLLOWED PATRONS:", dataFollowings)
         let newDataFollowings = this.removeDups(dataFollowings)
-        console.log("NEW FOLLOWED PATDRONS:", newDataFollowings)
+        console.log("NEW FOLLOWED PATRONS:", newDataFollowings)
         for(let z=0; z<currentPatrons.length; z++) {
             let data = currentPatrons[z]
             for (let y = dataFollowings.length - 1; y >= 0; y--) {
@@ -166,9 +173,17 @@ class Patron extends Component {
         
     }
 
-    // handleViewProfile = event => {
+    getEvents = () => {
+        API.getEvents()
+          .then(res => {
+            this.setState({ currentEvents: res.data });
+            console.log('we got the events')
+            console.log(this.state.currentEvents)
+            }
+        )
+          .catch(err => console.log(err))
+    }
 
-    // }
 
     removeDups = (array) => {
         let unique = {};
@@ -241,9 +256,9 @@ class Patron extends Component {
     handleInputChange = event => {
         // Destructure the name and currentPatrons properties off of event.target
         // Update the appropriate state
-        const { name, currentPatrons } = event.target;
+        const { name, value } = event.target;
         this.setState({
-          [name]: currentPatrons
+          [name]: value
         });
       };
 
@@ -260,12 +275,9 @@ class Patron extends Component {
         API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
-        // console.log(this.state.buzzVal)
-        this.getBuzz()
         this.setState({
             buzzVal: ''
         })
-
         this.getBuzz()
         
     };
@@ -305,6 +317,7 @@ class Patron extends Component {
                     placeholder='Create some buzz...'
                     onChange={this.handleInputChange}
                     currentBuzz={this.state.currentBuzz}
+                    currentEvents={this.state.currentEvents}
                 />
                 
                 

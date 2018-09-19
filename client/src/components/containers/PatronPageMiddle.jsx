@@ -20,6 +20,7 @@ const PatronPageMiddle = props => (
           </div>
             <div className='row'>
             <UpcomingEvents 
+              currentEvents={props.currentEvents}
               img1={props.img1}
               img2={props.img2}
               img3={props.img3}
