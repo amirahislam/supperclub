@@ -5,7 +5,7 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../pages/Patron/Timeline.css';
-import '../../css/DashboardStyles/Modals.css';
+import '../../css/DashboardStyles/ProfileModals.css';
 
 
 // Destructuring the type, className, children and onClick props, applying them to the button element

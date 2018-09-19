@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import FriendCard from '../FriendCard'
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/Follow.css';
-import '../../css/DashboardStyles/Modals.css';
+import '../../css/DashboardStyles/FollowModals.css';
 
 class FollowModal extends React.Component {
 

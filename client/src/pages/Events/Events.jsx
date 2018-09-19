@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import NavbarPages from '../../components/navigation/NavbarPages';
 import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
+
 import API from "../../utils/API";
 import './Events.css';
 import Calendar from "../../components/Calendar";
+let uuidv4 = require('uuid/v4')
 
 class Events extends Component {
 
@@ -35,12 +37,12 @@ class Events extends Component {
 
     componentDidMount() {
         this.getUserData();
-        this.getBuzz();
         this.getPatrons();
         this.getEvents();
     }
 
     getUserData = () => {
+        this.getPatrons()
         let localsessionUser = localStorage.getItem("user")
         API.getPatron(localsessionUser)
         .then(response => {
@@ -50,12 +52,14 @@ class Events extends Component {
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
                 profpic: response.data[0].img,
+                currentFollowings: response.data[0].following,
                 userType: response.data[0].userType
             })
-            console.log(response.data)
+            
+            this.getFollowing();
+            
         })
         .catch(err => console.log(err))
-        console.log(this.state.username);
     }
 
     getEvents = () => {
@@ -263,6 +267,7 @@ class Events extends Component {
             <div>
                 <NavbarPages />
                 <PatronSideBar 
+                    key={uuidv4()}
                     userPP={this.state.profpic}
                     username={this.state.username}
                     firstName={this.state.firstName}
@@ -270,8 +275,12 @@ class Events extends Component {
                     userType={this.state.userType}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
-                    currentPatrons={this.state.currentPatrons}
+                    currentPatrons={this.state.myUnfollowedPatrons}
+                    dataFollowings={this.state.dataFollowings}
                     onClick={this.handleFollow}
+                    onUnfollowClick={this.handleUnfollow}
+                    onFollowClick={this.getUserData}
+                    onFollowingClick={this.getUserData}
                 />
                 <EventsContainer 
                 patronId={this.state.id}
