@@ -14,6 +14,7 @@ import Events from './pages/Events/Events.jsx'
 import ChefEvents from './pages/ChefEvents/ChefEvents.jsx'
 import Signup from './pages/Signup/Signup.jsx'
 import Login from './pages/Login/Login';
+import Gallery from './pages/Gallery/Gallery.jsx';
 
 
 
@@ -101,7 +102,7 @@ class App extends Component {
                   updateUser={this.updateUser}
                 />}
             />
-            {/* <Route exact path='/Chef' component={Chef}/> */}
+            <Route exact path='/Chef' component={Chef}/>
             <Route exact path="/Chef" render={() => (
               this.state.loggedIn === true ? (
                 <Chef />
@@ -111,7 +112,7 @@ class App extends Component {
                 null
               )
             )}/>            
-            {/* <Route exact path='/Patron' component={Patron} /> */}
+            <Route exact path='/Patron' component={Patron} />
             <Route exact path="/Patron" render={() => (
               this.state.loggedIn === true ? (
                 <Patron />
@@ -121,7 +122,7 @@ class App extends Component {
                 null
               )
             )}/>
-            {/* <Route exact path='/Profile' component={Profile}/> */}
+            <Route exact path='/Profile' component={Profile}/>
             <Route exact path="/Profile" render={() => (
               this.state.loggedIn === true ? (
                 <Profile />
@@ -151,10 +152,20 @@ class App extends Component {
                 null
               )
             )}/>
-            {/* <Route exact path='/Events' component={Events}/> */}
+            {/* <Route exact path='/ChefEvents' component={ChefEvents}/> */}
             <Route exact path="/ChefEvents" render={() => (
               this.state.loggedIn === true ? (
                 <ChefEvents />
+              ) : this.state.loggedIn === false ? (
+                <Redirect to="/"/>
+              ) : (
+                null
+              )
+            )}/>
+            {/* <Route exact path='/Gallery' component={Gallery}/> */}
+            <Route exact path="/Gallery" render={() => (
+              this.state.loggedIn === true ? (
+                <Gallery />
               ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
               ) : (

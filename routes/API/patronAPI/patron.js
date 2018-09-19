@@ -41,9 +41,10 @@ router.get('/', (req, res, next) => {
 router.route("/:id")
   .get(patronController.findById)
   .put(patronController.findOneAndUpdate)
-  .delete(patronController.remove)
+  
+//   .delete(patronController.remove)
 
-// router.route("/patron")
-//   .put(patronController.update)
+router.route("/:id/:followid")
+  .delete(patronController.findOneAndDelete)
 
 module.exports = router;

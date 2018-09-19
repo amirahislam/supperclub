@@ -3,6 +3,7 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
+import AddEventModal from '../modals/AddEventModal';
 import FollowModal from '../modals/FollowModal';
 import FollowingModal from '../modals/FollowingModal';
 import EventsButton from '../EventsButton';

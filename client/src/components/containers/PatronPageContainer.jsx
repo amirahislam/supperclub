@@ -10,7 +10,8 @@ const PatronPP = props => (
 
         <div className='row'>
           <div className='col-md-6 patronMiddle'>
-              <PatronPageMiddle />
+              <PatronPageMiddle 
+              />
             </div>
             <div className="col-md-2"></div>
             <div className='col-md-4'>

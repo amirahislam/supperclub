@@ -7,7 +7,7 @@ import '../css/DashboardStyles/Follow.css';
 class HomeButton extends React.Component {
 
     componentDidMount() {
-        console.log('mounted');
+        // console.log('mounted');
      
     }
 
@@ -28,7 +28,7 @@ class HomeButton extends React.Component {
             <li className="sub-menu" onClick={this.props.onClick}>
                 <a href={this.props.userType}>
                 <span className="addEvent" onClick={this.open}>
-                    <i className="fa fa-book"></i>
+                    <i className="fa fa-home"></i>
                     Home
                 </span>
                 

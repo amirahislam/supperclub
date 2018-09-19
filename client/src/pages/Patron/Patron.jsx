@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import NavbarPages from '../../components/navigation/NavbarPages';
-import PatronPP from '../../components/containers/PatronPageContainer';
-import PatronSideBar from '../../components/navigation/PatronSideBar';
-import Events from '../Events/Events.jsx'
-import './FriendsList.css';
-import './Patron.css';
-import API from "../../utils/API";
-let uuidv4 = require('uuid/v4');
+import React, { Component } from 'react'
+import NavbarPages from '../../components/navigation/NavbarPages'
+import PatronPP from '../../components/containers/PatronPageContainer'
+import PatronSideBar from '../../components/navigation/PatronSideBar'
+import './FriendsList.css'
+import './Patron.css'
+import API from "../../utils/API"
+let uuidv4 = require('uuid/v4')
 
 class Patron extends Component {
-
-
     state = {
         redirect: false,
         id: '',
@@ -23,10 +18,14 @@ class Patron extends Component {
         userType: '',
         badges: '',
         buzzVal: '',
-        patronName: '',
+        patron: '',
+        availablePatrons: [],
+        myUnfollowedPatrons: [],
         currentBuzz: [],
         currentPatrons: [],
-        currentFollowing: [],
+        currentFollowings: [],
+        dataFollowings: [],
+        theseDataFollowings: [],
         thisPatron: {},
         newBuzz: '',
         newFollow: '',
@@ -40,21 +39,20 @@ class Patron extends Component {
         this.getUserData();
         this.getBuzz();
         this.getPatrons();
-        this.getFollowing();
+        
     }
 
     getBuzz = () => {
         API.getBuzz()
           .then(res => {
             this.setState({ currentBuzz: res.data });
-            console.log('Here is all the buzz')
-            console.log(this.state.currentBuzz)
             }
         )
           .catch(err => console.log(err))
     }
 
     getUserData = () => {
+        this.getPatrons()
         let localsessionUser = localStorage.getItem("user")
         API.getPatron(localsessionUser)
         .then(response => {
@@ -64,16 +62,19 @@ class Patron extends Component {
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
                 profpic: response.data[0].img,
-                currentFollowing: response.data[0].following,
+                currentFollowings: response.data[0].following,
                 userType: response.data[0].userType
             })
+            
             console.log("This is the current user:")
             console.log(response.data)
             console.log("This is who I follow:")
-            console.log(response.data[0].following)
+            console.log(this.state.currentFollowings)
+            // let currentFollowings = this.state.currentFollowings
+            this.getFollowing();
+            
         })
         .catch(err => console.log(err))
-        console.log(this.state.username);
     }
 
     getPatrons = () => {
@@ -84,49 +85,165 @@ class Patron extends Component {
               console.log(this.state.currentPatrons)
           })
           .catch(err => console.log(err))
+          
     }
 
-    getFollowing = event => {
-        let following = this.state.currentFollowing
-        console.log("I am currently following:")
-        console.log(following)
-    }
-
-    handleFollow = event => {
-        event.preventDefault()
-        console.log("I want to follow you")
-        console.log(event.target.getAttribute('patronName'))
-        let thisFollow = {
-            patronName: event.target.getAttribute('patronName')
-          }
+    
+    getFollowing = () => {
+        console.log("CURRENT PATRONS", this.state.currentPatrons)
+        let unfollowed = this.state.currentPatrons
+        let following = this.state.currentFollowings
+        let theseDataFollowings = []
+        for (let m=0; m<unfollowed.length; m++) {
+            let thisPatron = unfollowed[m]
+            let thisPatronUsername = unfollowed[m].username
+            for (let v=0; v<following.length; v++) {
+                let thisUser = following[v]
+                let thisUserUsername = following[v].patronName
+                console.log("THIS USERNAME", thisUser)
+                if (thisPatronUsername === thisUserUsername) {
+                    unfollowed.splice(m, 1)
+                }
+                if (thisUser !== thisPatron && thisUserUsername !== undefined && thisUserUsername !== null) {
+                    // theseDataFollowings.splice(m, 1)
+                    API.getPatron(thisUserUsername)
+                    .then(response => {
+                        if (response.data[0] !== undefined && response.data[0] !== null && thisUser !== thisPatron)   {
+                            theseDataFollowings.push(response.data[0])
+                        }
+                    })
+                    .catch(err => console.log(err))
+                    } 
+                
+            }
+        }
         
-        let id = this.state.id
-        this.savingFollow(id, thisFollow)
+        console.log("NEW UNFOLLOWED: ", unfollowed)
+        console.log("NEW FOLLOWED: ", theseDataFollowings)
+        // console.log("FOLLOWING", following)
+        let currentPatrons = unfollowed
+        let dataFollowings = following
+        
+        const uniqueNames = Array.from(new Set(currentPatrons));
+        console.log("UNIQUE Patrons:")
+        console.log(following)
+        // console.log("Current Followings:")
+        // console.log(dataFollowings)
+        this.setState({myUnfollowedPatrons: unfollowed})
+        this.setState({dataFollowings: dataFollowings})
+        this.getAvailPatrons(currentPatrons, dataFollowings);
     }
 
-    savingFollow = (id, thisFollow) => {
-        API.saveFollow(id, thisFollow)
-          .then(res => this.setState({ newFollow: res.data }))
-          .catch(err => console.log(err));
-        console.log("New Follow: ")
-        console.log(thisFollow)
-        // this.getPatrons()
-        this.setState({
-            newFollow: ''
-        })
-
+    
+    getAvailPatrons = (currentPatrons, dataFollowings) => {
+        console.log("GETTING AVAIL PATRONS")
+        let unfollowedPatrons = currentPatrons
+        console.log("UNFOLLOWED PATRONS:", currentPatrons)
+        console.log("FOLLOWED PATRONS:", dataFollowings)
+        let newDataFollowings = this.removeDups(dataFollowings)
+        console.log("NEW FOLLOWED PATDRONS:", newDataFollowings)
+        for(let z=0; z<currentPatrons.length; z++) {
+            let data = currentPatrons[z]
+            for (let y = dataFollowings.length - 1; y >= 0; y--) {
+                let following = dataFollowings[y]
+                if (data.username !== following.username) {
+                    // console.log("Not a match", data)
+                } else if (data.username === following.username) {
+                    // console.log("I already follow you", data)
+                    unfollowedPatrons.splice(z, 1)
+                } else {
+                    console.log("must not be anything")
+                }
+            }
+        }
+        console.log("My unfollowed patrons:", unfollowedPatrons)
+        console.log("-----------------------------------------")
+        
+        this.setState({ myUnfollowedPatrons: unfollowedPatrons })
+        console.log("Passing Array", this.state.myUnfollowedPatrons)
+        console.log("Passing Other Array", this.state.dataFollowings)
+        // let currentFollowings = this.state.currentFollowings
+        
     }
 
     // handleViewProfile = event => {
 
     // }
 
+    removeDups = (array) => {
+        let unique = {};
+        array.forEach(function(w) {
+          if(!unique[w]) {
+            console.log([w])
+            unique[w] = true;
+          }
+        });
+        return Object.keys(unique);
+      }
+    
+    handleFollow = event => {
+        event.preventDefault()
+        let thisFollow =  {
+            patronId: event.target.getAttribute('patronid'),
+            patronName: event.target.getAttribute('patron'),
+            patronImg: event.target.getAttribute('patronimg'),
+            patronEmail: event.target.getAttribute('patronemail')
+        }
+        let id = this.state.id
+        this.savingFollow(id, thisFollow)
+    }
+
+    savingFollow = (id, thisFollow) => {
+        console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+        API.saveFollow(id, thisFollow)
+          .then(res => this.setState({ newFollow: res.data }))
+          .catch(err => console.log(err));
+          console.log("New Follow: ")
+          console.log(thisFollow)
+          this.getUserData()
+          this.setState({
+            // myUnfollowedPatrons: this.state.myUnfollowedPatrons.splice(thisFollow, 1),
+            newFollow: ''
+          })
+        // console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+    }
+
+    handleUnfollow = event => {
+        event.preventDefault()
+        let thisUnfollow =  {
+            patronId: event.target.getAttribute('patronId'),
+            patronName: event.target.getAttribute('patron'),
+            patronImg: event.target.getAttribute('patronImg'),
+            patronEmail: event.target.getAttribute('patronEmail')
+        }
+        let id = this.state.id
+        this.savingUnfollow(id, thisUnfollow)
+    }
+
+    savingUnfollow = (id, thisUnfollow) => {
+        console.log("NEW FOLLOWED STATE:", this.state.dataFollowings)
+        console.log("MY ID:", id)
+        console.log("NEW UNFOLLOW:", thisUnfollow)
+        let unfollowId = thisUnfollow.patronId
+        console.log("NEW UNFOLLOW ID:", unfollowId)
+        API.saveUnfollow(id, unfollowId)
+          .then(res => console.log("HUGE RESULT:", res))
+          .catch(err => console.log(err));
+          this.getUserData()
+          this.setState({
+            // myUnfollowedPatrons: this.state.myUnfollowedPatrons.splice(thisFollow, 1),
+            newUnfollow: ''
+          })
+        // console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+    }
+
+
     handleInputChange = event => {
-        // Destructure the name and value properties off of event.target
+        // Destructure the name and currentPatrons properties off of event.target
         // Update the appropriate state
-        const { name, value } = event.target;
+        const { name, currentPatrons } = event.target;
         this.setState({
-          [name]: value
+          [name]: currentPatrons
         });
       };
 
@@ -143,7 +260,7 @@ class Patron extends Component {
         API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
-        console.log(this.state.buzzVal)
+        // console.log(this.state.buzzVal)
         this.getBuzz()
         this.setState({
             buzzVal: ''
@@ -155,6 +272,7 @@ class Patron extends Component {
 
 
     render() {
+
         return (
             <div>
                 <NavbarPages />
@@ -167,9 +285,12 @@ class Patron extends Component {
                     userType={this.state.userType}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
-                    currentPatrons={this.state.currentPatrons}
+                    currentPatrons={this.state.myUnfollowedPatrons}
+                    dataFollowings={this.state.currentFollowings}
                     onClick={this.handleFollow}
-                    onFollowClick={this.getFollowing}
+                    onUnfollowClick={this.handleUnfollow}
+                    onFollowClick={this.getUserData}
+                    onFollowingClick={this.getUserData}
                     
                 />
                 <PatronPP 
@@ -180,7 +301,7 @@ class Patron extends Component {
                     img3={this.state.img3}
                     onClick={this.handleFormSubmit}
                     name='buzzVal'
-                    value={this.state.buzzVal}
+                    currentPatrons={this.state.buzzVal}
                     placeholder='Create some buzz...'
                     onChange={this.handleInputChange}
                     currentBuzz={this.state.currentBuzz}
