@@ -35,7 +35,7 @@ class BootstrapTemplate extends Component {
       <h2   className="section-heading text-white">Who are we?</h2>
       <hr   className="light my-4"/> ,
       <p   className="text-faded mb-4">A group of people trying to bring people of diverse communities and cultures together through food. While promoting going local for the ingredients used in our Supper Clubs. </p>
-      <a   className="btn btn-light btn-xl js-scroll-trigger" href="/services">Get Started!</a>
+      <a   className="btn btn-light btn-xl js-scroll-trigger" href="/login">Get Started!</a>
     </div>
   </div>
 </div>
@@ -205,7 +205,7 @@ class BootstrapTemplate extends Component {
         <div   className="container text-center">
           <h2   className="mb-4">Want to take a look at our past events? Check out our gallery!</h2>
           <hr/>
-          <a   className="btn btn-light btn-xl sr-button" href="">View Gallery</a>
+          <a   className="btn btn-light btn-xl sr-button" href="\Gallery">View Gallery</a>
         </div>
       </section>
       <section id="contact">

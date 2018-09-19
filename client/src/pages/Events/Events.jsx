@@ -14,6 +14,7 @@ class Events extends Component {
         profpic: '',
         firstName: '',
         lastName: '',
+        userType: '',
         currentEvents: [],
         currentPatrons: [],
         thisPatron: {},
@@ -36,7 +37,8 @@ class Events extends Component {
                 firstName: response.data[0].firstName,
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
-                profpic: response.data[0].img
+                profpic: response.data[0].img,
+                userType: response.data[0].userType
             })
             console.log(response.data)
         })
@@ -55,7 +57,7 @@ class Events extends Component {
           .catch(err => console.log(err))
     }
 
-    joinEvent = (event) => {
+    joinEvent = (event, callback) => {
         let value = event.target.getAttribute("value")
         API.getEvent(value)
         .then(res => {
@@ -70,7 +72,7 @@ class Events extends Component {
                 }
             })
             if (totalGuests < maxGuests && alreadyJoined === false) {
-                    this.sendGuestData(res.data[0]._id);
+                    this.sendGuestData(res.data[0]._id, callback);
             } else {
                 console.log("Sorry, the event is full or you've already joined!")
             }
@@ -79,17 +81,18 @@ class Events extends Component {
 
     };
 
-    sendGuestData = (id) => {
+    sendGuestData = (id, callback) => {
         console.log(id);
         let attendeeData = {
             username: this.state.username,
             firstName: this.state.firstName,
             lastName: this.state.lastName
         }
-        API.joinEvent(id, attendeeData)
+        API.joinEvent(id, attendeeData, callback)
         .then(res => {
             console.log(res)
             this.getEvents();
+            callback();
         })
         .catch(err => console.log(err))
     }
@@ -136,6 +139,7 @@ class Events extends Component {
                     username={this.state.username}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
+                    userType={this.state.userType}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
@@ -145,6 +149,7 @@ class Events extends Component {
                 patronId={this.state.id}
                 currentEvents={this.state.currentEvents}
                 joinEvent={this.joinEvent}
+                username={this.state.username}
                 /> 
                 {/* <Calendar
                 /> */}

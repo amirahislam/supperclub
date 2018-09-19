@@ -157,7 +157,7 @@ class Chef extends Component {
                     
                 
                 {/* <DashboardComponents /> */}
-                <Calendar />
+                {/* <Calendar /> */}
             </div>
         )
     }

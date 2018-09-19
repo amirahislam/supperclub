@@ -68,6 +68,7 @@ class ChefCalendarModal extends React.Component {
       
       open() {
         this.setState({showModal: true});
+        this.getEvents();
       }
       
       close() {
@@ -81,7 +82,7 @@ class ChefCalendarModal extends React.Component {
             <li className="sub-menu">
                 <a href="javascript:;">
                 <span className="addEvent" onClick={this.open}>
-                    <i className="fa fa-book"></i>
+                    <i className="fa fa-calendar"></i>
                     Calendar
                 </span>
                 <div>
