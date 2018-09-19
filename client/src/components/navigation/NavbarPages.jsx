@@ -18,20 +18,20 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
         return (
             <header  className="header black-bg">
               <div  className="sidebar-toggle-box">
-                  <div  className="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                  {/* <div  className="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div> */}
               </div>
             {/* <!--logo start--> */}
-            <a href="index.html"  className="logo"><b>SECRET SUPPER CLUB</b></a>
+            <a href="\"  className="logo"><b>SECRET SUPPER CLUB</b></a>
             {/* <!--logo end--> */}
             <div  className="nav notify-row" id="top_menu">
                 {/* <!--  notification start --> */}
                 <ul  className="nav top-menu">
                     {/* <!-- settings start --> */}
                     <li  className="dropdown">
-                        <a data-toggle="dropdown"  className="dropdown-toggle" href="index.html#">
+                        {/* <a data-toggle="dropdown"  className="dropdown-toggle" href="index.html#">
                             <i  className="fa fa-tasks"></i>
                             <span  className="badge bg-theme">4</span>
-                        </a>
+                        </a> */}
                         <ul  className="dropdown-menu extended tasks-bar">
                             <div  className="notify-arrow notify-arrow-green"></div>
                             <li>
@@ -100,7 +100,7 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
                     </li>
                     {/* <!-- settings end --> */}
                     {/* <!-- inbox dropdown start--> */}
-                    <li id="header_inbox_bar"  className="dropdown">
+                    {/* <li id="header_inbox_bar"  className="dropdown">
                         <a data-toggle="dropdown"  className="dropdown-toggle" href="index.html#">
                             <i  className="fa fa-envelope-o"></i>
                             <span  className="badge bg-theme">5</span>
@@ -162,7 +162,7 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
                                 <a href="index.html#">See all messages</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> */}
                     {/* <!-- inbox dropdown end --> */}
                 </ul>
                 {/* <!--  notification end --> */}
