@@ -3,7 +3,6 @@ import '../../css/DashboardStyles/DashboardStyle.css';
 import '../../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../css/DashboardStyles/Dashboard-custom.css';
-import AddEventModal from '../modals/AddEventModal';
 import FollowModal from '../modals/FollowModal';
 import FollowingModal from '../modals/FollowingModal';
 import EventsButton from '../EventsButton';
@@ -44,10 +43,11 @@ class PatronSideBar extends Component {
               
                 <p  className="centered"><a href="profile.html"><img src={this.props.userPP} alt={this.props.userFullName} className="img-circle" width="60"/></a></p>
                 <h5  className="centered">{this.props.username}</h5>
+                <h6  className="centered">{this.props.firstName} {this.props.lastName}</h6>
                 <h6  className="centered">{this.props.userType}</h6>
                 
                 <HomeButton 
-            
+                    userType={this.props.userType}
                 />
 
                 <EventsButton 

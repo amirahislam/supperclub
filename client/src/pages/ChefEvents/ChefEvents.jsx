@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import NavbarPages from '../../components/navigation/NavbarPages';
 import SideBar from '../../components/navigation/SideBar';
-import EventsContainer from '../../components/containers/EventsContainer';
+import ChefEventsContainer from '../../components/containers/ChefEventsContainer';
 import API from "../../utils/API";
-import './Events.css';
+import './ChefEvents.css';
 import Calendar from "../../components/Calendar";
 
-class Events extends Component {
+class ChefEvents extends Component {
 
     state = {
         id: '',
@@ -14,6 +14,7 @@ class Events extends Component {
         profpic: '',
         firstName: '',
         lastName: '',
+        userType: '',
         currentEvents: [],
         currentPatrons: [],
         thisPatron: {},
@@ -36,7 +37,8 @@ class Events extends Component {
                 firstName: response.data[0].firstName,
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
-                profpic: response.data[0].img
+                profpic: response.data[0].img,
+                userType: response.data[0].userType
             })
             console.log(response.data)
         })
@@ -136,15 +138,17 @@ class Events extends Component {
                     username={this.state.username}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
+                    userType={this.state.userType}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
                 />
-                <EventsContainer 
+                <ChefEventsContainer 
                 patronId={this.state.id}
                 currentEvents={this.state.currentEvents}
                 joinEvent={this.joinEvent}
+                username={this.state.username}
                 /> 
                 {/* <Calendar
                 /> */}
@@ -153,4 +157,4 @@ class Events extends Component {
     }
 }
 
-export default Events;
+export default ChefEvents;

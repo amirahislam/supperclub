@@ -14,6 +14,7 @@ class Events extends Component {
         profpic: '',
         firstName: '',
         lastName: '',
+        userType: '',
         currentEvents: [],
         currentPatrons: [],
         thisPatron: {},
@@ -36,7 +37,8 @@ class Events extends Component {
                 firstName: response.data[0].firstName,
                 lastName: response.data[0].lastName,
                 username: response.data[0].username,
-                profpic: response.data[0].img
+                profpic: response.data[0].img,
+                userType: response.data[0].userType
             })
             console.log(response.data)
         })
@@ -137,6 +139,7 @@ class Events extends Component {
                     username={this.state.username}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
+                    userType={this.state.userType}
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
@@ -146,6 +149,7 @@ class Events extends Component {
                 patronId={this.state.id}
                 currentEvents={this.state.currentEvents}
                 joinEvent={this.joinEvent}
+                username={this.state.username}
                 /> 
                 {/* <Calendar
                 /> */}

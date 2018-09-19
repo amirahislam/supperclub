@@ -11,6 +11,7 @@ import Patron from './pages/Patron/Patron.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 import Reservation from './pages/Reservations/Reservations.jsx';
 import Events from './pages/Events/Events.jsx'
+import ChefEvents from './pages/ChefEvents/ChefEvents.jsx'
 import Signup from './pages/Signup/Signup.jsx'
 import Login from './pages/Login/Login';
 
@@ -144,6 +145,16 @@ class App extends Component {
             <Route exact path="/Events" render={() => (
               this.state.loggedIn === true ? (
                 <Events />
+              ) : this.state.loggedIn === false ? (
+                <Redirect to="/"/>
+              ) : (
+                null
+              )
+            )}/>
+            {/* <Route exact path='/Events' component={Events}/> */}
+            <Route exact path="/ChefEvents" render={() => (
+              this.state.loggedIn === true ? (
+                <ChefEvents />
               ) : this.state.loggedIn === false ? (
                 <Redirect to="/"/>
               ) : (

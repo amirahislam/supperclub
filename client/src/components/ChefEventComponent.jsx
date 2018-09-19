@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
-import EventInfoModal from './modals/EventInfoModal'
+import ChefEventInfoModal from './modals/ChefEventInfoModal'
 import '../pages/Events/Events.css'
 import API from "../utils/API";
 
 
-class EventComponent extends Component {
+class ChefEventComponent extends Component {
 
     state = {
-        Attending: "No",
+        yourEvent: "",
         splitDate: ""
     }
 
     componentDidMount() {
-        this.checkAttending();
+        this.checkHosting();
         this.splitDate();
     }
 
-    checkAttending = () => {
+    checkHosting = () => {
         console.log(this.props.id)
         let localsessionUser = localStorage.getItem("user");
         API.getEvent(this.props.id)
         .then(response => {
-            response.data[0].guestArray.forEach(element => {
-                console.log(element);
-                if (element.username === localsessionUser) {
-                    this.setState({
-                        Attending: "Yes"
-                    })
-                    console.log("Attending");
-                } else {
-                    console.log("Not attending");
-                }
-            });
+            console.log(response.data[0].username)
+            if (response.data[0].username === localsessionUser) {
+                this.setState({
+                    yourEvent: "Your event"
+                })
+            } else {
+                this.setState({
+                    yourEvent: "Another chef's event"
+                })
+            }
         });
     }
 
@@ -51,7 +50,7 @@ class EventComponent extends Component {
                 <figure>
                     <img src={this.props.eventImg} className="img" alt="Oops" />
                     <a href={this.props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="fas fa-camera-retro"></i></a>
-                    <EventInfoModal
+                    <ChefEventInfoModal
                     patronId={this.props.patronId}
                     id={this.props.id}
                     username={this.props.username}
@@ -64,16 +63,15 @@ class EventComponent extends Component {
                     description={this.props.description}
                     rules={this.props.rules}
                     value={this.props.id}
-                    attending={this.state.Attending}
+                    yourEvent={this.state.yourEvent}
                     joinEvent={this.props.joinEvent}
-                    checkAttending={this.checkAttending}
                     />
                 </figure>
 
                 <div className="portfolio-info">
                     <h4>{this.props.eventName}</h4>
                     <h4>{this.state.splitDate}</h4>
-                    <h4>Attending: {this.state.Attending}</h4>                    
+                    <h4>{this.state.yourEvent}</h4>                    
                     {/* <h4>Spots left: {this.props.spotsLeft}</h4>
                     <button
                     value={this.props.id}
@@ -174,5 +172,5 @@ class EventComponent extends Component {
 
 }
 
-export default EventComponent;
+export default ChefEventComponent;
 

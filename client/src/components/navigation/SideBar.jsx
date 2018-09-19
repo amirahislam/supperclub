@@ -6,7 +6,7 @@ import '../../css/DashboardStyles/Dashboard-custom.css';
 import HomeButton from '../HomeButton';
 import AddEventModal from '../modals/AddEventModal';
 import ChefCalendarModal from '../modals/ChefCalendarModal'
-import EventsButton from '../EventsButton';
+import ChefEventsButton from '../ChefEventsButton';
 
 class SideBar extends Component {
     
@@ -19,10 +19,11 @@ class SideBar extends Component {
               
                 <p  className="centered"><a href="profile.html"><img src={this.props.userPP}  className="img-circle" width="60"/></a></p>
                 <h5  className="centered">{this.props.username}</h5>
+                <h6  className="centered">{this.props.firstName} {this.props.lastName}</h6>
                 <h6  className="centered">{this.props.userType}</h6>
                 
                 <HomeButton 
-            
+                    userType={this.props.userType}
                 />
 
                 <li  className="sub-menu">
@@ -32,7 +33,7 @@ class SideBar extends Component {
                     </a>
                 </li>
 
-                <EventsButton 
+                <ChefEventsButton 
                 
                 />
 

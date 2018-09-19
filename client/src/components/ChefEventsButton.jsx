@@ -1,10 +1,11 @@
 import React from 'react';
+import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../css/DashboardStyles/Follow.css';
 
 
 
-class HomeButton extends React.Component {
+class ChefEventsButton extends React.Component {
 
     componentDidMount() {
         console.log('mounted');
@@ -26,10 +27,10 @@ class HomeButton extends React.Component {
       return (
         <div>
             <li className="sub-menu" onClick={this.props.onClick}>
-                <a href={this.props.userType}>
+                <a href="/chefevents">
                 <span className="addEvent" onClick={this.open}>
                     <i className="fa fa-book"></i>
-                    Home
+                    Events
                 </span>
                 
                 </a>
@@ -39,4 +40,4 @@ class HomeButton extends React.Component {
     }
   }
 
-export default HomeButton
+export default ChefEventsButton

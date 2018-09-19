@@ -2,21 +2,25 @@ import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/EventInfo.css';
+import EditEventButton from '../EditEventButton';
 
 
-class EventInfoModal extends React.Component {
+class ChefEventInfoModal extends React.Component {
 
         constructor(props, context) {
         super(props, context);
       
         this.state = {
           showModal: false,
-          Attending: this.props.attending
         };
 
         this.handleSaveEvent = this.handleSaveEvent.bind(this);
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
+      }
+
+      componentDidMount() {
+          console.log(this.props.yourEvent)
       }
 
       handleSaveEvent = (event) => {
@@ -34,8 +38,17 @@ class EventInfoModal extends React.Component {
 
       }
 
+    //   renderEdit = () => {
+    //       const yourEvent = this.props.yourEvent;
+    //       if (yourEvent === "Your event") {
+    //         console.log("edit event");
+    //         return <EditEventButton />
+    //       } else {}
+    //   }
+
       click = (event) => {
-        this.props.joinEvent(event, this.props.checkAttending)
+        // this.props.joinEvent(event, this.props.checkAttending)
+        console.log(this.props.yourEvent)
       }
       
       open() {
@@ -76,7 +89,6 @@ class EventInfoModal extends React.Component {
                         <div>
                             <p><strong>Date:</strong> <br/> {this.props.eventDate}</p>
                             <p><strong>Host:</strong> <br/> {this.props.username}</p>
-                            <p><strong>Are you attending?</strong> {this.props.attending}</p>
                             <p><strong>Description:</strong> <br/> {this.props.description}</p>
                             <p><strong>Maximum guests:</strong> {this.props.guests}</p>
                             <p><strong>Spots Left:</strong> {this.props.spotsLeft}</p>
@@ -108,16 +120,21 @@ class EventInfoModal extends React.Component {
                             <br />
                             <br />
 
-                            <p align="center">
+                            {/* <renderEdit /> */}
+                            {/* <p align="center">
                                 <a
                                     className="btn btn-light"
                                     data-toggle="collapse"
                                     value={this.props.value}
                                     onClick={this.click}
                                 >
-                                    Reserve your seat
+                                    Edit your event
                                 </a>
-                            </p>
+                            </p> */}
+
+                                <EditEventButton
+                                yourEvent={this.props.yourEvent}
+                                />
 
                             <div className="collapse" id={"#collapse {this.props.id}"}>
                                 <div className="card card-body">
@@ -161,4 +178,4 @@ class EventInfoModal extends React.Component {
     }
   }
 
-export default EventInfoModal
+export default ChefEventInfoModal
