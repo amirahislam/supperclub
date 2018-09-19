@@ -11,6 +11,7 @@ const PatronPP = props => (
         <div className='row'>
           <div className='col-md-6 patronMiddle'>
               <PatronPageMiddle 
+              currentEvents={props.currentEvents}
               />
             </div>
             <div className="col-md-2"></div>
