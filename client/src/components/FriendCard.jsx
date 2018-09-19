@@ -12,7 +12,7 @@ class FriendCard extends Component {
         let uuidv4 = require('uuid/v4');
         return (
             
-            <div className="friendCard">
+            <div className="friendCardDiv">
 
                 {
                     

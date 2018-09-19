@@ -67,11 +67,6 @@ class Patron extends Component {
                 userType: response.data[0].userType
             })
             
-            console.log("This is the current user:")
-            console.log(response.data)
-            console.log("This is who I follow:")
-            console.log(this.state.currentFollowings)
-            // let currentFollowings = this.state.currentFollowings
             this.getFollowing();
             
         })
@@ -101,7 +96,6 @@ class Patron extends Component {
             for (let v=0; v<following.length; v++) {
                 let thisUser = following[v]
                 let thisUserUsername = following[v].patronName
-                console.log("THIS USERNAME", thisUser)
                 if (thisPatronUsername === thisUserUsername) {
                     unfollowed.splice(m, 1)
                 }
@@ -118,10 +112,7 @@ class Patron extends Component {
                 
             }
         }
-        
-        console.log("NEW UNFOLLOWED: ", unfollowed)
-        console.log("NEW FOLLOWED: ", theseDataFollowings)
-        // console.log("FOLLOWING", following)
+
         let currentPatrons = unfollowed
         let dataFollowings = following
         
@@ -132,10 +123,10 @@ class Patron extends Component {
         const uniqueFollowings = dataFollowings.filter(function (el, i, arr) {
             return arr.indexOf(el) === i;
         });
-        console.log("UNIQUE Patrons:")
-        console.log(uniquePatrons)
-        console.log("UNIQUE Followings:")
-        console.log(uniqueFollowings)
+        console.log("Patrons:")
+        console.log(unfollowed)
+        console.log("Followings:")
+        console.log(following)
         this.setState({myUnfollowedPatrons: unfollowed})
         this.setState({dataFollowings: dataFollowings})
         this.getAvailPatrons(currentPatrons, dataFollowings);
@@ -143,33 +134,37 @@ class Patron extends Component {
 
     
     getAvailPatrons = (currentPatrons, dataFollowings) => {
-        console.log("GETTING AVAIL PATRONS")
-        let unfollowedPatrons = currentPatrons
-        console.log("UNFOLLOWED PATRONS:", currentPatrons)
-        console.log("FOLLOWED PATRONS:", dataFollowings)
-        let newDataFollowings = this.removeDups(dataFollowings)
-        console.log("NEW FOLLOWED PATRONS:", newDataFollowings)
-        for(let z=0; z<currentPatrons.length; z++) {
-            let data = currentPatrons[z]
+        let unfollowedPatrons = []
+        let followedPatrons = []
+        const newUnfollowed = unfollowedPatrons.filter(function (el, i, arr) {
+            return arr.indexOf(el) === i;
+        });
+        const newFollowed = followedPatrons.filter(function (el, i, arr) {
+            return arr.indexOf(el) === i;
+        });
+   
+        for(let z = currentPatrons.length - 1; z >=0; z--) {
+            console.log("DATA")
+            console.log(currentPatrons[z])
             for (let y = dataFollowings.length - 1; y >= 0; y--) {
-                let following = dataFollowings[y]
-                if (data.username !== following.username) {
-                    // console.log("Not a match", data)
-                } else if (data.username === following.username) {
-                    // console.log("I already follow you", data)
-                    unfollowedPatrons.splice(z, 1)
+                console.log("FOLLOWING")
+                console.log(dataFollowings[y])
+                if (currentPatrons[z]._id === dataFollowings[y].patronId && currentPatrons[z]._id !== followedPatrons[z]._id) {
+                    followedPatrons.push(currentPatrons[z])
                 } else {
-                    console.log("must not be anything")
+                    unfollowedPatrons.push(currentPatrons[z])
                 }
             }
         }
-        console.log("My unfollowed patrons:", unfollowedPatrons)
-        console.log("-----------------------------------------")
-        
-        this.setState({ myUnfollowedPatrons: unfollowedPatrons })
-        console.log("Passing Array", this.state.myUnfollowedPatrons)
-        console.log("Passing Other Array", this.state.dataFollowings)
-        // let currentFollowings = this.state.currentFollowings
+
+        // this.setState({ myUnfollowedPatrons: unfollowedPatrons })
+        // console.log("Passing Array", this.state.myUnfollowedPatrons)
+        // console.log("Passing Other Array", this.state.dataFollowings)
+
+        console.log("Passing Array", newUnfollowed)
+        console.log("Passing Other Array", newFollowed)
+        console.log("Passing Array", newUnfollowed)
+        console.log("Passing Other Array", newFollowed)
         
     }
 
@@ -183,7 +178,6 @@ class Patron extends Component {
         )
           .catch(err => console.log(err))
     }
-
 
     removeDups = (array) => {
         let unique = {};
@@ -209,18 +203,26 @@ class Patron extends Component {
     }
 
     savingFollow = (id, thisFollow) => {
-        console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+        console.log("UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+        let followId = thisFollow.patronId
+        let newMyUnfollowed = []
+        for (var r=0; r<this.state.myUnfollowedPatrons.length; r++) {
+            if (this.state.myUnfollowedPatrons[r]._id !== followId) {
+                newMyUnfollowed.push(this.state.myUnfollowedPatrons[r])
+            }
+        }
         API.saveFollow(id, thisFollow)
           .then(res => this.setState({ newFollow: res.data }))
           .catch(err => console.log(err));
-          console.log("New Follow: ")
-          console.log(thisFollow)
-          this.getUserData()
+          console.log("NEW UNFOLLOWED STATE:")
+          console.log(newMyUnfollowed)
+          
           this.setState({
-            // myUnfollowedPatrons: this.state.myUnfollowedPatrons.splice(thisFollow, 1),
+            myUnfollowedPatrons: newMyUnfollowed,
             newFollow: ''
           })
-        // console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+
+          this.getUserData()
     }
 
     handleUnfollow = event => {
@@ -244,12 +246,12 @@ class Patron extends Component {
         API.saveUnfollow(id, unfollowId)
           .then(res => console.log("HUGE RESULT:", res))
           .catch(err => console.log(err));
-          this.getUserData()
+          
           this.setState({
-            // myUnfollowedPatrons: this.state.myUnfollowedPatrons.splice(thisFollow, 1),
             newUnfollow: ''
           })
-        // console.log("NEW UNFOLLOWED STATE:", this.state.myUnfollowedPatrons)
+
+          this.getUserData()
     }
 
 

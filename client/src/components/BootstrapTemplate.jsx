@@ -15,9 +15,9 @@ class BootstrapTemplate extends Component {
         <div   className="row">
           <div   className="col-lg-10 mx-auto">
             <h1   className="text-uppercase"   className="quote">
-              People who love to eat are always the best people.
+              <strong>People who love to eat are always the best people.</strong>
             </h1>
-            <hr/>
+            <br/>
           
           <div   className="col-lg-12 mx-auto">
             <p   className="text-faded mb-5"></p>

@@ -2,12 +2,20 @@
 	margin-top: -15px;
 }
 
+.friendCardDiv {
+    max-height: 600px;
+    overflow: scroll
+}
+
 .friendCard {
-    max-height: 400px;
+    height: 300px;
     overflow: scroll;
+    margin-left: 42px;
 }
 
 .profilePic {
     height: 100%;
-	width: 100%;
+    width: 100%;
+   
 }
+
