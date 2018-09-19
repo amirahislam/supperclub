@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import NavbarPages from '../../components/navigation/NavbarPages';
 import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
-let uuidv4 = require('uuid/v4')
 import API from "../../utils/API";
 import './Events.css';
+let uuidv4 = require('uuid/v4')
 
 class Events extends Component {
 
