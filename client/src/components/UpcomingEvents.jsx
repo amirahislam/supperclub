@@ -16,21 +16,15 @@ const UpcomingEvents = props => (
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div className="carousel-inner">
-            {
-                props.currentEvents.map(event => {
-                    return(
-                        <UpcomingEventsCarousel
-
-                        />
-                    )
-                })
-            }
-            {/* <div className="carousel-item">
+        <div className="carousel-item active">
+                <img className="d-block w-100 eventsImg" src={"https://berlinfoodstories.com/wp-content/uploads/2017/11/23155002_1645545768818342_6121728967607120425_o.jpg"} alt="Second slide" />
+            </div>
+            <div className="carousel-item">
                 <img className="d-block w-100 eventsImg" src={"https://berlinfoodstories.com/wp-content/uploads/2017/11/23155002_1645545768818342_6121728967607120425_o.jpg"} alt="Second slide" />
             </div>
             <div className="carousel-item">
                 <img className="d-block w-100 eventsImg" src={"https://www.youngisthan.in/wp-content/uploads/2018/05/featured-15.jpg"} alt="Third slide" />
-            </div> */}
+            </div>
         </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>

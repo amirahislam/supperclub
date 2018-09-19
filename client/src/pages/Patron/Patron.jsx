@@ -298,7 +298,7 @@ class Patron extends Component {
                     badges={this.state.badges}
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.myUnfollowedPatrons}
-                    dataFollowings={this.state.currentFollowings}
+                    dataFollowings={this.state.dataFollowings}
                     onClick={this.handleFollow}
                     onUnfollowClick={this.handleUnfollow}
                     onFollowClick={this.getUserData}
