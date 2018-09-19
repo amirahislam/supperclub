@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/EventInfo.css';
+import EventLocation from "../EventLocation";
 
 
 class EventInfoModal extends React.Component {
@@ -75,6 +76,10 @@ class EventInfoModal extends React.Component {
                     <Modal.Body>
                         <div>
                             <p><strong>Date:</strong> <br/> {this.props.eventDate}</p>
+                            <EventLocation
+                                attending={this.props.attending}
+                                eventLocation={this.props.eventLocation}
+                            />
                             <p><strong>Host:</strong> <br/> {this.props.username}</p>
                             <p><strong>Are you attending?</strong> {this.props.attending}</p>
                             <p><strong>Description:</strong> <br/> {this.props.description}</p>

@@ -26,6 +26,7 @@ class AddEventModal extends React.Component {
           profpic: "",
           newEvent: {},
           eventName: '',
+          eventLocation: '',
           eventImg: '',
           menu: '',
           guests: '',
@@ -64,6 +65,7 @@ class AddEventModal extends React.Component {
         let eventData = {
             username: this.state.username,
             eventName: this.state.eventName,
+            eventLocation: this.state.eventLocation,
             eventImg: this.state.eventImg,
             description: this.state.description,
             menu: this.state.menu,
@@ -84,6 +86,7 @@ class AddEventModal extends React.Component {
         
         this.setState({
           eventName: '',
+          eventLocation: '',
           eventImg: '',
           menu: '',
           guests: '',
@@ -165,6 +168,20 @@ class AddEventModal extends React.Component {
                                 </FormGroup>
 
                                 <FormGroup>
+                                    <ControlLabel htmlFor="formGroupExampleInput">Event Location</ControlLabel>
+                                    <FormControl 
+                                        type="text" 
+                                        className="form-control" 
+                                        id="formGroupExampleInput" 
+                                        placeholder=""
+                                        value={this.state.eventLocation}
+                                        name="eventLocation"
+                                        onChange={this.handleSelection}
+                                    >    
+                                    </FormControl>
+                                </FormGroup>                                
+
+                                <FormGroup>
                                     <ControlLabel htmlFor="exampleFormControlTextarea1">Event Description:</ControlLabel>
                                     <textarea 
                                       className="form-control" 
@@ -195,7 +212,7 @@ class AddEventModal extends React.Component {
                                     Upload Menu
                                 </ControlLabel> */}
 
-                                <FormControl 
+                                {/* <FormControl 
                                     type="file" 
                                     className="form-control form-control-file" 
                                     id="exampleFormControlFile2"
@@ -203,7 +220,7 @@ class AddEventModal extends React.Component {
                                     name="menu"
                                     onChange={this.handleChange}
                                 >
-                                </FormControl><br />
+                                </FormControl><br /> */}
 
                                 <FormGroup>
                                     <ControlLabel htmlFor="formGroupExampleInput">Number of Guests</ControlLabel>
