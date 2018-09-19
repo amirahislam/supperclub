@@ -14,7 +14,7 @@ let uuidv4 = require('uuid/v4');
 class PatronSideBar extends Component {
 
     componentDidMount() {
-        console.log('mounted');
+   
      
     }
 
