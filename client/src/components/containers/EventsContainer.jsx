@@ -19,7 +19,7 @@ const EventsContainer = props => (
             eventImg={event.eventImg}
             guests={event.guests}
             price={event.price}
-            eventDate={event.eventDate}
+            eventDate={event.date}
             description={event.description}
             rules={event.rules}
             spotsLeft={event.spotsLeft}

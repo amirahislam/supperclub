@@ -68,6 +68,7 @@ class ChefCalendarModal extends React.Component {
       
       open() {
         this.setState({showModal: true});
+        this.getEvents();
       }
       
       close() {
