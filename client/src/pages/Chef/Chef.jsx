@@ -118,11 +118,12 @@ class Chef extends Component {
         API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
-        console.log(this.state.buzzVal)
-        this.getBuzz()
+        
+
         this.setState({
             buzzVal: ''
         })
+        this.getBuzz()
         
       };
 
@@ -133,28 +134,30 @@ class Chef extends Component {
             <div>
                 <NavbarPages />
                 <SideBar
-                  userPP={this.state.profpic}
-                  username={this.state.username}
-                  firstName={this.state.firstName}
-                  lastName={this.state.lastName}
-                  userType={this.state.userType}
-                  badges={this.state.badges}
-                  userFullName={this.state.firstName + ' ' + this.state.lastName}
-                  currentPatrons={this.state.currentPatrons}
-                  onClick={this.handleFollow}  
+                    userPP={this.state.profpic}
+                    username={this.state.username}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    userType={this.state.userType}
+                    badges={this.state.badges}
+                    userFullName={this.state.firstName + ' ' + this.state.lastName}
+                    currentPatrons={this.state.currentPatrons}
+                    onClick={this.handleFollow}  
                 />
                 <ChefPP 
-                key={this.state.username}
-                user={this.state.username}
-                img1={this.state.img1}
-                img2={this.state.img2}
-                img3={this.state.img3}
-                onClick={this.handleFormSubmit}
-                name='buzzVal'
-                value={this.state.buzzVal}
-                placeholder='Create some buzz...'
-                onChange={this.handleInputChange}
-                currentBuzz={this.state.currentBuzz}
+                    key={this.state.username}
+                    user={this.state.username}
+                    img1={this.state.img1}
+                    img2={this.state.img2}
+                    img3={this.state.img3}
+                    onClick={this.handleFormSubmit}
+                    name='buzzVal'
+                    value={this.state.buzzVal}
+                    currentPatrons={this.state.buzzVal}
+                    placeholder='Create some buzz...'
+                    onChange={this.handleInputChange}
+                    currentBuzz={this.state.currentBuzz}
+                    currentEvents={this.state.currentEvents}
                 />
                 
                     

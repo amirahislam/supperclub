@@ -41,8 +41,8 @@ class FriendCard extends Component {
                                 patronid={patron._id}
                                 patronimg={patron.img}
                                 patronemail={patron.email}
-                                patronFirstname={patron.firstName}
-                                patronLastname={patron.lastName}
+                                patronfirstname={patron.firstName}
+                                patronlastname={patron.lastName}
                                 onClick={this.props.onClick}
                                 />
                                 <ViewProfileModal 

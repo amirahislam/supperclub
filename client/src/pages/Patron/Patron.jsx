@@ -136,12 +136,6 @@ class Patron extends Component {
     getAvailPatrons = (currentPatrons, dataFollowings) => {
         let unfollowedPatrons = []
         let followedPatrons = []
-        const newUnfollowed = unfollowedPatrons.filter(function (el, i, arr) {
-            return arr.indexOf(el) === i;
-        });
-        const newFollowed = followedPatrons.filter(function (el, i, arr) {
-            return arr.indexOf(el) === i;
-        });
    
         for(let z = currentPatrons.length - 1; z >=0; z--) {
             console.log("DATA")
@@ -157,14 +151,21 @@ class Patron extends Component {
             }
         }
 
-        // this.setState({ myUnfollowedPatrons: unfollowedPatrons })
+        
         // console.log("Passing Array", this.state.myUnfollowedPatrons)
         // console.log("Passing Other Array", this.state.dataFollowings)
+        // let newUnfollowed = [...new Set(unfollowedPatrons)]
+        // let newFollowed = [...new Set(followedPatrons)]
 
-        console.log("Passing Array", newUnfollowed)
-        console.log("Passing Other Array", newFollowed)
-        console.log("Passing Array", newUnfollowed)
-        console.log("Passing Other Array", newFollowed)
+        console.log("Passing Array", unfollowedPatrons)
+        console.log("Passing Other Array", followedPatrons)
+        // console.log("Passing Array", newUnfollowed)
+        // console.log("Passing Other Array", newFollowed)
+
+        // this.setState({ 
+        //     myUnfollowedPatrons: newUnfollowed,
+        //     dataFollowings: newFollowed
+        // })
         
     }
 
@@ -280,6 +281,7 @@ class Patron extends Component {
         API.createBuzz(buzzData)
           .then(res => this.setState({ newBuzz: res.data }))
           .catch(err => console.log(err));
+
         this.setState({
             buzzVal: ''
         })
@@ -318,6 +320,7 @@ class Patron extends Component {
                     img3={this.state.img3}
                     onClick={this.handleFormSubmit}
                     name='buzzVal'
+                    value={this.state.buzzVal}
                     currentPatrons={this.state.buzzVal}
                     placeholder='Create some buzz...'
                     onChange={this.handleInputChange}
