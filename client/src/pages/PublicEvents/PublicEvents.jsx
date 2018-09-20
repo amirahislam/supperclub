@@ -5,6 +5,7 @@ import PublicEventsContainer from '../../components/containers/PublicEventsConta
 import API from "../../utils/API";
 import './PublicEvents.css';
 import Calendar from "../../components/Calendar";
+import FooterPages from '../../components/navigation/FooterPages';
 
 class PublicEvents extends Component {
 
@@ -34,6 +35,7 @@ class PublicEvents extends Component {
                 <PublicEventsContainer 
                 currentEvents={this.state.currentEvents}
                 /> 
+                <FooterPages />
             </div>
         )
     }

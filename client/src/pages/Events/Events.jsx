@@ -4,6 +4,7 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
+import FooterPages from '../../components/navigation/FooterPages';
 let uuidv4 = require('uuid/v4')
 
 class Events extends Component {
@@ -288,6 +289,7 @@ class Events extends Component {
                 /> 
                 {/* <Calendar
                 /> */}
+                <FooterPages />
             </div>
         )
     }
