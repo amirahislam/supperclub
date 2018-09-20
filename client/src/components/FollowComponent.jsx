@@ -12,7 +12,7 @@ const FollowComponent = props => (
     <button type="button" id="followButton"
         className="profile-01 centered followButton btn btn-primary" 
         {...props}
-    ><i class="fa fa-telegram" aria-hidden="true"></i>Follow
+    ><i className="fa fa-telegram" aria-hidden="true"></i>Follow
     </button>
     <br/>
   </div>

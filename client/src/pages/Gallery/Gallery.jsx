@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GalleryGrid from '../../components/GalleryGrid';
 import Navbar from '../../components/navigation/Navbar';
+import FooterPages from '../../components/navigation/FooterPages';
 
 
 class Gallery extends Component {
@@ -9,6 +10,7 @@ class Gallery extends Component {
             <div>
                 <Navbar />
                 <GalleryGrid />
+                <FooterPages />
             </div>
            
         )

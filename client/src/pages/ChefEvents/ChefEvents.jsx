@@ -5,6 +5,7 @@ import ChefEventsContainer from '../../components/containers/ChefEventsContainer
 import API from "../../utils/API";
 import './ChefEvents.css';
 import Calendar from "../../components/Calendar";
+import FooterPages from '../../components/navigation/FooterPages';
 
 class ChefEvents extends Component {
 
@@ -153,6 +154,7 @@ class ChefEvents extends Component {
                 /> 
                 {/* <Calendar
                 /> */}
+                <FooterPages />
             </div>
         )
     }
