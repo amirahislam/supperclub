@@ -88,6 +88,9 @@ class Events extends Component {
             if (totalGuests < maxGuests && alreadyJoined === false) {
                     this.sendGuestData(res.data[0]._id, callback);
             } else {
+                let justJoined = false;
+                this.getEvents();
+                callback(justJoined);
                 console.log("Sorry, the event is full or you've already joined!")
             }
         })
@@ -105,8 +108,9 @@ class Events extends Component {
         API.joinEvent(id, attendeeData, callback)
         .then(res => {
             console.log(res)
+            let justJoined = true;
             this.getEvents();
-            callback();
+            callback(justJoined);
         })
         .catch(err => console.log(err))
     }

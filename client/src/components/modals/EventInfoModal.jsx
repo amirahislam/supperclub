@@ -3,6 +3,7 @@ import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-boots
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/EventInfo.css';
 import EventLocation from "../EventLocation";
+import AttendingAlert from "../Alerts/AttendingAlert";
 
 
 class EventInfoModal extends React.Component {
@@ -112,7 +113,9 @@ class EventInfoModal extends React.Component {
                             </div>
                             <br />
                             <br />
-
+                            <AttendingAlert
+                            justJoined={this.props.justJoined}
+                            />
                             <p align="center">
                                 <a
                                     className="btn btn-light"

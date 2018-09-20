@@ -2,17 +2,22 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-class Alert extends Component {
+class AlertUsername extends Component {
     render() {
-        return (
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Holy guacamole!</strong> Looks like you already have an account with us!
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        )
+        console.log(this.props.loginError);
+        if (this.props.loginError === true) {
+            return (
+                <div className="alert alert-warning" role="alert">
+                    <strong>Oops!</strong> We couldn't log you in. Check your username and password and try again.
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            )
+        } else {
+            return <div></div>
+        }
     }
 }
 
-export default Alert;
+export default AlertUsername;
