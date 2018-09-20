@@ -42,7 +42,7 @@ class SideBar extends Component {
                 />            
 
                 <AddEventModal 
-                
+                getEvents={this.props.getEvents}
                 />
                 <li  className="sub-menu">
                     <a href="javascript:;" >

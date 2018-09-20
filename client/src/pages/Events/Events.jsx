@@ -4,6 +4,7 @@ import PatronSideBar from '../../components/navigation/PatronSideBar';
 import EventsContainer from '../../components/containers/EventsContainer';
 import API from "../../utils/API";
 import './Events.css';
+import FooterPages from '../../components/navigation/FooterPages';
 let uuidv4 = require('uuid/v4')
 
 class Events extends Component {
@@ -88,6 +89,9 @@ class Events extends Component {
             if (totalGuests < maxGuests && alreadyJoined === false) {
                     this.sendGuestData(res.data[0]._id, callback);
             } else {
+                let justJoined = false;
+                this.getEvents();
+                callback(justJoined);
                 console.log("Sorry, the event is full or you've already joined!")
             }
         })
@@ -105,8 +109,9 @@ class Events extends Component {
         API.joinEvent(id, attendeeData, callback)
         .then(res => {
             console.log(res)
+            let justJoined = true;
             this.getEvents();
-            callback();
+            callback(justJoined);
         })
         .catch(err => console.log(err))
     }
@@ -288,6 +293,7 @@ class Events extends Component {
                 /> 
                 {/* <Calendar
                 /> */}
+                <FooterPages />
             </div>
         )
     }

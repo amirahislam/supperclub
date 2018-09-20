@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import BuzzInput from '../../components/BuzzInput';
 import SubmitButton from '../../components/SubmitButton';
 import API from "../../utils/API";
+import AlertUsername from "../../components/Alerts/AlertUsername";
 
 class Login extends Component {
 
@@ -11,6 +12,7 @@ class Login extends Component {
         password: "",
         redirect: false,
         userType: "",
+        loginError: false
     };
 
     componentDidMount() {
@@ -81,8 +83,11 @@ class Login extends Component {
                 })
             }
         }).catch(error => {
+            this.setState({
+                loginError: true
+            })
             console.log('Login error: ')
-            console.log(error);  
+            console.log(error);
         })
     };
 
@@ -117,6 +122,9 @@ class Login extends Component {
                                     <a data-toggle="modal" href="login.html#myModal">Forgot Password?</a>               
                                 </span>
                             </label>
+                            <AlertUsername
+                            loginError={this.state.loginError}
+                            />
                             <button
                                 className="btn btn-primary btn-block"
                                 href="index.html"

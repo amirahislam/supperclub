@@ -5,6 +5,7 @@ import ChefEventsContainer from '../../components/containers/ChefEventsContainer
 import API from "../../utils/API";
 import './ChefEvents.css';
 import Calendar from "../../components/Calendar";
+import FooterPages from '../../components/navigation/FooterPages';
 
 class ChefEvents extends Component {
 
@@ -143,6 +144,7 @@ class ChefEvents extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
+                    getEvents={this.getEvents}
                 />
                 <ChefEventsContainer 
                 patronId={this.state.id}
@@ -152,6 +154,7 @@ class ChefEvents extends Component {
                 /> 
                 {/* <Calendar
                 /> */}
+                <FooterPages />
             </div>
         )
     }

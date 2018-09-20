@@ -8,7 +8,8 @@ class EventComponent extends Component {
 
     state = {
         Attending: "No",
-        splitDate: ""
+        splitDate: "",
+        justJoined: ""
     }
 
     componentDidMount() {
@@ -16,7 +17,7 @@ class EventComponent extends Component {
         this.splitDate();
     }
 
-    checkAttending = () => {
+    checkAttending = (justJoined) => {
         console.log(this.props.id)
         let localsessionUser = localStorage.getItem("user");
         API.getEvent(this.props.id)
@@ -28,6 +29,19 @@ class EventComponent extends Component {
                         Attending: "Yes"
                     })
                     console.log("Attending");
+                    if (justJoined === true) {
+                        this.setState({
+                            justJoined: true
+                        });
+                        console.log("Just joined?");
+                        console.log(justJoined);
+                    } else if (justJoined === false) {
+                        this.setState({
+                            justJoined: false
+                        });
+                        console.log("Just joined?");
+                        console.log(justJoined);
+                    }
                 } else {
                     console.log("Not attending");
                 }
@@ -46,9 +60,9 @@ class EventComponent extends Component {
     render() {
         return(
             
-            <div id="eventPadding" className="portfolio col-md portfolio-container">
+            <div id="portfolio" className="portfolio col-md posts-container">
         <div className="col-lg-5 col-md-6 portfolio-item filter-app wow fadeInUp post">
-            <div className="portfolio-wrap" post-id={this.props.id}>
+            <div className="posts-wrap" post-id={this.props.id}>
                 <figure>
                     <img src={this.props.eventImg} className="img-fluid" alt="Oops" />
                     <a href={this.props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="fas fa-camera-retro"></i></a>
@@ -69,6 +83,7 @@ class EventComponent extends Component {
                     attending={this.state.Attending}
                     joinEvent={this.props.joinEvent}
                     checkAttending={this.checkAttending}
+                    justJoined={this.state.justJoined}
                     />
                 </figure>
 

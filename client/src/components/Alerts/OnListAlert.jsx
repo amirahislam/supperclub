@@ -11,3 +11,5 @@ class OnListAlert extends Component {
         )
     }
 }
+
+export default OnListAlert;

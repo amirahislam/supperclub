@@ -415,9 +415,13 @@ ul.sidebar-menu li a.active i {
     margin-top: 60px;
     padding-left: 300px;
     padding-right: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     padding-top: 20px;
     width: 100%;
+}
+
+#eventBottom {
+    margin-bottom: 20px;
 }
 
 a.logo {
@@ -2209,6 +2213,7 @@ label {
     background: #F05F40;
     color: #fff;
     padding: 10px 0;
+    margin-top: 70px;
 }
 
 

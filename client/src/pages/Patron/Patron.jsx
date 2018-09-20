@@ -5,6 +5,7 @@ import PatronSideBar from '../../components/navigation/PatronSideBar'
 import './FriendsList.css'
 import './Patron.css'
 import API from "../../utils/API"
+import FooterPages from '../../components/navigation/FooterPages';
 let uuidv4 = require('uuid/v4')
 
 class Patron extends Component {
@@ -328,7 +329,7 @@ class Patron extends Component {
                     currentEvents={this.state.currentEvents}
                 />
                 
-                
+                <FooterPages />
             </div>
         )
     }

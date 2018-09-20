@@ -5,6 +5,7 @@ import SubmitButton from '../../components/SubmitButton';
 import DropDown from '../../components/DropDown';
 import API from "../../utils/API";
 import SignUpPage from '../../components/SignUpPage';
+import ExistingAccount from "../../components/Alerts/ExistingAccount";
 
 class Signup extends Component {
 
@@ -17,7 +18,8 @@ class Signup extends Component {
         userType: "",
         password: "",
         img: "",
-        redirect: false
+        redirect: false,
+        nameTaken: false
     };
 
     componentDidMount() {
@@ -81,6 +83,7 @@ class Signup extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log(this.state)
         let patronData = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -111,6 +114,9 @@ class Signup extends Component {
                 })
             } else {
                 console.log("Username taken");
+                this.setState({
+                    nameTaken: true
+                })
             }
         })
         .catch(error => {
@@ -213,6 +219,9 @@ class Signup extends Component {
                                         <option value="Patron">Patron</option>
                                     </select>
                             </div>
+                            <ExistingAccount
+                            nameTaken={this.state.nameTaken}
+                            />
                             <button
                                 type="submit"
                                 className="btn btn-primary"
