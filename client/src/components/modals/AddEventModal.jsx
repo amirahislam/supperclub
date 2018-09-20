@@ -79,7 +79,10 @@ class AddEventModal extends React.Component {
         console.log(eventData)
 
         API.createEvent(eventData)
-          .then(res => this.setState({ newEvent: res.data }))
+          .then(res => {
+            this.setState({ newEvent: res.data })
+            this.props.getEvents()
+          })
           .catch(err => console.log(err));
         console.log('new event added:')
         console.log(this.state.newEvent)
@@ -259,7 +262,7 @@ class AddEventModal extends React.Component {
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <ControlLabel htmlFor="exampleFormControlTextarea1">Rules:</ControlLabel>
+                                    <ControlLabel htmlFor="exampleFormControlTextarea1">Rules (optional):</ControlLabel>
                                     <textarea 
                                       className="form-control" 
                                       id="exampleFormControlTextarea1" 

@@ -143,6 +143,7 @@ class ChefEvents extends Component {
                     userFullName={this.state.firstName + ' ' + this.state.lastName}
                     currentPatrons={this.state.currentPatrons}
                     onClick={this.handleFollow}
+                    getEvents={this.getEvents}
                 />
                 <ChefEventsContainer 
                 patronId={this.state.id}
