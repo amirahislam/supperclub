@@ -8,6 +8,7 @@
 }
 
 .friendCard {
+    border-radius: 20px;
     height: 400px;
     overflow: scroll;
     margin-left: 42px;
@@ -19,6 +20,3 @@
    
 }
 
-.followButton {
-    width: 100%;
-}
