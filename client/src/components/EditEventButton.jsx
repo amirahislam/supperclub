@@ -13,7 +13,7 @@ const EditEventButton = props => {
                             // value={this.props.value}
                             // onClick={this.click}
                         >
-                            Edit your event
+                            Edit event
                         </a>
                     </p>
                 </div>

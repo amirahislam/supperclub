@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChefEventInfoModal from './modals/ChefEventInfoModal'
 import '../pages/Events/Events.css'
 import API from "../utils/API";
+import EditEventButton from "../components/EditEventButton";
 
 
 class ChefEventComponent extends Component {
@@ -71,7 +72,9 @@ class ChefEventComponent extends Component {
                 <div className="portfolio-info">
                     <h4>{this.props.eventName}</h4>
                     <h4>{this.state.splitDate}</h4>
-                    <h4>{this.state.yourEvent}</h4>                    
+                    <EditEventButton
+                        yourEvent={this.state.yourEvent}
+                    />                 
                     {/* <h4>Spots left: {this.props.spotsLeft}</h4>
                     <button
                     value={this.props.id}
