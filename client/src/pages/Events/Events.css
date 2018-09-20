@@ -1,5 +1,5 @@
 #portfolio {
-    margin-top: 50px;
+    /* margin-top: 50px; */
   }
   
   #portfolio #portfolio-flters {
@@ -25,7 +25,7 @@
   }
   
   #portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
-    background: salmon;
+    background:#F05F40;
     color: #fff;
   }
   
@@ -82,7 +82,7 @@
   }
   
   #portfolio .portfolio-item figure .link-preview:hover, #portfolio .portfolio-item figure .link-details:hover {
-    background: salmon;
+    background: #F05F40;
   }
   
   #portfolio .portfolio-item figure .link-preview:hover i, #portfolio .portfolio-item figure .link-details:hover i {
@@ -130,7 +130,7 @@
   }
   
   #portfolio .portfolio-item .portfolio-info h4 a:hover {
-    color: salmon;
+    color: #F05F40;
   }
   
   #portfolio .portfolio-item .portfolio-info p {
@@ -145,8 +145,15 @@
   .img {
       width: 100%;
       height: 100%;
+      /* background-position: center center;
+      background-size: auto 100%; */
+
   }
 
   .modal-body {
     overflow: scroll;
+  }
+
+  #eventPadding {
+    padding: 60px;
   }

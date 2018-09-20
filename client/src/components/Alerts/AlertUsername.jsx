@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-class Alert extends Component {
+class AlertUsername extends Component {
     render() {
         return (
             <div className="alert alert-warning alert-dismissible fade show" role="alert">
@@ -15,4 +15,4 @@ class Alert extends Component {
     }
 }
 
-export default Alert;
+export default AlertUsername;
