@@ -1,11 +1,10 @@
-.modal-body {
+.followModal .followingModal {
     max-height: 900px;
 }
 
 .modal-dialog {
     margin-left: 10%;
     margin-right: 90%;
-    
 }
 
 

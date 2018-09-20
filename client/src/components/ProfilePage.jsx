@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
-import '../css/DashboardStyles/ProfilePage.css';
 import SocialMedia from './SocialMedia';
 import Badges from './BadgesComponent';
 import City from './City';
 import ProfilePageTimeline from './containers/ProfilePageTimeline';
 import API from "../utils/API";
+import '../css/DashboardStyles/ProfilePage.css';
 
 class ProfilePage extends Component {
 	state = {

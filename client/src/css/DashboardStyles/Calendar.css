@@ -12,12 +12,7 @@
     border-color: #ff3b30; */
 }
 
-.modal-content {
+.calendarModal {
   min-height: 700px;
   min-width: 900px;
 }
-
-/* #calendarCont {
-    padding-left: 250px;
-
-} */
