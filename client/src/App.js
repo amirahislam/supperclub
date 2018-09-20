@@ -164,8 +164,8 @@ class App extends Component {
               )
             )}/>
             <Route exact path='/PublicEvents' component={PublicEvents}/>            
-            {/* <Route exact path='/Gallery' component={Gallery}/> */}
-            <Route exact path="/Gallery" render={() => (
+            <Route exact path='/Gallery' component={Gallery}/>
+            {/* <Route exact path="/Gallery" render={() => (
               this.state.loggedIn === true ? (
                 <Gallery />
               ) : this.state.loggedIn === false ? (
@@ -173,7 +173,7 @@ class App extends Component {
               ) : (
                 null
               )
-            )}/>
+            )}/> */}
           </Switch>
         </div>
       </Router>
