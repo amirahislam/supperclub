@@ -52,12 +52,14 @@ class FollowingModal extends React.Component {
                     Following
                 </span>
                 <div>
-                    <Modal className="followingModal" 
+                    <Modal 
                     key={uuidv4}
                     show={this.state.showModal} 
                     onHide={this.close}
                     animation={true} 
-                    bsSize="small">
+                    bsSize="small"
+                    className="followingModal"
+                    >
 
                     <Modal.Header>
                         <Modal.Title>My Foodies</Modal.Title>
@@ -66,7 +68,7 @@ class FollowingModal extends React.Component {
                         </button>
                     </Modal.Header>
 
-                    <Modal.Body>
+                    <Modal.Body className="followingModal">
                         <FollowingCard 
                         key={uuidv4()}
                         name={this.props.name}

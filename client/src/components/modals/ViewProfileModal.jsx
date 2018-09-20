@@ -1,9 +1,9 @@
 import React from "react";
 import { Modal, Button } from 'react-bootstrap';
 import ProfilePage from '../ProfilePage';
-import '../../css/DashboardStyles/DashboardStyle.css';
-import '../../css/DashboardStyles/DashboardStyle-responsive.css';
-import '../../css/DashboardStyles/DashboardBootstrap.css';
+// import '../../css/DashboardStyles/DashboardStyle.css';
+// import '../../css/DashboardStyles/DashboardStyle-responsive.css';
+// import '../../css/DashboardStyles/DashboardBootstrap.css';
 import '../../pages/Patron/Timeline.css';
 import '../../css/DashboardStyles/ProfileModals.css';
 
@@ -42,19 +42,20 @@ class ViewProfileModal extends React.Component {
     const uuidv4 = require('uuid/v4')
     return (
       <div>
-        <button 
-            className="profile-01 centered viewButton" 
+        <button type="button" 
+            className="profile-01 centered viewButton btn btn-primary" 
             onClick={this.open}
         >View Profile
         </button>
-          <div>
+          <div className="profileModal">
             <Modal 
               key={uuidv4}
               show={this.state.showModal} 
               onHide={this.close}
               animation={true} 
               bsSize="lg"
-              dialogClassName="profileModal">
+              className="profileModal"
+              >
 
               <Modal.Header>
                   <Modal.Title>Profile Page</Modal.Title>
@@ -63,7 +64,7 @@ class ViewProfileModal extends React.Component {
                   </button>
               </Modal.Header>
 
-              <Modal.Body>
+              <Modal.Body className="profileModal">
                   <ProfilePage 
                     key={uuidv4()}
                     patron={this.props.patron}

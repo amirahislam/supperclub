@@ -9,11 +9,12 @@ import '../pages/Patron/Timeline.css';
 const FollowComponent = props => (
 
   <div>
-    <button 
-        className="profile-01 centered followButton" 
+    <button type="button" id="followButton"
+        className="profile-01 centered followButton btn btn-primary" 
         {...props}
-    >Follow
+    ><i class="fa fa-telegram" aria-hidden="true"></i>Follow
     </button>
+    <br/>
   </div>
        
     

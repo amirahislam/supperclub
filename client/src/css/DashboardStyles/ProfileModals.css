@@ -1,6 +1,6 @@
-.modal-body {
-    mheight: 900px;
-}
+/* .modal-body {
+    min-height: 900px;
+} */
 
 .modal-dialog {
     margin-left: 10%;
@@ -8,11 +8,15 @@
     
 }
 
-.modal-content {
-    width: 1200px;
+.profileModal .modal-content {
+    min-width: 1200px;
 }
 
 .profSocialWrapper {
     margin-top: 70px;
+}
+
+#profileModal {
+    width: 1200px;
 }
 

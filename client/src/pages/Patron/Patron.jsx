@@ -196,7 +196,9 @@ class Patron extends Component {
             patronId: event.target.getAttribute('patronid'),
             patronName: event.target.getAttribute('patron'),
             patronImg: event.target.getAttribute('patronimg'),
-            patronEmail: event.target.getAttribute('patronemail')
+            patronEmail: event.target.getAttribute('patronemail'),
+            patronFirstname: event.target.getAttribute('patronFirstname'),
+            patronLastname: event.target.getAttribute('patronLastname')
         }
         let id = this.state.id
         this.savingFollow(id, thisFollow)
@@ -231,7 +233,8 @@ class Patron extends Component {
             patronId: event.target.getAttribute('patronId'),
             patronName: event.target.getAttribute('patron'),
             patronImg: event.target.getAttribute('patronImg'),
-            patronEmail: event.target.getAttribute('patronEmail')
+            patronEmail: event.target.getAttribute('patronEmail'),
+            patronFullname: event.target.getAttribute('patronFullname')
         }
         let id = this.state.id
         this.savingUnfollow(id, thisUnfollow)

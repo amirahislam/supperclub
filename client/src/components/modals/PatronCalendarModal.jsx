@@ -86,13 +86,15 @@ class ChefCalendarModal extends React.Component {
                     Calendar
                 </span>
                 <div>
-                    <Modal className="modal-container" 
+                    <Modal
                     show={this.state.showModal} 
                     onHide={this.close}
                     animation={true} 
-                    bsSize="small">
+                    bsSize="small"
+                    className="calendarModal"
+                    >
 
-                    <Modal.Body>
+                    <Modal.Body className="calendarModal">
                         <div className="container" id="calendarCont">
                             <div className="calendarDiv">
                                 

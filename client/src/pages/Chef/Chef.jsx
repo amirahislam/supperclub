@@ -29,6 +29,9 @@ class Chef extends Component {
 
     componentDidMount() {
         this.getUserData();
+        this.getBuzz();
+        this.getPatrons();
+
     }
 
     getUserData = () => {

@@ -27,8 +27,8 @@ class FollowingCard extends Component {
                         </div>
                         
                         <div className="centered">
-                            <h3>{dataFollowing.patronName}</h3>
-                            <h6>{dataFollowing.patronEmail}</h6>
+                            <h3>{dataFollowing.patronFirstname} {dataFollowing.patronLastname}</h3>
+                            <h6>{dataFollowing.patronName}</h6>
                         </div>
 
                         <div className="row">
@@ -41,6 +41,8 @@ class FollowingCard extends Component {
                                 patronid={dataFollowing.patronId}
                                 patronimg={dataFollowing.patronImg}
                                 patronemail={dataFollowing.patronEmail}
+                                patronfirstname={dataFollowing.patronFirstname}
+                                patronlastname={dataFollowing.patronLastname}
                                 onClick={this.props.onClick}
                                 />
                                 <ViewProfileModal 
@@ -49,6 +51,8 @@ class FollowingCard extends Component {
                                 patronid={dataFollowing.patronId}
                                 patronimg={dataFollowing.patronImg}
                                 patronemail={dataFollowing.patronEmail}
+                                patronfirstname={dataFollowing.patronFirstname}
+                                patronlastname={dataFollowing.patronLastname}
                                 />
                               </div>
                             </div>

@@ -51,13 +51,15 @@ class FollowModal extends React.Component {
                     Follow
                 </span>
                 <div>
-                    <Modal className="followModal" 
+                    <Modal 
                     key={uuidv4}
                     show={this.state.showModal} 
                     onHide={this.close}
                     animation={true} 
-                    bsSize="small">
-
+                    bsSize="lg"
+                    className="followModal"
+                    >
+                    
                     <Modal.Header>
                         <Modal.Title>Follow Fellow Foodies</Modal.Title>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -65,7 +67,7 @@ class FollowModal extends React.Component {
                         </button>
                     </Modal.Header>
 
-                    <Modal.Body>
+                    <Modal.Body className="followModal">
                         <FriendCard 
                         key={uuidv4()}
                         name={this.props.name}

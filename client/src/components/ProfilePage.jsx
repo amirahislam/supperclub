@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import '../css/DashboardStyles/DashboardStyle.css';
 import '../css/DashboardStyles/DashboardStyle-responsive.css';
 import '../css/DashboardStyles/DashboardBootstrap.css';
-import '../css/DashboardStyles/ProfilePage.css';
 import SocialMedia from './SocialMedia';
 import Badges from './BadgesComponent';
 import City from './City';
 import ProfilePageTimeline from './containers/ProfilePageTimeline';
 import API from "../utils/API";
+import '../css/DashboardStyles/ProfilePage.css';
 
 class ProfilePage extends Component {
 	state = {
@@ -54,13 +54,13 @@ class ProfilePage extends Component {
 	
     render () {
         return (
-            <div className="container">
+            <div className="container" width="900">
                 <div className="row profPageWrapper">
             	  <div className="col-lg-12 col-md-12 col-sm-12 mb">
 					<div className="content-panel pn">
 						<div id="profile-02">
 							<div className="user">
-								<img src={this.props.patronimg} alt={this.props.patron} className="img-circle" width="300" height="200"/>
+								<img src={this.props.patronimg} alt={this.props.patron} className="img-circle" width="200" height="200"/>
 								<h4>{this.props.patron}</h4>
 							</div>
 						</div>

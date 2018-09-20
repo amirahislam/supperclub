@@ -1,6 +1,8 @@
 .calendarDiv {
+
+    width: 70%;
+
     max-height: 600px;
-    max-width: 800px;
     background-color: #FFB230;
     /* border-radius: 25px; */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -12,12 +14,7 @@
     border-color: #ff3b30; */
 }
 
-.modal-content {
+.calendarModal {
   min-height: 700px;
   min-width: 900px;
 }
-
-/* #calendarCont {
-    padding-left: 250px;
-
-} */

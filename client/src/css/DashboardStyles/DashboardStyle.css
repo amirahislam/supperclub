@@ -416,7 +416,7 @@ ul.sidebar-menu li a.active i {
     padding-left: 300px;
     padding-right: 15px;
     padding-bottom: 15px;
-    padding-top: 0px;
+    padding-top: 20px;
     width: 100%;
 }
 
@@ -2232,4 +2232,10 @@ label {
 
 #friendcard {
     padding-right: 5px;
+}
+
+#followButton {
+    display: flex; 
+    justify-content: center;
+    align-content: center;
 }
