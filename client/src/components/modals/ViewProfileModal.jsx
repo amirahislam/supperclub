@@ -42,8 +42,8 @@ class ViewProfileModal extends React.Component {
     const uuidv4 = require('uuid/v4')
     return (
       <div>
-        <button 
-            className="profile-01 centered viewButton" 
+        <button type="button" 
+            className="profile-01 centered viewButton btn btn-primary" 
             onClick={this.open}
         >View Profile
         </button>
@@ -63,7 +63,7 @@ class ViewProfileModal extends React.Component {
                   </button>
               </Modal.Header>
 
-              <Modal.Body>
+              <Modal.Body className="profileModal">
                   <ProfilePage 
                     key={uuidv4()}
                     patron={this.props.patron}

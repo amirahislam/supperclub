@@ -2,6 +2,10 @@
     max-height: 900px;
 }
 
+#profileModal {
+    width: 1200px;
+}
+
 .modal-dialog {
     margin-left: 10%;
     margin-right: 90%;
@@ -9,7 +13,7 @@
 }
 
 .modal-content {
-    min-width: 1200px;
+    min-width: 900px;
 }
 
 .profSocialWrapper {

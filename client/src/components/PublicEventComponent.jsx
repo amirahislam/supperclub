@@ -23,10 +23,10 @@ class PublicEventComponent extends Component {
     render() {
         return(
         <div id="portfolio" className="portfolio col-md posts-container">
-            <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
+            <div className="col-lg-5 col-md-6 portfolio-item filter-app wow fadeInUp post">
                 <div className="posts-wrap" post-id={this.props.id}>
                     <figure>
-                        <img src={this.props.eventImg} className="img" alt="Oops" />
+                        <img src={this.props.eventImg} className="img-fluid" alt="Oops" />
                     </figure>
 
                     <div className="portfolio-info">
