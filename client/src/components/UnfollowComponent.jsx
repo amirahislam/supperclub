@@ -9,8 +9,8 @@ import '../pages/Patron/Timeline.css';
 const UnfollowComponent = props => (
 
   <div>
-    <button 
-        className="profile-01 centered followButton" 
+    <button type="button"
+        className="profile-01 centered followButton btn btn-primary" 
         {...props}
     >Unfollow
     </button>
