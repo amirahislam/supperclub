@@ -45,7 +45,7 @@ class Calendar extends Component {
 
     render() {
         return (
-            <div className="container" id="calendarCont">
+            
             <div className="calendarDiv">
                 
             <FullCalendar
@@ -61,7 +61,7 @@ class Calendar extends Component {
                 events = {this.state.currentEvents}
             />
             </div>
-            </div>
+    
         )
     }
 }

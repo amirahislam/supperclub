@@ -1,13 +1,15 @@
+.modal-body {
+    max-height: 900px;
+}
+
 .modal-dialog {
     margin-left: 10%;
     margin-right: 90%;
     
 }
 
-.modal-content {
-    min-width: 1200px;
-}
 
 .profSocialWrapper {
     margin-top: 70px;
 }
+
