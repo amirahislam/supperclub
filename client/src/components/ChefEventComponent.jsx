@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChefEventInfoModal from './modals/ChefEventInfoModal'
 import '../pages/Events/Events.css'
 import API from "../utils/API";
+import EditEventButton from "../components/EditEventButton";
 
 
 class ChefEventComponent extends Component {
@@ -44,11 +45,12 @@ class ChefEventComponent extends Component {
 
     render() {
         return(
-            <div id="portfolio" className="portfolio col-md posts-container">
-        <div className="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp post">
-            <div className="posts-wrap" post-id={this.props.id}>
+            
+            <div id="portfolio" className="portfolio col-md porfolio-container">
+        <div className="col-lg-5 col-md-6 portfolio-item filter-app wow fadeInUp post">
+            <div className="porfolio-wrap" post-id={this.props.id}>
                 <figure>
-                    <img src={this.props.eventImg} className="img" alt="Oops" />
+                    <img src={this.props.eventImg} className="img-fluid" alt="Oops" />
                     <a href={this.props.eventImg} data-lightbox="portfolio" data-title="App 1" className="link-preview" title="Preview"><i className="fas fa-camera-retro"></i></a>
                     <ChefEventInfoModal
                     patronId={this.props.patronId}
@@ -71,7 +73,9 @@ class ChefEventComponent extends Component {
                 <div className="portfolio-info">
                     <h4>{this.props.eventName}</h4>
                     <h4>{this.state.splitDate}</h4>
-                    <h4>{this.state.yourEvent}</h4>                    
+                    <EditEventButton
+                        yourEvent={this.state.yourEvent}
+                    />                 
                     {/* <h4>Spots left: {this.props.spotsLeft}</h4>
                     <button
                     value={this.props.id}
@@ -166,6 +170,7 @@ class ChefEventComponent extends Component {
             </div>
         </div>
     </div>
+    
         )
     }
     
