@@ -27,8 +27,8 @@ class FriendCard extends Component {
                         </div>
                         
                         <div className="centered">
-                            <h3>{patron.username}</h3>
-                            <h6>{patron.email}</h6>
+                            <h3>{patron.firstName} {patron.lastName}</h3>
+                            <h6>{patron.username}</h6>
                         </div>
 
                         <div className="row">
@@ -41,6 +41,8 @@ class FriendCard extends Component {
                                 patronid={patron._id}
                                 patronimg={patron.img}
                                 patronemail={patron.email}
+                                patronFirstname={patron.firstName}
+                                patronLastname={patron.lastName}
                                 onClick={this.props.onClick}
                                 />
                                 <ViewProfileModal 
@@ -49,7 +51,8 @@ class FriendCard extends Component {
                                 patronid={patron._id}
                                 patronimg={patron.img}
                                 patronemail={patron.email}
-                                
+                                patronFirstname={patron.firstName}
+                                patronLastname={patron.lastName}
                                 />
                               </div>
                             </div>
