@@ -6,6 +6,7 @@ import DropDown from '../../components/DropDown';
 import API from "../../utils/API";
 import SignUpPage from '../../components/SignUpPage';
 import ExistingAccount from "../../components/Alerts/ExistingAccount";
+import Navbar from '../../components/navigation/Navbar';
 
 class Signup extends Component {
 
@@ -127,6 +128,7 @@ class Signup extends Component {
     render() {
         return (
             <div id="login-page">
+            <Navbar />
                 {this.renderRedirect()}
                 <div className="container">
                     <form className="form-login" action="index.html">

@@ -4,9 +4,11 @@ import BuzzInput from '../../components/BuzzInput';
 import SubmitButton from '../../components/SubmitButton';
 import API from "../../utils/API";
 import AlertUsername from "../../components/Alerts/AlertUsername";
+import Navbar from '../../components/navigation/Navbar';
 
 class Login extends Component {
-
+    
+    
     state = {
         username: "",
         password: "",
@@ -94,6 +96,7 @@ class Login extends Component {
     render() {
         return (
             <div id="login-page">
+            <Navbar />
                 {this.renderRedirect()}
                 <div className="container">    
                     <form className="form-login" action="index.html">
