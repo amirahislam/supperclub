@@ -7,7 +7,7 @@ import API from "../utils/API";
 class EventComponent extends Component {
 
     state = {
-        Attending: "",
+        Attending: "No",
         splitDate: "",
         justJoined: ""
     }
@@ -69,7 +69,7 @@ class EventComponent extends Component {
                             console.log(justJoined);
                         } else if (justJoined === false) {
                             this.setState({
-                                Attending: "Yes",
+                                Attending: "No",
                                 justJoined: false
                             });
                             console.log("Just joined?");
