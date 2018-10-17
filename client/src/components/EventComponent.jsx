@@ -7,7 +7,7 @@ import API from "../utils/API";
 class EventComponent extends Component {
 
     state = {
-        Attending: "No",
+        Attending: "",
         splitDate: "",
         justJoined: ""
     }
