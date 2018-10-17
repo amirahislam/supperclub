@@ -72,7 +72,7 @@ class EventComponent extends Component {
                             console.log(justJoined);
                         } else if (justJoined === false) {
                             this.setState({
-                                Attending: "No",
+                                // Attending: "No",
                                 justJoined: false
                             });
                             console.log("Just joined?");
