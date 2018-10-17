@@ -26,6 +26,7 @@ const EventsContainer = props => (
             spotsLeft={event.spotsLeft}
             guestArray={event.guestArray}
             joinEvent={props.joinEvent}
+            cancelReservation={props.cancelReservation}
         />
         )})
     }

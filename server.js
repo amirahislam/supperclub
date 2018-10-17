@@ -9,6 +9,7 @@ const buzzRoutes = require("./routes/API/buzzAPI");
 const eventRoutes = require("./routes/API/eventAPI")
 const sessionRoutes = require("./routes/API/sessionAPI");
 const joinRoutes = require("./routes/API/joinAPI");
+const cancelRoutes = require("./routes/API/cancelAPI");
 const dbConnection = require("./server/database");
 const passport = require('./server/passport');
 const app = express();
@@ -31,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes, both API and view
-app.use(routes, buzzRoutes, eventRoutes, sessionRoutes, joinRoutes);
+app.use(routes, buzzRoutes, eventRoutes, sessionRoutes, joinRoutes, cancelRoutes);
 
 app.use(
   session({

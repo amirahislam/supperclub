@@ -17,35 +17,96 @@ class EventComponent extends Component {
         this.splitDate();
     }
 
+    clearAlert = () => {
+        this.setState({
+            justJoined: ""
+        })
+    }
+
     checkAttending = (justJoined) => {
+        console.log(justJoined);
         console.log(this.props.id)
         let localsessionUser = localStorage.getItem("user");
         API.getEvent(this.props.id)
         .then(response => {
-            response.data[0].guestArray.forEach(element => {
-                console.log(element);
-                if (element.username === localsessionUser) {
+            console.log(response.data[0].guestArray);
+            if (response.data[0].guestArray.length === 0) {
+                if (justJoined === "Cancel") {
                     this.setState({
-                        Attending: "Yes"
-                    })
-                    console.log("Attending");
-                    if (justJoined === true) {
-                        this.setState({
-                            justJoined: true
-                        });
-                        console.log("Just joined?");
-                        console.log(justJoined);
-                    } else if (justJoined === false) {
-                        this.setState({
-                            justJoined: false
-                        });
-                        console.log("Just joined?");
-                        console.log(justJoined);
-                    }
+                        Attending: "No",
+                        justJoined: "Cancel"
+                    });
+                    console.log("Just joined?");
+                    console.log(justJoined);
+                    console.log("Not attending");                        
+                } 
+                else if (justJoined === false) {
+                    this.setState({
+                        Attending: "No",
+                        justJoined: false
+                    });
+                    console.log("Just joined?");
+                    console.log(justJoined);
+                    console.log("Not attending");                         
                 } else {
+                    this.setState({
+                        Attending: "No",
+                    });
+                    console.log("Just joined?");
+                    console.log(justJoined);
                     console.log("Not attending");
-                }
-            });
+                }  
+            } else {
+                response.data[0].guestArray.forEach(element => {
+                    console.log(element);
+                    if (element.username === localsessionUser) {
+                        this.setState({
+                            Attending: "Yes"
+                        })
+                        console.log("Attending");
+                        if (justJoined === true) {
+                            this.setState({
+                                justJoined: true
+                            });
+                            console.log("Just joined?");
+                            console.log(justJoined);
+                        } else if (justJoined === false) {
+                            this.setState({
+                                Attending: "No",
+                                justJoined: false
+                            });
+                            console.log("Just joined?");
+                            console.log(justJoined);
+                        }
+                    } else {
+                        if (justJoined === "Cancel") {
+                            this.setState({
+                                Attending: "No",
+                                justJoined: "Cancel"
+                            });
+                            console.log("Just joined?");
+                            console.log(justJoined);
+                            console.log("Not attending");                        
+                        } 
+                        else if (justJoined === false) {
+                            this.setState({
+                                Attending: "No",
+                                justJoined: false
+                            });
+                            console.log("Just joined?");
+                            console.log(justJoined);
+                            console.log("Not attending");                         
+                        } else {
+                            this.setState({
+                                Attending: "No",
+                            });
+                            console.log("Just joined?");
+                            console.log(justJoined);
+                            console.log("Not attending");
+                        }
+                    }
+                });
+            }
         });
     }
 
@@ -82,8 +143,10 @@ class EventComponent extends Component {
                     value={this.props.id}
                     attending={this.state.Attending}
                     joinEvent={this.props.joinEvent}
+                    cancelReservation={this.props.cancelReservation}
                     checkAttending={this.checkAttending}
                     justJoined={this.state.justJoined}
+                    clearAlert={this.clearAlert}
                     />
                 </figure>
 

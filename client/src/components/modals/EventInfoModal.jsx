@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/DashboardStyles/EventInfo.css';
 import EventLocation from "../EventLocation";
 import AttendingAlert from "../Alerts/AttendingAlert";
+import ReserveCancelButton from "../ReserveCancelButton";
 
 
 class EventInfoModal extends React.Component {
@@ -37,7 +38,13 @@ class EventInfoModal extends React.Component {
       }
 
       click = (event) => {
-        this.props.joinEvent(event, this.props.checkAttending)
+        this.props.joinEvent(event, this.props.checkAttending);
+        console.log(this.props.attending);
+      }
+
+      cancelReservation = (event) => {
+        this.props.cancelReservation(event, this.props.checkAttending);
+        console.log(this.props.attending);
       }
       
       open() {
@@ -45,6 +52,7 @@ class EventInfoModal extends React.Component {
       }
       
       close() {
+        this.props.clearAlert();
         this.setState({showModal: false});
       }
       
@@ -117,14 +125,21 @@ class EventInfoModal extends React.Component {
                             justJoined={this.props.justJoined}
                             />
                             <p align="center">
-                                <a
+                                <ReserveCancelButton
+                                    value={this.props.value}
+                                    attending={this.props.attending}
+                                    spotsLeft={this.props.spotsLeft}
+                                    reserveSeat={this.click}
+                                    cancelSeat={this.cancelReservation}                               
+                                />
+                                {/* <a
                                     className="btn btn-light"
                                     data-toggle="collapse"
                                     value={this.props.value}
                                     onClick={this.click}
                                 >
                                     Reserve your seat
-                                </a>
+                                </a> */}
                             </p>
 
                             <div className="collapse" id={"#collapse {this.props.id}"}>
