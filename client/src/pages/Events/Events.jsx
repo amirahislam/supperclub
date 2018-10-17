@@ -99,6 +99,35 @@ class Events extends Component {
 
     };
 
+    cancelReservation = (event, callback) => {
+        console.log("Cancel your reservation!")
+        let value = event.target.getAttribute("value");
+        API.getEvent(value)
+        .then(res => {
+            console.log(res.data[0]);
+            console.log(res.data[0]._id);
+            console.log(res.data[0].guestArray);
+            let id = res.data[0]._id;
+            res.data[0].guestArray.forEach((event) => {
+                if (event.username === this.state.username) {
+                    console.log(event);
+                    console.log(res.data[0].guestArray.indexOf(event))
+                    console.log("that's you");
+                    let attendeeData = event;
+                    let justJoined = "Cancel";
+                    API.cancelReservation(id, attendeeData)
+                    .then(res => {
+                        console.log(res)
+                        this.getEvents();
+                        callback(justJoined);
+                    })
+                    .catch(err => console.log(err))
+                } else {
+                }
+            });
+        });
+    };
+
     sendGuestData = (id, callback) => {
         console.log(id);
         let attendeeData = {
@@ -289,6 +318,7 @@ class Events extends Component {
                 patronId={this.state.id}
                 currentEvents={this.state.currentEvents}
                 joinEvent={this.joinEvent}
+                cancelReservation={this.cancelReservation}
                 username={this.state.username}
                 /> 
                 {/* <Calendar

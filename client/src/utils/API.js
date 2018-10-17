@@ -56,5 +56,10 @@ export default {
   },
   saveEvent: function(eventData) {
     return axios.post("/api/events/:id", eventData)
+  },
+  cancelReservation: function(id, attendeeData) {
+    console.log(id);
+    console.log(attendeeData);
+    return axios.put("/api/cancel/" + id, attendeeData)
   }
 };
