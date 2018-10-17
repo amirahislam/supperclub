@@ -99,12 +99,12 @@ class EventComponent extends Component {
                             console.log(justJoined);
                             console.log("Not attending");                         
                         } else {
-                            this.setState({
-                                Attending: "No",
-                            });
-                            console.log("Just joined?");
-                            console.log(justJoined);
-                            console.log("Not attending");
+                            // this.setState({
+                            //     Attending: "No",
+                            // });
+                            // console.log("Just joined?");
+                            // console.log(justJoined);
+                            // console.log("Not attending");
                         }
                     }
                 });
