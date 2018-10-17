@@ -60,23 +60,25 @@ class EventComponent extends Component {
                 response.data[0].guestArray.forEach(element => {
                     console.log(element);
                     if (element.username === localsessionUser) {
-                        this.setState({
-                            Attending: "Yes"
-                        })
-                        console.log("Attending");
                         if (justJoined === true) {
                             this.setState({
+                                Attending: "Yes",
                                 justJoined: true
                             });
                             console.log("Just joined?");
                             console.log(justJoined);
                         } else if (justJoined === false) {
                             this.setState({
-                                // Attending: "No",
+                                Attending: "Yes",
                                 justJoined: false
                             });
                             console.log("Just joined?");
                             console.log(justJoined);
+                        } else {
+                            this.setState({
+                                Attending: "Yes"
+                            })
+                            console.log("Attending");
                         }
                     } else {
                         if (justJoined === "Cancel") {
